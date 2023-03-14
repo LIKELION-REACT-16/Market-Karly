@@ -1,0 +1,13 @@
+// @import '_variable';
+
+.onlyBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: $font-size-small;
+  font-weight: $font-weight-bold;
+  background-color: $colors-gray-50;
+}
