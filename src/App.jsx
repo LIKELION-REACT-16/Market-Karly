@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import Button from './components/button';
-
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
