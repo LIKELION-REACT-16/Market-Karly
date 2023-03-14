@@ -1,0 +1,173 @@
+$font-family: Pretendard;
+$font-weight-regular: 400;
+$font-weight-semibold: 400;
+$font-weight-bold: 700;
+
+$font-scale: 1.333;
+$font-size-default: 16px;
+$font-size-small: calc($font-size-default / $font-scale);
+$font-size-medium: $font-size-default;
+$font-size-large: $font-size-medium * $font-scale;
+$font-size-xl: $font-size-large * $font-scale;
+$font-size-xxl: $font-size-xl * $font-scale;
+$font-size-xxxl: $font-size-xxl * $font-scale;
+
+$line-height-140: 140%;
+$line-height-150: 150%;
+$line-height-160: 160%;
+
+$colors-black: #000000;
+$colors-white: #ffffff;
+$colors-gray-50: #f9f9f9;
+$colors-gray-100: #e1e1e1;
+$colors-gray-200: #c4c4c4;
+$colors-gray-300: #a6a6a6;
+$colors-gray-400: #898989;
+$colors-gray-500: #6b6b6b;
+$colors-gray-600: #565656;
+$colors-gray-700: #404040;
+$colors-gray-800: #2b2b2b;
+$colors-gray-900: #151515;
+$colors-primary: #5F0080;
+$colors-secondary: #bd76ff;
+$colors-content: #333;
+$colors-accent-yellow: #fa622f;
+$colors-blue-100: #cce0ff;
+$colors-blue-200: #99c2ff;
+$colors-blue-300: #66a3ff;
+$colors-blue-400: #3385ff;
+$colors-blue-500: #0066ff;
+$colors-blue-600: #0052cc;
+$colors-blue-700: #003d99;
+$colors-blue-800: #002966;
+$colors-blue-900: #001433;
+$colors-info-error: #f03f40;
+
+$base-space: 4px;
+$spacing-1: $base-space;
+$spacing-2: $base-space + $spacing-1;
+$spacing-3: $base-space + $spacing-2;
+$spacing-4: $base-space + $spacing-3;
+$spacing-5: $base-space + $spacing-4;
+$spacing-6: $base-space + $spacing-5;
+$spacing-7: $base-space + $spacing-6;
+$spacing-8: $base-space + $spacing-7;
+$spacing-9: $base-space + $spacing-8;
+$spacing-10: $base-space + $spacing-9;
+$spacing-11: $base-space + $spacing-10;
+$spacing-12: $base-space + $spacing-11;
+$spacing-13: $base-space + $spacing-12;
+$spacing-14: $base-space + $spacing-13;
+$spacing-15: $base-space + $spacing-14;
+$spacing-16: $base-space + $spacing-15;
+$spacing-17: $base-space + $spacing-16;
+$spacing-18: $base-space + $spacing-17;
+$spacing-19: $base-space + $spacing-18;
+$spacing-20: $base-space + $spacing-19;
+$spacing-21: $base-space + $spacing-20;
+$spacing-22: $base-space + $spacing-21;
+$spacing-23: $base-space + $spacing-22;
+$spacing-24: $base-space + $spacing-23;
+
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+$border-radius-large: 12px;
+$border-radius-xl: 16px;
+
+@mixin heading-medium {
+  font-family: Pretendard;
+  font-weight: bold;
+  line-height: 140%;
+  font-size: $font-size-medium;
+}
+
+@mixin heading-large {
+  font-family: Pretendard;
+  font-weight: bold;
+  line-height: 140%;
+  font-size: $font-size-large;
+}
+
+@mixin heading-xl {
+  font-family: Pretendard;
+  font-weight: bold;
+  line-height: 140%;
+  font-size: $font-size-xl;
+}
+
+@mixin heading-xxl {
+  font-family: Pretendard;
+  font-weight: bold;
+  line-height: 140%;
+  font-size: $font-size-xxl;
+}
+
+@mixin heading-xxxl {
+  font-family: Pretendard;
+  font-weight: bold;
+  line-height: 140%;
+  font-size: $font-size-xxxl;
+}
+
+@mixin label-small {
+  font-family: Pretendard;
+  font-weight: 600;
+  line-height: 150%;
+  font-size: $font-size-small;
+}
+
+@mixin label-medium {
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: 150%;
+  font-size: $font-size-small;
+}
+
+@mixin label-large {
+  font-family: Pretendard;
+  font-weight: 700;
+  line-height: 150%;
+  font-size: $font-size-small;
+}
+
+@mixin label-xl {
+  font-family: Pretendard;
+  font-weight: 800;
+  line-height: 150%;
+  font-size: $font-size-small;
+}
+
+@mixin label-xxl {
+  font-family: Pretendard;
+  font-weight: 900;
+  line-height: 150%;
+  font-size: $font-size-small;
+}
+
+@mixin paragraph-small {
+  font-family: Pretendard;
+  font-weight: normal;
+  line-height: 160%;
+  font-size: $font-size-small;
+}
+
+@mixin paragraph-medium {
+  font-family: Pretendard;
+  font-weight: normal;
+  line-height: 160%;
+  font-size: $font-size-medium;
+}
+
+@mixin paragraph-large {
+  font-family: Pretendard;
+  font-weight: normal;
+  line-height: 160%;
+  font-size: $font-size-large;
+}
+
+@mixin paragraph-xl {
+  font-family: Pretendard;
+  font-weight: normal;
+  line-height: 160%;
+  font-size: $font-size-xl;
+}
