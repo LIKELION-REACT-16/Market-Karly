@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  border: 1px solid #c4c4c4;
+  border: 1px solid $colors-gray-200;
   width: 5.25rem;
   height: 1.875rem;
 
@@ -12,5 +12,9 @@
     border: none;
     width: 1.875rem;
     height: 1.875rem;
+  }
+
+  output {
+    @include label-medium;
   }
 }
