@@ -26,6 +26,8 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
+          @import '@/styles/base/_reset.scss';
+          @import '@/styles/base/_base.scss';
           @import '@/styles/abstracts/_variable.scss';
         `,
       },
