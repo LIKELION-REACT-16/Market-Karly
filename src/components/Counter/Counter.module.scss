@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid #c4c4c4;
+  width: 5.25rem;
+  height: 1.875rem;
+
+  button {
+    background-color: transparent;
+    border: none;
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+}
