@@ -4,7 +4,8 @@ const Badge = ({ badgeName, nameColor }) => {
   console.log('🚀 ⁝ Badge ⁝ nameColor:', nameColor);
   return (
     <>
-      <div style={{ color: { nameColor } }} className={styles.onlyBadge}>
+      {/* template literal : inline-style => string 처리  */}
+      <div style={{ color: `${nameColor}` }} className={styles.onlyBadge}>
         {badgeName}
       </div>
     </>

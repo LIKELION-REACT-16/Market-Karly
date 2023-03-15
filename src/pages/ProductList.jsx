@@ -7,7 +7,13 @@ const ProductList = () => {
     <div>
       <h2>Product-List</h2>
       {/* <RouteLink /> */}
-      <Thumbnail />
+      <div style={{ display: 'flex' }}>
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,41 @@
+.thumbnailWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  padding-right: 20px; // 삭제 예정
+
+  & > p {
+    font-size: $font-size-small;
+    color: $colors-gray-400;
+    margin: $spacing-2 0;
+    line-height: $line-height-150;
+  }
+
+  & > h4 {
+    font-size: $font-size-medium;
+    color: $colors-content;
+    padding: $spacing-2 0;
+    margin: 0;
+    line-height: $line-height-150;
+  }
+
+  & > span {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    color: $colors-content;
+    padding: $spacing-2 0;
+  }
+
+  & > div {
+    margin-top: $spacing-3;
+  }
+}
+
+.badgeWrapper {
+  display: flex;
+  justify-content: flex-start;
+  &:first-child {
+    margin-right: 10px;
+  }
+}

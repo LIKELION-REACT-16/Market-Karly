@@ -1,8 +1,9 @@
 import React from 'react';
 import zzol from '@/assets/zzol.png';
 import Badge from './Badge';
+import styles from '@/styles/thumbnail.module.scss';
 
-const Thumbnail = () => {
+const Thumbnail = ({ productName, price, productDesc }) => {
   const badgeInfo = {
     karlyOnly: {
       name: 'Karly Only',
@@ -15,13 +16,13 @@ const Thumbnail = () => {
   };
 
   return (
-    <div>
+    <div className={styles.thumbnailWrapper}>
       <img src={zzol} width="250" />
-      <span>샛별배송</span>
+      <p className={styles.starDelivery}>샛별배송</p>
       <h4>[풀무원] 탱탱쫄면 (4개입)</h4>
       <span>4,800원</span>
       <p>튀기지 않아 부담없는 매콤함</p>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.badgeWrapper}>
         <Badge
           badgeName={badgeInfo.karlyOnly.name}
           nameColor={badgeInfo.karlyOnly.color}
