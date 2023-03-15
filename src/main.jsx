@@ -7,6 +7,5 @@ import InputText from './components/InputText/InputText'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-    <InputText detail="gd" />
   </React.StrictMode>,
 )
