@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import classes from './A11yHidden.module.scss';
+import classes from '@/styles/components/A11yHidden.module.scss';
 
 export const A11yHidden = forwardRef(function A11yHidden(
   /* props */
