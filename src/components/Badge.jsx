@@ -1,7 +1,6 @@
 import styles from '@/styles/badge.module.scss';
 
 const Badge = ({ badgeName, nameColor }) => {
-  console.log('🚀 ⁝ Badge ⁝ nameColor:', nameColor);
   return (
     <>
       {/* template literal : inline-style => string 처리  */}

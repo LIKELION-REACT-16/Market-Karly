@@ -3,7 +3,7 @@ import zzol from '@/assets/zzol.png';
 import Badge from './Badge';
 import styles from '@/styles/thumbnail.module.scss';
 
-const Thumbnail = ({ productName, price, productDesc }) => {
+export const Thumbnail = ({ productName, price, productDesc }) => {
   const badgeInfo = {
     karlyOnly: {
       name: 'Karly Only',
@@ -35,5 +35,3 @@ const Thumbnail = ({ productName, price, productDesc }) => {
     </div>
   );
 };
-
-export default Thumbnail;

@@ -1,19 +1,35 @@
 import RouteLink from '@/components/RouteLink';
-import Test from '@/components/Test';
-import Thumbnail from '@/components/Thumbnail';
+import { useState } from 'react';
+
+// styles
+import styles from '@/styles/productList.module.scss';
+
+// components
+import { Thumbnail, TotalNFilter } from '@/components';
 
 const ProductList = () => {
+  const [totalNum, setTotalNum] = useState(0);
+
   return (
-    <div>
-      <h2>Product-List</h2>
-      {/* <RouteLink /> */}
-      <div style={{ display: 'flex' }}>
-        <Thumbnail />
-        <Thumbnail />
-        <Thumbnail />
-        <Thumbnail />
-        <Thumbnail />
-      </div>
+    <div className={styles.listWrapper}>
+      <h2>베스트</h2>
+
+      <main>
+        <TotalNFilter totalNum={totalNum} />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+        </div>
+      </main>
     </div>
   );
 };
