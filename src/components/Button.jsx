@@ -1,3 +1,5 @@
+import '@/styles/components/button.scss';
+
 const Button = (props) => {
   const { label, styleClass, onClick, disabled } = props;
 
