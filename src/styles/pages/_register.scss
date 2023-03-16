@@ -1,0 +1,78 @@
+main{
+  display:flex;
+  flex-flow:column nowrap;
+  align-items: center;
+  justify-content: center;
+  font-family: Pretendard;
+}
+
+form{
+  font-size:16px;
+  font-weight: 600;
+}
+
+p{
+  margin:0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.essential{
+  display:flex;
+  flex-flow:row nowrap;
+  justify-content: flex-end;
+  border-bottom: 2px solid black;
+  padding-bottom:20px;
+  font-size:12px;
+}
+
+.star{
+  padding-bottom:10px;
+}
+
+.privacy{
+  display:flex;
+  flex-flow:row nowrap;
+  align-items:center;
+  margin:20px 0;
+}
+
+.agreement{
+  display:flex;
+  flex-flow:row nowrap;
+  padding:20px 0;
+  border-top:2px solid black;
+}
+
+.terms{
+  display:flex;
+  flex-flow:row nowrap;
+  align-items: center;
+  justify-content:space-between;
+  margin:20px 0;
+  font-weight:400;
+}
+
+.SignUp{
+  display:flex;
+  justify-content: center;
+  margin:20px 0 20px 0;
+}
+
+.LightP{
+  color:gray;
+}
+
+.element{
+  box-sizing: border-box;
+  width:130px;
+}
+
+.AllAgreement{
+  font-size:21px;
+}
+
+.SeeTerms{
+  color: #5F0080;
+  font-size: 12px;
+}
