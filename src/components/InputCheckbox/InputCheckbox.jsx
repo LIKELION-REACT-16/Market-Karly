@@ -50,10 +50,8 @@ function renderInput(id, type, invisibleInput, restProps) {
 }
 
 /* --------------------------------- Example -------------------------------- */
-{
-  /* <InputCheckbox
-  label={'비밀글로 문의하기'}
-  type="checkbox"
-  invisibleInput={true}
-/>; */
-}
+//  <InputCheckbox
+//  label={'비밀글로 문의하기'}
+//  type="checkbox"
+//  invisibleInput={true}
+//  />;
