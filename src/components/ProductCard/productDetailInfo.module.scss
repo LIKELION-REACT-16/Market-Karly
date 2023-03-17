@@ -1,0 +1,68 @@
+.infoList {
+  display: block;
+  width: 35rem;
+
+  & .infoListItem {
+    display: flex;
+    border-bottom: 1px solid $colors-gray-100;
+    padding: 1rem 0;
+
+    &:first-child {
+      border-top: 1px solid $colors-gray-100;
+    }
+
+    & .title {
+      display: inline-block;
+      height: 1.625rem;
+      padding: 0.375rem;
+      width: 8rem;
+      color: $colors-gray-500;
+      @include label-small;
+    }
+
+    & .subtitle {
+      width: 27rem;
+      @include label-small;
+    }
+
+    & .subtitle span:first-child {
+      color: $colors-gray-400;
+    }
+
+    & .subtitle p {
+      color: $colors-gray-500;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .productCounter {
+    position: relative;
+    width: 27rem;
+    height: 5.25rem;
+    border: 1px solid $colors-gray-100;
+    padding: 0.75rem 1rem;
+
+    p {
+      padding-bottom: 0.75rem;
+    }
+
+    span {
+      @include label-small;
+    }
+
+    & .count {
+      position: absolute;
+      left: 1rem;
+      bottom: 0.75rem;
+      width: 5.25rem;
+      height: 1.875rem;
+      border: 1px solid black;
+    }
+
+    & .productPrice {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.75rem;
+    }
+  }
+}
