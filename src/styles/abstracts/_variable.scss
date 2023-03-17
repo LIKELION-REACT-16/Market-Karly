@@ -125,23 +125,23 @@ $border-radius-xl: 16px;
 
 @mixin label-large {
   font-family: Pretendard;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-large;
 }
 
 @mixin label-xl {
   font-family: Pretendard;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-xl;
 }
 
 @mixin label-xxl {
   font-family: Pretendard;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-xxl;
 }
 
 @mixin paragraph-small {

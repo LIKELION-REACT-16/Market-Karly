@@ -8,6 +8,7 @@ export function InputCheckbox({
   invisibleLabel = false,
   invisibleInput = true,
   vertical = false,
+  style,
   ...restProps
 }) {
   const id = useId();
@@ -16,7 +17,7 @@ export function InputCheckbox({
   }`;
 
   return (
-    <div className={combineClassNames}>
+    <div className={combineClassNames} style={style}>
       {renderInput(id, type, invisibleInput, restProps)}
       {renderLabel(id, label, invisibleLabel)}
     </div>

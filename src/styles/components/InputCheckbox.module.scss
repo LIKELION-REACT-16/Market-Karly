@@ -25,7 +25,7 @@
 
 .input[type='checkbox']+label::before {
   content: '';
-  background: url(@/assets/check.svg) -8px -8px no-repeat;
+  background: url(@/assets/img-check.svg) -8px -8px no-repeat;
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -39,7 +39,7 @@
   // width: clamp(320px, 20vw, 500px);
   &:checked+label::before {
     content: '';
-    background: url(@/assets/check.svg) -8px -40px no-repeat;
+    background: url(@/assets/img-check.svg) -8px -40px no-repeat;
     display: inline-block;
     width: 24px;
     height: 24px;
