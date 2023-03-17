@@ -1,7 +1,7 @@
 import productImg from '@/assets/img-zzol-vertical.png';
 import classes from '@/components/ProductCard/productCard.module.scss';
 import ProductMainInfo from './ProductMainInfo';
-import ProductDetailInfoList from '@/components/ProductCard/ProductDetailInfo';
+import ProductDetailInfo from '@/components/ProductCard/ProductDetailInfo';
 import a11y from '@/styles/components/A11yHidden.module.scss';
 
 const productInfo = {
@@ -23,7 +23,7 @@ export default function ProductCard() {
           description={productInfo.description}
           price={productInfo.price}
         />
-        <ProductDetailInfoList />
+        <ProductDetailInfo />
       </div>
     </section>
   );

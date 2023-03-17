@@ -6,7 +6,7 @@ import { ReactComponent as Like } from '@/assets/img-icon-heart-purple.svg';
 import { ReactComponent as Alert } from '@/assets/img-icon-alert.svg';
 import { ReactComponent as AlertDisabled } from '@/assets/img-icon-alert-disable.svg';
 
-export default function ProductDetailInfoList() {
+export default function ProductDetailInfo() {
   return (
     <ul className={classes.infoList}>
       <DetailInfo title="배송">
