@@ -118,9 +118,9 @@ $border-radius-xl: 16px;
 
 @mixin label-medium {
   font-family: Pretendard;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-medium;
 }
 
 @mixin label-large {
