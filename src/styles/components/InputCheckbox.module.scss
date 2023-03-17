@@ -1,25 +1,18 @@
 .control {
-  position: relative;
   display: flex;
   flex-flow: row nowrap;
-  gap: 4px;
-  margin-bottom: 4px;
-  padding: 8px;
-
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
   &_inline {
     display: inline-flex;
   }
-
   &_vertical {
     flex-direction: column;
   }
 }
 
 .label {
-  // position: absolute;
-  // left: 0;
-  // top: 50%;
-  // translate: 0 -50%;
   @include paragraph-small;
 }
 
@@ -34,9 +27,6 @@
 }
 
 .input[type='checkbox'] {
-
-  // padding: 8px;
-  // width: clamp(320px, 20vw, 500px);
   &:checked+label::before {
     content: '';
     background: url(@/assets/img-check.svg) -8px -40px no-repeat;
@@ -47,3 +37,5 @@
     vertical-align: middle;
   }
 }
+
+ 
