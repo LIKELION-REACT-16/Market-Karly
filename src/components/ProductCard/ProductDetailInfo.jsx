@@ -1,4 +1,10 @@
 import classes from '@/components/ProductCard/productDetailInfo.module.scss';
+import Counter from '@/components/Counter/Counter';
+import { useState } from 'react';
+import { NormalButton as Button } from '@/components/Button';
+import { ReactComponent as Like } from '@/assets/img-icon-heart-purple.svg';
+import { ReactComponent as Alert } from '@/assets/img-icon-alert.svg';
+import { ReactComponent as AlertDisabled } from '@/assets/img-icon-alert-disable.svg';
 
 export default function ProductDetailInfoList() {
   return (
@@ -35,11 +41,35 @@ export default function ProductDetailInfoList() {
       <DetailInfo title="상품선택">
         <div className={classes.productCounter}>
           <p>[풀무원] 탱탱쫄면 (4개입)</p>
-          <div className={classes.count}>counter</div>
+          <Counter className={classes.count} />
           <span className={classes.productPrice}>4,980원</span>
         </div>
       </DetailInfo>
+      <PriceAndPointWrapper />
+      <ProductCardButtonList className={classes.buttonList} />
     </ul>
+  );
+}
+
+function ProductCardButtonList({ className }) {
+  const [likeButtonState, setLikeButtonState] = useState(true);
+
+  return (
+    <div className={className}>
+      <button type="button" aria-label="상품 찜 버튼">
+        <Like />
+      </button>
+      <button
+        type="button"
+        aria-label="상품 찜 버튼"
+        disabled={likeButtonState}
+      >
+        {likeButtonState ? <AlertDisabled /> : <Alert />}
+      </button>
+      <Button width="424" height="54">
+        장바구니 담기
+      </Button>
+    </div>
   );
 }
 
@@ -49,5 +79,20 @@ function DetailInfo({ title, children }) {
       <span className={classes.title}>{title}</span>
       <div className={classes.subtitle}>{children}</div>
     </li>
+  );
+}
+
+function PriceAndPointWrapper() {
+  return (
+    <div className={classes.priceAndPointWrapper}>
+      <p className={classes.totalPrice}>
+        총 상품 금액:<span>4,980</span>원
+      </p>
+
+      <div className={classes.pointInfo}>
+        <div className={classes.pointBadge}>적립</div>
+        <p>로그인 후 적립 혜택 제공</p>
+      </div>
+    </div>
   );
 }

@@ -50,19 +50,69 @@
       @include label-small;
     }
 
-    & .count {
+    span {
       position: absolute;
-      left: 1rem;
       bottom: 0.75rem;
-      width: 5.25rem;
-      height: 1.875rem;
-      border: 1px solid black;
     }
 
     & .productPrice {
-      position: absolute;
       right: 0.75rem;
-      bottom: 0.75rem;
+    }
+  }
+}
+
+.priceAndPointWrapper {
+  float: right;
+  padding: 1.75rem 0;
+}
+
+.totalPrice {
+  display: flex;
+  align-items: center;
+
+  span {
+    @include label-xl;
+    margin-left: 1rem;
+    margin-right: 0.25rem;
+  }
+  @include label-medium;
+}
+
+.pointInfo {
+  padding-top: 0.5rem;
+  position: relative;
+  p {
+    padding-left: 2.5rem;
+    @include label-medium;
+    width: fit-content;
+  }
+  .pointBadge {
+    position: absolute;
+    background-color: $colors-accent-yellow;
+    width: 2.125rem;
+    height: 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.625rem;
+    color: white;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+}
+
+.buttonList {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+
+  button:nth-child(-n + 2) {
+    background-color: white;
+    border: 1px solid $colors-gray-100;
+    border-radius: 0.25rem;
+    width: 3.375rem;
+    height: 3.375rem;
+
+    &:disabled {
+      cursor: default;
     }
   }
 }

@@ -2,6 +2,7 @@ import productImg from '@/assets/img-zzol-vertical.png';
 import classes from '@/components/ProductCard/productCard.module.scss';
 import ProductMainInfo from './ProductMainInfo';
 import ProductDetailInfoList from '@/components/ProductCard/ProductDetailInfo';
+import a11y from '@/styles/components/A11yHidden.module.scss';
 
 const productInfo = {
   productName: '[풀무원] 탱탱쫄면(4개입)',
@@ -14,9 +15,7 @@ export default function ProductCard() {
     <section className={classes.productCard}>
       <figure className={classes.productImgContainer}>
         <img src={productImg} alt="탱탱 쫄면 제품 사진" />
-        <figcaption className={classes.a11yHidden}>
-          탱탱 쫄면 제품 사진
-        </figcaption>
+        <figcaption className={a11y.srOnly}>탱탱 쫄면 제품 사진</figcaption>
       </figure>
       <div>
         <ProductMainInfo
