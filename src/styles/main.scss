@@ -1,0 +1,24 @@
+// abstracts
+@import 'abstracts/mixins';
+@import 'abstracts/variable';
+
+// base
+@import 'base/reset';
+
+// components
+@import 'components/component.module.scss';
+
+// layout
+@import 'layout/footer';
+@import 'layout/header';
+
+// pages
+@import 'pages/cart';
+@import 'pages/home';
+@import 'pages/login';
+@import 'pages/productDetail';
+@import 'pages/productList';
+@import 'pages/register';
+
+// themes
+@import 'themes/theme';
