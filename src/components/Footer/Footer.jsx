@@ -8,7 +8,7 @@ import Copyright from './Copyright';
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className={classes.footer}>
         <div className={classes.inner}>
           <div className={classes.innerTop}>
             <CustomerService />
