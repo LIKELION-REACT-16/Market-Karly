@@ -1,16 +1,17 @@
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { A11yHidden } from '@/components';
 import classes from '@/styles/components/InputCheckbox.module.scss';
-
+import classNames from 'classnames';
 export function InputCheckbox({
-  label,
+  checked = false,
   type = 'checkbox',
   invisibleInput = true,
   invisibleLabel = false,
   inline = false,
   vertical = false,
   style,
-  labelStyle,
+  label,
+  labelClasses = [],
   ...restProps
 }) {
   const id = useId();
@@ -20,37 +21,50 @@ export function InputCheckbox({
 
   return (
     <div className={combineClassNames} style={style}>
-      {renderInput(id, type, invisibleInput, restProps)}
-      {renderLabel(id, label, invisibleLabel, labelStyle)}
+      {renderInput(id, checked, type, invisibleInput, restProps)}
+      {renderLabel(id, label, invisibleLabel, labelClasses)}
     </div>
   );
 }
-function renderInput(id, type, invisibleInput, restProps) {
+function renderInput(id, checked, type, invisibleInput, restProps) {
+  const [check, setCheck] = useState(checked);
+
   return invisibleInput ? (
     <A11yHidden
       as="input"
+      checked={check}
+      onChange={(e) => setCheck(e.target.checked)}
       id={id}
       type={type}
       className={classes.input}
       {...restProps}
     ></A11yHidden>
   ) : (
-    <input id={id} type={type} className={classes.input} {...restProps} />
+    <input
+      checked={check}
+      onChange={(e) => setCheck(e.target.checked)}
+      id={id}
+      type={type}
+      className={classes.input}
+      {...restProps}
+    />
   );
 }
 
-function renderLabel(id, label, invisibleLabel, labelStyle) {
+function renderLabel(id, label, invisibleLabel, labelClasses) {
+  const combineClassNames = labelClasses.map((item) => classes[item]);
+
   return invisibleLabel ? (
     <A11yHidden
       as="label"
       htmlFor={id}
-      className={classes.label}
-      style={labelStyle}
+      className={classNames(combineClassNames)}
     >
       {label}
     </A11yHidden>
   ) : (
-    <label htmlFor={id} className={classes.label} style={labelStyle}>
+    // <label htmlFor={id} className={>
+    <label htmlFor={id} className={classNames(combineClassNames)}>
       {label}
     </label>
   );
@@ -58,12 +72,9 @@ function renderLabel(id, label, invisibleLabel, labelStyle) {
 
 /* --------------------------------- Example -------------------------------- */
 //  <InputCheckbox
-//  label={'비밀글로 문의하기'}
-//  type="checkbox"
-//  invisibleInput={true}
-//  invisibleLabel={false}
+//  checked={true}
+//  label={'전체 동의합니다.'}
 //  inline={true}
-//  vertical={false}
 //  style={{ margin: '0 0 1rem 0' }}
-//  labelStyle={{ color: 'black'}}
+//  labelClasses={['label-large', 'content', 'hover']}
 //  />;

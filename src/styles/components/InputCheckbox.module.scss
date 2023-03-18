@@ -11,10 +11,23 @@
     flex-direction: column;
   }
 }
-
-.label {
+label.paragraph-small {
   @include paragraph-small;
 }
+label.paragraph-medium {
+  @include paragraph-medium;
+}
+label.label-large {
+  @include label-large;
+}
+label.content {
+  color: $colors-content;
+}
+label.hover:hover {
+  color: $colors-primary;
+}
+
+
 
 .input[type='checkbox']+label::before {
   content: '';
