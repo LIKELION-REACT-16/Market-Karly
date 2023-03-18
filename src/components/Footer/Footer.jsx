@@ -19,9 +19,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={classes.bot}>
-          <div className={classes.botInner}>
-            <Copyright />
-          </div>
+          <Copyright />
         </div>
       </footer>
     </>
