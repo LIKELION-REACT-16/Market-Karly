@@ -1,12 +1,17 @@
 import RouteLink from '@/components/RouteLink';
 import Test from '@/components/test';
+import CartList from './Cart/CartList';
+import Credit from './Cart/Credit';
 
 const Cart = () => {
   return (
-    <div>
-      <h2>Cart</h2>
-      <RouteLink />
-    </div>
+    <>
+      <h2>장바구니</h2>
+      <div className="cart">
+        <CartList />
+        <Credit />
+      </div>
+    </>
   );
 };
 
