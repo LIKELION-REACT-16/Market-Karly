@@ -2,7 +2,6 @@ import classes from '@/components/ProductDetailView/ProductDetailView.module.scs
 import { Inquiry } from './Inquiry';
 import { Review } from './Review';
 import { ReviewInquiryHeader } from './ReviewInquiryHeader';
-import { ReviewInquiryMain } from './ReviewInquiryMain';
 
 export function ProductDetailView({ type }) {
   return (
@@ -15,7 +14,6 @@ export function ProductDetailView({ type }) {
       ) : null}
     </div>
   );
-  // return <div className={classes.ProductDetailView}>hello</div>;
 }
 /* --------------------------------- Example -------------------------------- */
 // <ProductDetailView type={'review'}></ProductDetailView>

@@ -4,7 +4,6 @@ export function ButtonPrevNext({ ariaLabel = '이전 페이지 버튼', classNam
   ButtonPrevNext;
 
   const combineClassNames = `${classes.ButtonPrevNext} ${classes[className]}`;
-  console.log(combineClassNames);
 
   return (
     <button

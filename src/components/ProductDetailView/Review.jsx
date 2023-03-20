@@ -153,7 +153,7 @@ export function Review() {
         </ul>
       </div>
 
-      {/* group3. inquiry에서도 사용됨 */}
+      {/* group3. review, inquiry 두 군데에서 사용됨 */}
       <div style={{ display: 'flex', gap: '16px' }}>
         <ButtonPrevNext
           ariaLabel="상품 후기 이전 페이지 버튼"
