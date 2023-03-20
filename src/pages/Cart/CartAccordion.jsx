@@ -51,7 +51,7 @@ function CartStatus({ type }) {
   );
 }
 
-export default function CartAccoridon(props) {
+export default function CartAccordion(props) {
   const { type, state = false, ...restProps } = props;
 
   return (
