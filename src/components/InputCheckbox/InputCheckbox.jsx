@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 import { A11yHidden } from '@/components';
-import classes from '@/styles/components/InputCheckbox.module.scss';
+import classes from './InputCheckbox.module.scss';
 import classNames from 'classnames';
 export function InputCheckbox({
   checked = false,
