@@ -1,0 +1,54 @@
+.control {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  &_inline {
+    display: inline-flex;
+  }
+  &_vertical {
+    flex-direction: column;
+  }
+}
+label.paragraph-small {
+  @include paragraph-small;
+}
+label.paragraph-medium {
+  @include paragraph-medium;
+}
+label.label-large {
+  @include label-large;
+}
+label.content {
+  color: $colors-content;
+}
+label.hover:hover {
+  color: $colors-primary;
+}
+
+
+
+.input[type='checkbox']+label::before {
+  content: '';
+  background: url(@/assets/img-check.svg) -8px -8px no-repeat;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.input[type='checkbox'] {
+  &:checked+label::before {
+    content: '';
+    background: url(@/assets/img-check.svg) -8px -40px no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+}
+
+ 
