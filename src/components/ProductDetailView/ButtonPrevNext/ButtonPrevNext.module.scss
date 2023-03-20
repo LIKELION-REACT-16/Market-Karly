@@ -1,0 +1,25 @@
+.ButtonPrevNext {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-size: 100%;
+  width: 56px;
+  height: 56px;
+
+  &.prev-active {
+    background-image: url(@/assets/prev-active.svg);
+  }
+  &.prev {
+    background-image: url(@/assets/prev.svg);
+  }
+
+  &.next {
+    background-image: url(@/assets/next.svg);
+  }
+
+  &.next-active {
+    background-image: url(@/assets/next-active.svg);
+  }
+}
+

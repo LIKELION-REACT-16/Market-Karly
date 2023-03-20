@@ -1,0 +1,273 @@
+/* ----------------------------------- 공통 ----------------------------------- */
+.ProductDetailView{
+  // border: 1px solid tomato;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 56px;  
+
+  width: 1050px;
+  // height: 888px; // 문의하기 때는 값이 달라짐(1054px)
+
+  & .ReviewInquiryHeader {
+    // border: 1px solid skyblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 76px;
+  
+    width: 1050px;
+    // height: 142px;
+
+    & .ReviewInquiryHeaderFrame {
+      &>h3 {
+        @include heading-xl;
+        color: $colors-black;
+      }
+
+      &>p {
+        @include label-medium;
+        color: $colors-content;
+      }
+
+      &>ul>li {
+        @include label-small;
+        color: $colors-gray-500;
+      }
+    }
+  }
+
+  & .Review {
+    // border: 1px solid limegreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+  
+    width: 1050px;
+    // height: 690px;
+  
+    & .ReviewTotal {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px;
+      // gap: 885px;  
+  
+      width: 1050px;
+      // height: 24px;
+      & span {
+        @include label-small;
+        color: $colors-content;
+      }
+      & .ReviewTotalFrame75 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 8px;
+      
+        width: 132px;
+        // height: 24px;
+        & :nth-child(1) {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 0px;
+          gap: 4px;
+        
+          width: 42px;
+          // height: 24px;
+        }
+        & :nth-child(2) {
+          width: 1px;
+          height: 10px; // 추천순과 최근 등록순 사이의 '|'
+          background: $colors-gray-300;
+        }
+        & :nth-child(3) {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 0px;
+          gap: 4px;
+        
+          width: 73px;
+          // height: 24px;
+        }
+
+      }
+    }
+  
+    & .ReviewTable {
+      display: flex;
+      flex-direction: column;
+      // 왜 flex-end?
+      align-items: flex-end;
+      padding: 0px;
+  
+      width: 1050px;
+      // height: 578px;
+      border-top: 1px solid $colors-black;
+      
+
+      // table cell
+      // & .TableCell {
+
+      // }
+      & > div {
+        width: 100%;
+      }
+      & [data-component="AccordionHandle"] {
+        display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 8px;
+          border-bottom: 1px solid $colors-gray-100;
+      }
+      & [data-component="AccordionHandle"] button {
+    
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        display: flex;
+        // width: 100%;
+        text-align: left;
+        border: 0;
+        // padding: 8px;
+        //margin-bottom: 8px;
+        
+        
+        background-color: transparent;
+      }
+      & [data-component="AccordionHandle"] button::before{
+        @include label-small;
+        display: inline-block;
+        width: 37px;
+        height: 18px;
+        content: '공지';
+        background-color: $colors-gray-100;
+        color: $colors-content;
+        border-radius: 1px;
+          text-align: center;
+          margin-right: 10px;
+      }
+
+      & [data-component="AccordionPanel"] {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 4px;
+      
+        // position: absolute;
+        
+        left: 8px;
+        top: 8px;
+
+        background: $colors-gray-50;
+        border-bottom: 1px solid $colors-gray-100;
+        & p {
+          @include label-small;
+          color: $colors-content;
+        }
+      }
+      & ul {
+        width: 100%;
+      }
+      & .ReviewItem {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 20px 0px 20px 20px;
+        gap: 82px;
+        border-bottom: 1px solid $colors-gray-100;
+      }
+      
+      // 베스트, 퍼플, 김*진
+      & .ReviewItemFrame76 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 8px;
+  
+        // width: 128px;
+        // height: 18px;
+
+        & :nth-child(1) {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 0px 8px;
+        
+          // width: 48px;
+          // height: 18px;
+ 
+          background: $colors-secondary;
+          border-radius: 1px;
+          @include label-small;
+          color: $colors-white;
+        }
+
+        & :nth-child(2) {
+          border: 1px solid $colors-primary;
+          background-color: $colors-white;
+          color: $colors-primary;
+        }
+        & :nth-child(3) {
+          width: 27px;
+          // height: 18px;
+          @include label-small;
+          color:$colors-black;
+        }
+      }
+  
+      & .ReviewItemFrame78 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 20px;
+  
+        width: 151px;
+        height: 114px;
+  
+        & :nth-child(1) {
+          @include label-small;
+          color: $colors-gray-400;
+          width: 125px;
+          height: 18px;
+        }
+  
+        & :nth-child(2) {
+          @include paragraph-small;
+          color: $colors-black;
+          width: 151px;
+          height: 38px;
+        }
+  
+        & :nth-child(3) {
+          @include label-small;
+          color: $colors-gray-400;
+          width: 58px;
+          height: 18px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+.Inquiry {
+  color: limegreen;
+}
