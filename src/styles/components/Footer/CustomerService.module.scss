@@ -1,0 +1,30 @@
+.customerService {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 477px;
+  height: 357px;
+
+  .title {
+    width: 111px;
+    height: 30px;
+
+    font-weight: 700;
+    font-size: 21.328px;
+    line-height: 140%;
+
+    color: $colors-content;
+  }
+
+  .mail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    height: 38px;
+  }
+}
