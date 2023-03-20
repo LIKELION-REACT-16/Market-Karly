@@ -43,7 +43,7 @@ export default function Area() {
   return (
     <div className={classes.area}>
       {paragraphList.map((item) => (
-        <p>
+        <div key={item.key} className={classes.paragraph}>
           {item.first ? <span className={classes.text}>{item.first}</span> : ''}
           {item.second ? <div className={classes.bar}></div> : ''}
           {item.second ? (
@@ -58,7 +58,7 @@ export default function Area() {
           ) : (
             ''
           )}
-        </p>
+        </div>
       ))}
     </div>
   );

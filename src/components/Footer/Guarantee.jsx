@@ -41,7 +41,7 @@ export default function Guarantee() {
   return (
     <ul className={classes.guarantee}>
       {guaranteeList.map((item) => (
-        <li className={classes.guaranteeLi}>
+        <li className={classes.guaranteeLi} key={item.key}>
           <img
             src={item.src}
             alt={item.name}
