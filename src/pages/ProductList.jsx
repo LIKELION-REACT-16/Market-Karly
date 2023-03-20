@@ -14,7 +14,7 @@ const ProductList = () => {
     <div className={styles.listWrapper}>
       <h2>베스트</h2>
 
-      <main>
+      <main style={{ maxWidth: '783px' }}>
         <TotalNFilter totalNum={totalNum} />
         <div
           style={{
