@@ -1,5 +1,5 @@
 import classes from '@/components/ProductDetailView/ProductDetailView.module.scss';
-import { ButtonPrevNext } from '../ButtonPrevNext/ButtonPrevNext';
+import { ButtonPrevNext } from './ButtonPrevNext/ButtonPrevNext';
 
 export function Inquiry() {
   return (
