@@ -1,29 +1,19 @@
 import React, { useRef, useState } from 'react';
-import React, { useRef, useState } from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
-import 'swiper/scss';
-import 'swiper/scss/pagination';
-import 'swiper/scss/navigation';
 
 // import "./styles.css";
-import classes from '@/components/Slider/Slider.module.scss';
 import classes from '@/components/Slider/Slider.module.scss';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper';
 
 // 이미지 파일 가져오기
-import img1 from '@/assets/img-banner01.svg';
-import img2 from '@/assets/img-banner02.svg';
-import img3 from '@/assets/img-banner03.svg';
-import img4 from '@/assets/img-banner04.svg';
 import img1 from '@/assets/img-banner01.svg';
 import img2 from '@/assets/img-banner02.svg';
 import img3 from '@/assets/img-banner03.svg';
@@ -44,11 +34,7 @@ export function Slider() {
         navigation={{
           prevEl: prevButton.current,
           nextEl: nextButton.current,
-          prevEl: prevButton.current,
-          nextEl: nextButton.current,
         }}
-        modules={[Navigation]}
-        loop={true}
         modules={[Navigation]}
         loop={true}
         onBeforeInit={(swiper) => {
