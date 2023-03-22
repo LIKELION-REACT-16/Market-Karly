@@ -1,0 +1,189 @@
+.navigation {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 65.625rem;
+
+  button:nth-child(-n + 1) {
+    border: none;
+    @include label-medium;
+  }
+  align-items: center;
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    color: $colors-content;
+  }
+}
+
+.nomalNavigation {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: static;
+  width: 100%;
+  top: 105px;
+  box-shadow: 0 4px 8px #eeeeeeee;
+}
+
+.fixedNavigation {
+  z-index: 1000;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  top: 0px;
+  box-shadow: 0 4px 8px #eeeeeeee;
+}
+.categoryButton {
+  width: 5.75rem;
+  height: 2.5rem;
+  position: relative;
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    margin-right: 0.75rem;
+  }
+
+  ul {
+    position: absolute;
+
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    width: fit-content;
+    border: 1px solid $colors-gray-100;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        width: 15.5rem;
+        height: 2rem;
+
+        div {
+          background-image: url('../../assets/img-sprite-menu-icon.svg');
+          background-repeat: no-repeat;
+          background-size: 1.5rem 33rem;
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-left: 0.75rem;
+          margin-right: 0.5rem;
+        }
+
+        &:hover {
+          background-color: $colors-gray-100;
+        }
+
+        @include label-medium;
+      }
+    }
+  }
+
+  &:hover {
+    span {
+      color: $colors-primary;
+    }
+
+    ul {
+      display: block;
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  width: fit-content;
+  height: 4.5rem;
+  list-style: none;
+  align-items: center;
+
+  button {
+    padding: 0;
+    width: 9.375rem;
+    height: 2.5rem;
+
+    span {
+      padding-bottom: 0.125rem;
+    }
+
+    &:hover {
+      & span {
+        border-bottom: 1px solid $colors-primary;
+      }
+    }
+  }
+}
+
+.dawnShippingInfo {
+  width: 6.25rem;
+  height: 1.75rem;
+  border: 1px solid $colors-gray-300;
+  border-radius: 0.875rem;
+  padding: 0;
+  span {
+    &:first-child {
+      color: $colors-primary;
+    }
+    &:last-child {
+      margin-left: 0.125rem;
+      color: $colors-gray-500;
+    }
+    @include paragraph-small;
+  }
+}
+
+.searchForm {
+  position: relative;
+  width: 12.125rem;
+  height: 2.25rem;
+  border: 1px solid $colors-primary;
+  border-radius: 0.25rem;
+
+  input {
+    border: none;
+    height: 2.125rem;
+    width: 7rem;
+    margin-left: 1.25rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include paragraph-small;
+  }
+  button {
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.utilityButtonList {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 0.5rem;
+  button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+
+    &:nth-child(n + 2) {
+      margin-left: 1.25rem;
+    }
+  }
+}
