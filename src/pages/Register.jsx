@@ -12,15 +12,15 @@ const Register = () => {
       <form>
         <div className="essential"> <img src={star} className="star" alt=""></img>필수입력사항</div>
         <div className="privacy">
-          <div className="element">아이디<span><img src={star} className="star" alt=""></img></span></div><div><InputText detail="아이디를 입력해주세요"/></div><div><button>중복확인</button></div>
+          <div className="element">아이디<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><InputText detail="아이디를 입력해주세요"/>6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</div><div><button>중복확인</button></div>
         </div>
         <div className="privacy">
           <div className="element">비밀번호<span><img src={star} className="star" alt=""></img></span></div>
-          <div><InputText detail="비밀번호를 입력해주세요"/></div><div></div>
+          <div className="RegisterVal"><InputText detail="비밀번호를 입력해주세요"/>영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</div><div></div>
         </div>
         <div className="privacy">
           <div className="element">비밀번호 확인<span><img src={star} className="star" alt=""></img></span></div>
-          <div><InputText detail="비밀번호를 한번 더 입력해주세요"/></div><div></div>
+          <div className="RegisterVal"><InputText detail="비밀번호를 한번 더 입력해주세요"/>동일한 비밀번호를 입력</div><div></div>
         </div>
         <div className="privacy">
           <div className="element">이름<span><img src={star} className="star" alt=""></img></span></div>
@@ -28,7 +28,7 @@ const Register = () => {
         </div>
         <div className="privacy">
           <div className="element">이메일<span><img src={star} className="star" alt=""></img></span></div>
-          <div><InputText detail="예) marketkarly@karly.com"/></div><div><button>중복확인</button></div>
+          <div className="RegisterVal"><InputText detail="예) marketkarly@karly.com"/>이메일 형식으로 입력해주세요.</div><div><button>중복확인</button></div>
         </div>
         <div className="privacy">
           <div className="element">휴대폰<span><img src={star} className="star" alt=""></img></span></div>

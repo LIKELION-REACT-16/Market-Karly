@@ -5,6 +5,10 @@ main{
   justify-content: center;
   font-family: Pretendard;
 }
+h2{
+  font-size:21px;
+  font-weight: 600;
+}
 
 form{
   font-size:16px;
@@ -75,4 +79,12 @@ p{
 .SeeTerms{
   color: #5F0080;
   font-size: 12px;
+}
+
+.RegisterVal{
+  display:flex;
+  flex-flow:column nowrap;
+  font-size:12px;
+  color:red;
+  gap:10px;
 }
