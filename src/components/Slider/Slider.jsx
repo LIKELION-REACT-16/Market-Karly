@@ -17,7 +17,7 @@ import classes from '@/components/Slider/Slider.module.scss';
 import classes from '@/components/Slider/Slider.module.scss';
 
 // import required modules
-import { Pagination, Navigation } from 'swiper';
+import { Navigation } from 'swiper';
 
 // 이미지 파일 가져오기
 import img1 from '@/assets/img-banner01.svg';
@@ -35,10 +35,9 @@ export function Slider() {
   const prevButton = useRef(null);
   const nextButton = useRef(null);
 
-  const style = { backgroundColor: 'red' };
+  // const style = {backgroundColor: "red"}
   return (
     <>
-      <button ref={prevButton} className={classes.swiperPrevBtn} />
       <Swiper
         // navigation={true}
         navigation={{
@@ -60,6 +59,7 @@ export function Slider() {
         className={classes.mySwiper}
         // className={classes}
       >
+        <button ref={prevButton} className={classes.swiperPrevBtn} />
         <SwiperSlide>
           <img className={classes.Sliderimage} src={img4} alt="" />
         </SwiperSlide>
@@ -72,8 +72,9 @@ export function Slider() {
         <SwiperSlide>
           <img className={classes.Sliderimage} src={img1} alt="" />
         </SwiperSlide>
+
+        <button ref={nextButton} className={classes.swiperNextBtn} />
       </Swiper>
-      <button ref={nextButton} className={classes.swiperNextBtn} />
     </>
   );
 }
