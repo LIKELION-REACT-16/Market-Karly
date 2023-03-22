@@ -1,0 +1,28 @@
+main{
+  display:flex;
+  flex-flow:column nowrap;
+  align-items: center;
+}
+
+h2{
+  font-size:21.33px;
+  line-height: 31.99px;
+  font-weight: 600;
+}
+
+form{
+  display:flex;
+  flex-flow:column nowrap;
+  justify-content: center;
+  gap:14px;
+}
+
+.find{
+  display:flex;
+  font-size: 12px;
+  justify-content: flex-end;
+}
+
+.LoginBtn{
+  margin-top: 14px;
+}
