@@ -1,0 +1,72 @@
+.mySwiper {
+  width: 1900px;
+
+  .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 1740px;
+    padding: 15px 22px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+  }
+
+  .swiper-button-prev {
+    width: 60px;
+    height: 60px;
+    margin: 0 1740px 0 0;
+    padding: 15px 22px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    display: none;
+  }
+}
+
+.swiperPrevBtn {
+  position: absolute;
+  transform: rotate(180deg);
+  background: url('@/assets/img-carousel-next-btn.svg') 50% 50% / 100%;
+  width: 50px;
+  height: 50px;
+  top: 25%;
+  left: 21%;
+  border: none;
+  z-index: 10;
+}
+
+.swiperNextBtn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('@/assets/img-carousel-next-btn.svg') 50% 50% / 100%;
+  top: 25%;
+  right: 21%;
+  border: none;
+  z-index: 10;
+}
+
+// .Sliderimage{
+//   width: 1900px;
+// }
+
+// .Item-container{
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: nowrap;
+// }
+
+// .Carouselimage{
+//   width: 400px;
+//   height: 700px;
+// }
+
+.itemlist {
+  display: flex;
+  justify-content: center;
+  // width: 100%;
+}
