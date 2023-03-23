@@ -4,10 +4,11 @@ import React from 'react';
 import question from '@/assets/question.svg';
 
 // style
-import styles from '@/styles/totalNumber.module.scss';
+import styles from '@/styles/components/List/totalNumber.module.scss';
 
 export const TotalNFilter = ({ totalNum }) => {
   const [hide, setHide] = React.useState(true);
+  const [selectTab, setSelectTab] = React.useState(0);
 
   return (
     <div
@@ -17,9 +18,19 @@ export const TotalNFilter = ({ totalNum }) => {
       <span>총{totalNum}건</span>
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <ul style={{ display: 'flex' }}>
+        <ul className={styles.productFilterWrapper} role="tablist">
           <li className={styles.productFilter}>
-            <a href="#" className={styles.productFilter}>
+            <a
+              onClick={() => {
+                setSelectTab(0);
+              }}
+              href="#"
+              className={
+                selectTab === 0
+                  ? styles.productFilterSelect
+                  : styles.productFilterNoneSelect
+              }
+            >
               추천순
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <img
@@ -45,31 +56,81 @@ export const TotalNFilter = ({ totalNum }) => {
           </li>
 
           <li className={styles.productFilter}>
-            <a href="#" className="karly-product-menu__order-li--inactive">
+            <a
+              onClick={() => {
+                setSelectTab(1);
+              }}
+              href="#"
+              className={
+                selectTab === 1
+                  ? styles.productFilterSelect
+                  : styles.productFilterNoneSelect
+              }
+            >
               신상품순
             </a>
           </li>
 
           <li className={styles.productFilter}>
-            <a href="#" className="karly-product-menu__order-li--inactive">
+            <a
+              onClick={() => {
+                setSelectTab(2);
+              }}
+              href="#"
+              className={
+                selectTab === 2
+                  ? styles.productFilterSelect
+                  : styles.productFilterNoneSelect
+              }
+            >
               판매량순
             </a>
           </li>
 
           <li className={styles.productFilter}>
-            <a href="#" className="karly-product-menu__order-li--inactive">
+            <a
+              onClick={() => {
+                setSelectTab(3);
+              }}
+              href="#"
+              className={
+                selectTab === 3
+                  ? styles.productFilterSelect
+                  : styles.productFilterNoneSelect
+              }
+            >
               혜택순
             </a>
           </li>
 
           <li className={styles.productFilter}>
-            <a href="#" className="karly-product-menu__order-li--inactive">
+            <a
+              onClick={() => {
+                setSelectTab(4);
+              }}
+              href="#"
+              className={
+                selectTab === 4
+                  ? styles.productFilterSelect
+                  : styles.productFilterNoneSelect
+              }
+            >
               낮은 가격순
             </a>
           </li>
 
           <li className={styles.productFilter}>
-            <a href="#" className="karly-product-menu__order-li--inactive">
+            <a
+              onClick={() => {
+                setSelectTab(5);
+              }}
+              href="#"
+              className={
+                selectTab === 5
+                  ? styles.productFilterSelect
+                  : styles.productFilterNoneSelect
+              }
+            >
               높은 가격순
             </a>
           </li>

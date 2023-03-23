@@ -5,17 +5,17 @@ import { useState } from 'react';
 import styles from '@/styles/productList.module.scss';
 
 // components
-import { Thumbnail, TotalNFilter, Accordian } from '@/components';
+import { Thumbnail, TotalNFilter, Accordion } from '@/components';
 
 const ProductList = () => {
   const [totalNum, setTotalNum] = useState(0);
 
   return (
     <div className={styles.listWrapper}>
-      <h2>베스트</h2>
+      <h2 style={{ fontSize: '22px', fontWeight: 600 }}>베스트</h2>
       <div style={{ display: 'flex' }}>
         <section>
-          <Accordian />
+          <Accordion />
         </section>
         <main style={{ maxWidth: '783px' }}>
           <TotalNFilter totalNum={totalNum} />

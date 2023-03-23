@@ -1,7 +1,7 @@
 import React from 'react';
 import zzol from '@/assets/zzol.png';
 import Badge from './Badge';
-import styles from '@/styles/thumbnail.module.scss';
+import styles from '@/styles/components/List/thumbnail.module.scss';
 
 export const Thumbnail = ({ productName, price, productDesc }) => {
   const badgeInfo = {
