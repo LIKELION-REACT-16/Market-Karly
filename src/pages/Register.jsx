@@ -1,38 +1,61 @@
 import RouteLink from '@/components/RouteLink';
 import Test from '@/components/Test';
-import InputText from '../components/InputText/InputText'
 import star from '@/assets/star.svg'
 import right from '@/assets/right.svg'
 import '@/styles/pages/_register.scss'
+import React, {useState} from 'react'
 
-const Register = () => {
+function Register(){
+  const[ID, setID]=useState("");
+  
+
+  const[IDValid, setIDValid]=useState(false);
+  
+  
+  const handleID=(e)=>{
+    setID(e.target.value);
+    const regex=/^[a-z]+[a-z0-9]{5,15}$/g;
+    if(regex.test(e.target.value)){
+      setIDValid(true);
+    }else{
+      setIDValid(false);
+    }
+  }
+
   return (
     <main>
       <h2>회원가입</h2>
       <form>
         <div className="essential"> <img src={star} className="star" alt=""></img>필수입력사항</div>
         <div className="privacy">
-          <div className="element">아이디<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><InputText detail="아이디를 입력해주세요"/>6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</div><div><button>중복확인</button></div>
+          <div className="element">아이디<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input className="InputPrivacy" placeholder="ID를 입력해주세요" value={ID} onChange={handleID}/>
+          <div className="errorMessage">
+            {!IDValid&&ID.length>0&&(
+              <div>6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</div>
+            )}
+          </div>
+          </div><div><button>중복확인</button></div>
         </div>
         <div className="privacy">
-          <div className="element">비밀번호<span><img src={star} className="star" alt=""></img></span></div>
-          <div className="RegisterVal"><InputText detail="비밀번호를 입력해주세요"/>영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</div><div></div>
-        </div>
-        <div className="privacy">
-          <div className="element">비밀번호 확인<span><img src={star} className="star" alt=""></img></span></div>
-          <div className="RegisterVal"><InputText detail="비밀번호를 한번 더 입력해주세요"/>동일한 비밀번호를 입력</div><div></div>
+          <div className="element">비밀번호<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/>
+          <div className="errorMessage">
+            {!IDValid&&ID.length>0&&(
+              <div>6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</div>
+            )}
+          </div>
+          </div><div></div>
         </div>
         <div className="privacy">
           <div className="element">이름<span><img src={star} className="star" alt=""></img></span></div>
-          <div><InputText detail="이름을 한번 더 입력해주세요"/></div><div></div>
+          <div><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/></div><div></div>
         </div>
         <div className="privacy">
           <div className="element">이메일<span><img src={star} className="star" alt=""></img></span></div>
-          <div className="RegisterVal"><InputText detail="예) marketkarly@karly.com"/>이메일 형식으로 입력해주세요.</div><div><button>중복확인</button></div>
+          <div className="RegisterVal"><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/>이메일 형식으로 입력해주세요.</div><div><button>중복확인</button></div>
         </div>
         <div className="privacy">
           <div className="element">휴대폰<span><img src={star} className="star" alt=""></img></span></div>
-          <div><InputText detail="숫자를 입력해주세요."/></div><div><button>인증번호 받기</button></div>
+          <div><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/></div><div><button>인증번호 받기</button></div>
         </div>
         <div className="privacy">
           <div className="element">주소<span><img src={star} className="star" alt=""></img></span></div>
@@ -47,7 +70,7 @@ const Register = () => {
         </div>
         <div className="privacy">
           <div className="element">생년월일</div>
-          <div><InputText detail="YYYY / MM / DD"/></div><div></div>
+          
         </div>
         <div className="privacy">
           <div className="element">추가입력 사항</div>
