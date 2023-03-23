@@ -1,23 +1,27 @@
 import classNames from 'classnames';
 import classes from '@/components/ProductNav/productNav.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-export default function ProductNav({ className = null, ...rest }) {
-  const [activeAnchor, setActive] = useState(1);
+export default function ProductNav({
+  activeAnchor,
+  className = null,
+  ...rest
+}) {
+  // const [activeAnchor, setActive] = useState(1);
 
-  const navClickHandle = (e) => {
-    let selectedAnchor;
+  // const navClickHandle = (e) => {
+  //   let selectedAnchor;
 
-    if (e.target.tagName === 'LI') return;
+  //   if (e.target.tagName === 'LI') return;
 
-    if (e.target.tagName === 'A') {
-      selectedAnchor = e.target.getAttribute('data-index');
-    } else if (e.target.tagName === 'SPAN') {
-      selectedAnchor = e.target.closest('a').getAttribute('data-index');
-    }
+  //   if (e.target.tagName === 'A') {
+  //     selectedAnchor = e.target.getAttribute('data-index');
+  //   } else if (e.target.tagName === 'SPAN') {
+  //     selectedAnchor = e.target.closest('a').getAttribute('data-index');
+  //   }
 
-    setActive(parseInt(selectedAnchor));
-  };
+  //   setActive(parseInt(selectedAnchor));
+  // };
 
   const activeStyle = {
     backgroundColor: 'white',
@@ -28,7 +32,7 @@ export default function ProductNav({ className = null, ...rest }) {
   return (
     <ul
       className={classNames(className, classes.productNav)}
-      onClick={navClickHandle}
+      // onClick={navClickHandle}
     >
       <li>
         <a
