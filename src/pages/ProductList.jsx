@@ -13,11 +13,12 @@ const ProductList = () => {
   return (
     <div className={styles.listWrapper}>
       <h2 style={{ fontSize: '22px', fontWeight: 600 }}>베스트</h2>
-      <div style={{ display: 'flex' }}>
+
+      <div style={{ display: 'flex', marginTop: '5%' }}>
         <section>
           <Accordion />
         </section>
-        <main style={{ maxWidth: '783px' }}>
+        <article style={{ maxWidth: '783px' }}>
           <TotalNFilter totalNum={totalNum} />
           <div
             style={{
@@ -32,7 +33,7 @@ const ProductList = () => {
             <Thumbnail />
             <Thumbnail />
           </div>
-        </main>
+        </article>
       </div>
     </div>
   );
