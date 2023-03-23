@@ -1,4 +1,4 @@
-import styles from '@/styles/badge.module.scss';
+import styles from '@/styles/components/List/badge.module.scss';
 
 const Badge = ({ badgeName, nameColor }) => {
   return (
