@@ -6,6 +6,7 @@ import downArrow from '@/assets/img-down-arrow.svg';
 import refrigerator from '@/assets/img-refrigerated-food.svg';
 import frozen from '@/assets/img-frozen-food.svg';
 import roomTemp from '@/assets/img-roomTemp-food.svg';
+import CartAccordion from './CartAccordion';
 
 function Radio() {
   return (
@@ -26,37 +27,13 @@ export default function CartList() {
       <Radio />
       <ul className={classes.accordion}>
         <li className={classes.cartAccordion}>
-          <div className={classes.inner}>
-            <div className={classes.icon}>
-              <img src={refrigerator} alt="냉장 식품" className="logo" />
-              <span className="text">냉장 식품</span>
-            </div>
-            <button type="button">
-              <img src={downArrow} alt="더보기" />
-            </button>
-          </div>
+          <CartAccordion type="refrigerator" state="true" />
         </li>
         <li className={classes.cartAccordion}>
-          <div className={classes.inner}>
-            <div className={classes.icon}>
-              <img src={frozen} alt="냉동 식품" />
-              <span>냉동 식품</span>
-            </div>
-            <button type="button">
-              <img src={downArrow} alt="더보기" />
-            </button>
-          </div>
+          <CartAccordion type="frozen" />
         </li>
         <li className={classes.cartAccordion}>
-          <div className={classes.inner}>
-            <div className={classes.icon}>
-              <img src={roomTemp} alt="상온 식품" className="logo" />
-              <span className="text">상온 식품</span>
-            </div>
-            <button type="button">
-              <img src={downArrow} alt="더보기" />
-            </button>
-          </div>
+          <CartAccordion type="roomTemp" />
         </li>
       </ul>
       <Radio />
