@@ -1,0 +1,194 @@
+.ModalForm {
+  width: 793px;
+  height: 630px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: $border-radius-xl;
+  border: 0;
+  padding:32px;
+}
+
+// system default
+// .ModalForm::backdrop {
+//   background-color: rgba($color: #000000, $alpha: 0.5);
+// }
+
+
+.ModalFormTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: $spacing-5;
+  border-bottom: 1px solid $colors-gray-100;
+  & .ModalFormTitleContent {
+    @include heading-xl;
+  }
+  & .Cancel {
+  cursor: pointer;
+  }
+}
+
+.ModalFormProduct {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $spacing-4 0;
+  gap: $spacing-6;
+  border-bottom: 1px solid $colors-gray-100;
+  & p {
+    @include label-medium;
+  }
+}
+
+.ModalFormDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0px 0px;
+  gap: 4px;
+  & .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    & .titleWrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+      & .title {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 8px 0px 0px 8px;
+      
+        width: 100px;
+        height: 42px;
+        & label {
+        @include label-medium;
+        }
+      }
+      & .inputText {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+      
+        width: 629px;
+        height: 44px;
+        & input {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 0px 20px;
+          gap: 31px;
+        
+          width: 100%;
+          height: 100%;
+          border: 1px solid $colors-gray-300;
+          border-radius: $border-radius-small;
+        }
+      }
+    }
+
+    & .descWrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+    
+      // position: absolute;
+      // width: 729px;
+      // height: 198px;
+      // left: 0px;
+      // top: 56px;
+      & .title {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 8px 0px 0px 8px;
+      
+          width: 100px;
+          height: 42px;
+        
+          & label {
+            @include label-medium;
+          }
+        }
+      & .textArea {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+        gap: 4px;
+        isolation: isolate;
+
+        width: 629px;
+        height: 198px;
+
+        border: 1px solid $colors-gray-300;
+        border-radius: $border-radius-small;
+        position: relative;
+        & textarea {
+          // display: flex;
+          // flex-direction: row;
+          // align-items: center;
+          // padding: 0px 20px;
+          // gap: 31px;
+        
+          width: 100%;
+          height: 100%;
+          // border: 0;
+          // border-radius: $border-radius-small;
+          resize: none;
+          background: transparent;
+        }
+      }
+    }
+  }
+}
+
+.placeholder {
+  color: $colors-gray-400;
+  font-weight: 400;
+  font-size: $font-size-small;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  // width: 627px;
+  width: 595px;
+  // width: 483px;
+  height: 164px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 1;
+  position: absolute;
+  // top: 0;
+  // right: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+
+  & > li > span, & > li > ul > li {
+    @include paragraph-small;
+  }
+  & > li > p {
+    @include label-medium;
+  }
+  // & > li > ul {
+  //   list-style-type: inside;
+  //   padding-left: 20px;
+  // }
+  & ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  & .infoError {
+    color: $colors-info-error;
+    list-style-type: none;
+  }
+}
