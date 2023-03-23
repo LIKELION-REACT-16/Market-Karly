@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 250px;
+  margin-top: 40px;
   margin-left: 9px;
   margin-right: 9px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   & > p {
     font-size: $font-size-small;

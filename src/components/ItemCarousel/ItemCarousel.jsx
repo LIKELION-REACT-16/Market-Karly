@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/scss';
@@ -16,15 +17,19 @@ import { MainItem } from '@/components/ItemCarousel/Item';
 
 // import { MainItem } from './item';
 
+SwiperCore.use([Autoplay]);
+
 /* ----------------------------- ItemCarousel 시작 ---------------------------- */
-export function ItemCarousel() {
+export function ItemCarousel({ title }) {
   const prevButton = useRef(null);
   const nextButton = useRef(null);
 
   return (
-    <>
+    <section>
+      <p className={classes.title}>{title}</p>
+
       <Swiper
-        // navigation={true}
+        autoplay={{ delay: 3000 }}
         navigation={{
           prevEl: prevButton.current,
           nextEl: nextButton.current,
@@ -40,6 +45,7 @@ export function ItemCarousel() {
         className={classes.mySwiper}
       >
         <button ref={prevButton} className={classes.swiperPrevBtn} />
+
         <SwiperSlide>
           <div className={classes.itemlist}>
             <MainItem />
@@ -48,6 +54,7 @@ export function ItemCarousel() {
             <MainItem />
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
           <div className={classes.itemlist}>
             <MainItem />
@@ -59,6 +66,8 @@ export function ItemCarousel() {
 
         <button ref={nextButton} className={classes.swiperNextBtn} />
       </Swiper>
-    </>
+    </section>
   );
 }
+
+/* ----------------------------- ItemCarousel 끝 ----------------------------- */
