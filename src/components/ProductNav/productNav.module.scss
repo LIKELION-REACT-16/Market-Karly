@@ -1,0 +1,35 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.productNav {
+  position: sticky;
+  top: 73px;
+  width: 65.625rem;
+
+  display: flex;
+  border-top: 1px solid $colors-gray-300;
+  border-right: 1px solid $colors-gray-300;
+  border-left: 1px solid $colors-gray-300;
+  background-color: $colors-gray-50;
+
+  li {
+    display: flex;
+    flex-grow: 1;
+
+    &:nth-child(n + 2) {
+      border-left: 1px solid $colors-gray-300;
+    }
+  }
+  a {
+    cursor: default;
+    display: flex;
+    flex-grow: 1;
+    height: 3.375rem;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid $colors-gray-300;
+    @include label-medium;
+    color: $colors-content;
+  }
+}

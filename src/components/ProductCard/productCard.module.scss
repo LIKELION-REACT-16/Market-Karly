@@ -1,0 +1,14 @@
+.productCard {
+  display: flex;
+  padding-bottom: 3rem;
+  background-color: white;
+}
+
+.productImgContainer {
+  img {
+    width: 25rem;
+    height: 32.125rem;
+    object-fit: cover;
+    margin-right: 5.625rem;
+  }
+}
