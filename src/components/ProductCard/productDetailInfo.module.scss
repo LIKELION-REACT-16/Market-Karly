@@ -1,0 +1,118 @@
+.infoList {
+  display: block;
+  width: 35rem;
+
+  & .infoListItem {
+    display: flex;
+    border-bottom: 1px solid $colors-gray-100;
+    padding: 1rem 0;
+
+    &:first-child {
+      border-top: 1px solid $colors-gray-100;
+    }
+
+    & .title {
+      display: inline-block;
+      height: 1.625rem;
+      padding: 0.375rem;
+      width: 8rem;
+      color: $colors-gray-500;
+      @include label-small;
+    }
+
+    & .subtitle {
+      width: 27rem;
+      @include label-small;
+    }
+
+    & .subtitle span:first-child {
+      color: $colors-gray-400;
+    }
+
+    & .subtitle p {
+      color: $colors-gray-500;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .productCounter {
+    position: relative;
+    width: 27rem;
+    height: 5.25rem;
+    border: 1px solid $colors-gray-100;
+    padding: 0.75rem 1rem;
+
+    p {
+      padding-bottom: 0.75rem;
+    }
+
+    span {
+      @include label-small;
+    }
+
+    span {
+      position: absolute;
+      bottom: 0.75rem;
+    }
+
+    & .productPrice {
+      right: 0.75rem;
+    }
+  }
+}
+
+.priceAndPointWrapper {
+  float: right;
+  padding: 1.75rem 0;
+}
+
+.totalPrice {
+  display: flex;
+  align-items: center;
+
+  span {
+    @include label-xl;
+    margin-left: 1rem;
+    margin-right: 0.25rem;
+  }
+  @include label-medium;
+}
+
+.pointInfo {
+  padding-top: 0.5rem;
+  position: relative;
+  p {
+    padding-left: 2.5rem;
+    @include label-medium;
+    width: fit-content;
+  }
+  .pointBadge {
+    position: absolute;
+    background-color: $colors-accent-yellow;
+    width: 2.125rem;
+    height: 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.625rem;
+    color: white;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+}
+
+.buttonList {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+
+  button:nth-child(-n + 2) {
+    background-color: white;
+    border: 1px solid $colors-gray-100;
+    border-radius: 0.25rem;
+    width: 3.375rem;
+    height: 3.375rem;
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+}
