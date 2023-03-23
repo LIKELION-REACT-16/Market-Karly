@@ -1,5 +1,5 @@
 import classes from '@/components/ModalForm/ModalForm.module.scss';
-import { NormalButton, PopupButton } from '..';
+import { PopupButton } from '@/components/Button';
 
 export function ModalFormButtons() {
   return (

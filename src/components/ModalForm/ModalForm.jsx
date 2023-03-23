@@ -43,4 +43,4 @@ export const ModalForm = forwardRef(
 // >
 //   click
 // </button>;
-// <ModalForm ref={reviewModalRef} title="후기 작성" type="review"></ModalForm>;
+// <ModalForm ref={reviewModalRef} type="review"></ModalForm>;

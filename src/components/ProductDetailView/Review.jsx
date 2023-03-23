@@ -1,10 +1,10 @@
 import classes from './ProductDetailView.module.scss';
 import { ButtonPrevNext } from './ButtonPrevNext/ButtonPrevNext';
 import Badge from '@/components/Badge';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-export function Review() {
-  const data = {
+export function Review({ maskedReviews }) {
+  const reviewNoticeData = {
     accordionContents: [
       {
         id: 'review-notice-01',
@@ -57,20 +57,46 @@ export function Review() {
     ],
   };
 
+  const [reviews, setReviews] = useState(maskedReviews);
+
+  useEffect(() => {
+    return () => {};
+  }, [reviews]);
+
   return (
     <div className={classes.Review}>
       {/* group1 */}
       <div className={classes.ReviewTotal}>
-        <span>총 2개</span>
+        <span>총 {reviews.length}개</span>
         <div className={classes.ReviewTotalFrame75}>
-          <button type="button">추천순</button>
+          <button
+            type="button"
+            onClick={(e) => {
+              const reviewsCopy = [...reviews];
+              setReviews(reviewsCopy.sort((a, b) => b.recommend - a.recommend));
+            }}
+          >
+            추천순
+          </button>
+
           <span aria-hidden="true"></span>
-          <button type="button">최근 등록순</button>
+          <button
+            type="button"
+            onClick={(e) => {
+              const reviewsCopy = [...reviews];
+              setReviews(
+                reviewsCopy.sort((a, b) => b.reviewDate - a.reviewDate)
+              );
+            }}
+          >
+            최근 등록순
+          </button>
         </div>
       </div>
 
       {/* group2 */}
       <div className={classes.ReviewTable}>
+        {/* group2-1 */}
         <div>
           <article
             key="id1"
@@ -107,49 +133,20 @@ export function Review() {
           </article>
         </div>
 
+        {/* group2-2 */}
         <ul>
-          <li className={classes.ReviewItem}>
-            <div className={classes.ReviewItemFrame76}>
-              {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
-              <Badge badgeName="베스트"></Badge>
-              {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
-              <Badge badgeName="퍼플"></Badge>
-              <span>김*진</span>
-            </div>
-            <div className={classes.ReviewItemFrame78}>
-              <span>[풀무원] 탱탱쫄면 (4개입)</span>
-              <p>너무 맛있어여~면이 쫄깃하고 양념도 짱맛나요!!</p>
-              <span>2022.11.10</span>
-            </div>
-          </li>
-          <li className={classes.ReviewItem}>
-            <div className={classes.ReviewItemFrame76}>
-              {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
-              <Badge badgeName="베스트"></Badge>
-              {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
-              <Badge badgeName="퍼플"></Badge>
-              <span>김*진</span>
-            </div>
-            <div className={classes.ReviewItemFrame78}>
-              <span>[풀무원] 탱탱쫄면 (4개입)</span>
-              <p>너무 맛있어여~면이 쫄깃하고 양념도 짱맛나요!!</p>
-              <span>2022.11.10</span>
-            </div>
-          </li>
-          <li className={classes.ReviewItem}>
-            <div className={classes.ReviewItemFrame76}>
-              {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
-              <Badge badgeName="베스트"></Badge>
-              {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
-              <Badge badgeName="퍼플"></Badge>
-              <span>김*진</span>
-            </div>
-            <div className={classes.ReviewItemFrame78}>
-              <span>[풀무원] 탱탱쫄면 (4개입)</span>
-              <p>너무 맛있어여~면이 쫄깃하고 양념도 짱맛나요!!</p>
-              <span>2022.11.10</span>
-            </div>
-          </li>
+          {reviews.map((review) => {
+            return (
+              <ReviewItem
+                key={review.id}
+                userName={review.userName}
+                productName={review.productName}
+                reviewContent={review.reviewContent}
+                reviewDate={review.reviewDate}
+                recommend={review.recommend}
+              />
+            );
+          })}
         </ul>
       </div>
 
@@ -165,5 +162,35 @@ export function Review() {
         />
       </div>
     </div>
+  );
+}
+
+function ReviewItem({
+  id,
+  userName,
+  productName,
+  reviewContent,
+  reviewDate,
+  recommend,
+}) {
+  return (
+    <li
+      className={classes.ReviewItem}
+      data-test={id}
+      data-recommend={recommend}
+    >
+      <div className={classes.ReviewItemFrame76}>
+        {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
+        <Badge badgeName="베스트"></Badge>
+        {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
+        <Badge badgeName="퍼플"></Badge>
+        <span>{userName}</span>
+      </div>
+      <div className={classes.ReviewItemFrame78}>
+        <span>{productName}</span>
+        <p>{reviewContent}</p>
+        <span>{reviewDate}</span>
+      </div>
+    </li>
   );
 }
