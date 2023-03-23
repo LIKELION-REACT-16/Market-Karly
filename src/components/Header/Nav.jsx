@@ -8,26 +8,30 @@ import { SearchForm, UtilityButtonList } from './SearchBar';
 export default function Nav(props) {
   return (
     <nav
-      className={
-        !props.scroll_state ? classes.navigation : classes.fixedNavigation
-      }
+      className={`${
+        !props.scroll_state ? classes.nomalNavigation : classes.fixedNavigation
+      } `}
     >
-      <button type="button" className={classes.categoryButton}>
-        <span>{<Hamburger />}카테고리</span>
-        {<CategoryMenu />}
-      </button>
-      <NavList className={classes.navList} />
-      {!props.scroll_state ? (
-        <button type="button" className={classes.dawnShippingInfo}>
-          <span>샛별・낮</span>
-          <span>배송안내</span>
+      <div className={classes.navigation}>
+        <button type="button" className={classes.categoryButton}>
+          <span>{<Hamburger />}카테고리</span>
+          {<CategoryMenu />}
         </button>
-      ) : (
-        <>
-          <SearchForm className={classes.searchForm} />
-          <UtilityButtonList className={classes.utilityButtonList} />
-        </>
-      )}
+
+        <NavList className={classes.navList} />
+
+        {!props.scroll_state ? (
+          <button type="button" className={classes.dawnShippingInfo}>
+            <span>샛별・낮</span>
+            <span>배송안내</span>
+          </button>
+        ) : (
+          <>
+            <SearchForm className={classes.searchForm} />
+            <UtilityButtonList className={classes.utilityButtonList} />
+          </>
+        )}
+      </div>
     </nav>
   );
 }

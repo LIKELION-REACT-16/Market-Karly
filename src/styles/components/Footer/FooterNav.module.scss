@@ -1,0 +1,22 @@
+nav {
+  .footerNavList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 486px;
+    height: 26px;
+
+    li {
+      a {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+
+        color: $colors-content;
+      }
+    }
+  }
+}

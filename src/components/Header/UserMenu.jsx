@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import calsses from '@/components/Header/userMenu.module.scss';
+import classes from '@/components/Header/userMenu.module.scss';
 
 export default function UserMenu() {
   const menuInfoList = [
@@ -9,7 +9,7 @@ export default function UserMenu() {
   ];
 
   return (
-    <ul className={calsses.userMenuList}>
+    <ul className={classes.userMenuList}>
       {menuInfoList.map((item) => (
         <li key={item.key}>
           <Link to={item.to}>{item.text}</Link>

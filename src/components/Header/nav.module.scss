@@ -1,39 +1,42 @@
 .navigation {
   background-color: white;
-  position: sticky;
-  top: 105px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  width: 65.625rem;
+
   button:nth-child(-n + 1) {
     border: none;
     @include label-medium;
   }
+  align-items: center;
   button {
     cursor: pointer;
     background-color: transparent;
     color: $colors-content;
   }
+}
+
+.nomalNavigation {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: static;
+  width: 100%;
+  top: 105px;
+  box-shadow: 0 4px 8px #eeeeeeee;
 }
 
 .fixedNavigation {
+  z-index: 1000;
   background-color: white;
-  position: fixed;
-  top: 0px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  button:nth-child(-n + 1) {
-    border: none;
-    @include label-medium;
-  }
-  button {
-    cursor: pointer;
-    background-color: transparent;
-    color: $colors-content;
-  }
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  top: 0px;
+  box-shadow: 0 4px 8px #eeeeeeee;
 }
-
 .categoryButton {
   width: 5.75rem;
   height: 2.5rem;
