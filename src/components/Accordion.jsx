@@ -78,28 +78,40 @@ export const Accordion = () => {
       </ul>
 
       <ul>
-        <div>
-          <h5 className={styles.filterTitle}>브랜드</h5>
+        <div className={styles.filterTitle}>
+          <h5>브랜드</h5>
           <button type="button">
             <img src={dropdown} />
           </button>
         </div>
       </ul>
 
-      <ul>
-        <h5 className={styles.filterTitle}>가격</h5>
+      <ul className={styles.filterTitle}>
+        <h5>가격</h5>
+        <button type="button">
+          <img src={dropdown} />
+        </button>
       </ul>
 
-      <ul>
-        <h5 className={styles.filterTitle}>혜택</h5>
+      <ul className={styles.filterTitle}>
+        <h5>혜택</h5>
+        <button type="button">
+          <img src={dropdown} />
+        </button>
       </ul>
 
-      <ul>
-        <h5 className={styles.filterTitle}>유형</h5>
+      <ul className={styles.filterTitle}>
+        <h5>유형</h5>
+        <button type="button">
+          <img src={dropdown} />
+        </button>
       </ul>
 
-      <ul>
-        <h5 className={styles.filterTitle}>특정상품 제외</h5>
+      <ul className={styles.filterTitle}>
+        <h5>특정상품 제외</h5>
+        <button type="button">
+          <img src={dropdown} />
+        </button>
       </ul>
     </nav>
   );

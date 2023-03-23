@@ -14,7 +14,13 @@ const ProductList = () => {
     <div className={styles.listWrapper}>
       <h2 style={{ fontSize: '22px', fontWeight: 600 }}>베스트</h2>
 
-      <div style={{ display: 'flex', marginTop: '5%' }}>
+      <div
+        style={{
+          display: 'flex',
+          marginTop: '5%',
+          justifyContent: 'space-between',
+        }}
+      >
         <section>
           <Accordion />
         </section>
@@ -24,9 +30,19 @@ const ProductList = () => {
             style={{
               display: 'flex',
               justifyContent: 'space-between',
+              alignItems: 'flex-start',
               flexWrap: 'wrap',
+              height: 'auto',
             }}
           >
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
             <Thumbnail />
             <Thumbnail />
             <Thumbnail />
