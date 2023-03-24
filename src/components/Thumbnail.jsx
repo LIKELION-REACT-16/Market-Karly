@@ -46,6 +46,9 @@ export const Thumbnail = ({
           : `${salePrice.toLocaleString('ko-KR')}`}
         원
       </span>
+      <span className={discountRate !== 0 ? styles.originalPrice : null}>
+        {discountRate !== 0 ? `${koPrice}원` : null}
+      </span>
       <p>{productDesc}</p>
       <div className={styles.badgeWrapper}>
         <Badge
