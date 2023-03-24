@@ -39,8 +39,8 @@ const ProductDetail = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(onIntersect, {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.1,
+      rootMargin: '-10% 0px',
+      threshold: 0.2,
     });
 
     refList.map((item) => {
