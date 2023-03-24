@@ -5,31 +5,52 @@ import { useState } from 'react';
 import styles from '@/styles/productList.module.scss';
 
 // components
-import { Thumbnail, TotalNFilter } from '@/components';
+import { Thumbnail, TotalNFilter, Accordion } from '@/components';
 
 const ProductList = () => {
   const [totalNum, setTotalNum] = useState(0);
 
   return (
     <div className={styles.listWrapper}>
-      <h2>베스트</h2>
+      <h2 style={{ fontSize: '22px', fontWeight: 600 }}>베스트</h2>
 
-      <main>
-        <TotalNFilter totalNum={totalNum} />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-        </div>
-      </main>
+      <div
+        style={{
+          display: 'flex',
+          marginTop: '5%',
+          justifyContent: 'space-between',
+        }}
+      >
+        <section>
+          <Accordion />
+        </section>
+        <article style={{ maxWidth: '783px' }}>
+          <TotalNFilter totalNum={totalNum} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              flexWrap: 'wrap',
+              height: 'auto',
+            }}
+          >
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+            <Thumbnail />
+          </div>
+        </article>
+      </div>
     </div>
   );
 };

@@ -24,6 +24,7 @@ let router = createBrowserRouter([
       { path: 'Login', element: <Login /> },
       { path: 'Cart', element: <Cart /> },
       { path: 'Register', element: <Register /> },
+      { path: 'List', element: <ProductList /> },
     ],
   },
 ]);
@@ -39,6 +40,7 @@ router = createBrowserRouter(
       <Route path="Login" element={<Login />} />
       <Route path="Cart" element={<Cart />} />
       <Route path="Register" element={<Register />} />
+      <Route path="List" element={<ProductList />} />
     </Route>
   )
 );

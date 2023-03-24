@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-between;
   width: 65.625rem;
+  position: relative;
 
   button:nth-child(-n + 1) {
     border: none;
@@ -23,7 +24,7 @@
   position: static;
   width: 100%;
   top: 105px;
-  box-shadow: 0 4px 8px #eeeeeeee;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
 .fixedNavigation {
@@ -35,13 +36,33 @@
   width: 100%;
   justify-content: center;
   top: 0px;
-  box-shadow: 0 4px 8px #eeeeeeee;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 65.625rem;
+
+  .utilityButtonList {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+
+      &:nth-child(n + 2) {
+        margin-left: 1.25rem;
+      }
+    }
+  }
 }
 .categoryButton {
-  width: 5.75rem;
+  width: fit-content;
   height: 2.5rem;
-  position: relative;
+
   span {
+    padding: 24px 0;
     display: flex;
     align-items: center;
   }
@@ -51,8 +72,10 @@
   }
 
   ul {
+    background-color: white;
     position: absolute;
-
+    top: 62px;
+    left: 0;
     margin-top: 10px;
     display: none;
     text-align: left;
