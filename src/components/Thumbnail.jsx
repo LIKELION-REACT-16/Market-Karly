@@ -12,6 +12,8 @@ export const Thumbnail = ({
   productDesc,
   salePrice,
   saleRatio,
+  thumbnail,
+  imgAlt
 }) => {
   const badgeInfo = {
     karlyOnly: {
@@ -30,7 +32,7 @@ export const Thumbnail = ({
   return (
     <div className={styles.thumbnailWrapper}>
       <div className={styles.thumbnailVisual}>
-        <img className={styles.thumbnailImg} alt="상품명" src={zzol} />
+        <img className={styles.thumbnailImg} alt={imgAlt} src={thumbnail} />
         <button className={styles.cartButton} type="button">
           <img src={cart} />
         </button>
