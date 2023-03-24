@@ -2,6 +2,7 @@ import ProductCard from '@/components/ProductCard/ProductCard';
 import ProductNav from '@/components/ProductNav/ProductNav';
 import ProductDescription from '@/components/ProductDescription/ProductDescription';
 import ProductDetailDescription from '@/components/ProductDetailDescription/ProductDetailDescription';
+import ProductDetailView from '@/components/ProductDetailView/ProductDetailView';
 import { useRef, useState, useEffect } from 'react';
 
 const ProductDetail = () => {
@@ -57,22 +58,13 @@ const ProductDetail = () => {
     <div>
       <ProductCard />
       <ProductNav activeAnchor={activeAnchor} />
-
       <ProductDescription ref={description} id="description" />
       <ProductDetailDescription
         ref={detailInformation}
         id="detailInformation"
       />
-      <section
-        id="review"
-        ref={review}
-        style={{ backgroundColor: 'red', height: 1000, width: 1050 }}
-      ></section>
-      <section
-        id="inquiry"
-        ref={inquiry}
-        style={{ backgroundColor: 'blue', height: 1000, width: 1050 }}
-      ></section>
+      <ProductDetailView type={'review'} ref={review} id="review" />
+      <ProductDetailView type={'inquiry'} ref={inquiry} id="inquiry" />
     </div>
   );
 };
