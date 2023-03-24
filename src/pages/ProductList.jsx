@@ -50,7 +50,7 @@ const ProductList = () => {
         <section>
           <Accordion />
         </section>
-        <article style={{ minWidth: '783px' }}>
+        <article style={{ maxWidth: '783px' }}>
           <TotalNFilter totalNum={totalNum} />
           <div
             style={{
