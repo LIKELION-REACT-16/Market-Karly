@@ -1,5 +1,5 @@
 import RouteLink from '@/components/RouteLink';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // styles
 import styles from '@/styles/productList.module.scss';
@@ -7,8 +7,34 @@ import styles from '@/styles/productList.module.scss';
 // components
 import { Thumbnail, TotalNFilter, Accordion } from '@/components';
 
+// fb
+import { dbService } from '@/routes/fbase';
+import { getDocs, collection } from 'firebase/firestore';
+
 const ProductList = () => {
   const [totalNum, setTotalNum] = useState(0);
+  const [productsList, setProductsList] = useState([]);
+
+  const productCollection = collection(dbService, 'products');
+
+  useEffect(() => {
+    const getProductsList = async () => {
+      try {
+        const data = await getDocs(productCollection);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setProductsList(filteredData);
+        setTotalNum(productsList.length);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getProductsList();
+  }, []);
 
   return (
     <div className={styles.listWrapper}>
@@ -24,7 +50,7 @@ const ProductList = () => {
         <section>
           <Accordion />
         </section>
-        <article style={{ maxWidth: '783px' }}>
+        <article style={{ minWidth: '783px' }}>
           <TotalNFilter totalNum={totalNum} />
           <div
             style={{
@@ -35,19 +61,16 @@ const ProductList = () => {
               height: 'auto',
             }}
           >
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
+            {productsList.map((product) => (
+              <Thumbnail
+                key={product.id}
+                productName={product.productName}
+                salePrice={product.salePrice}
+                saleRatio={product.saleRatio}
+                price={product.price}
+                productDesc={product.desc}
+              />
+            ))}
           </div>
         </article>
       </div>
