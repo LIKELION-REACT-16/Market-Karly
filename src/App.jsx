@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -21,7 +22,7 @@ let router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <ProductDetail /> },
       { path: 'Login', element: <Login /> },
       { path: 'Cart', element: <Cart /> },
       { path: 'Register', element: <Register /> },
@@ -37,7 +38,7 @@ router = createBrowserRouter(
       element={<Layout />}
       errorElement={<div role="alert">라우팅 오류 발생</div>}
     >
-      <Route index element={<Home />} />
+      <Route index element={<ProductDetail />} />
       <Route path="Login" element={<Login />} />
       <Route path="Cart" element={<Cart />} />
       <Route path="Register" element={<Register />} />
@@ -49,9 +50,11 @@ router = createBrowserRouter(
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<div>로딩 중...</div>}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <RecoilRoot>
+        <Suspense fallback={<div>로딩 중...</div>}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </RecoilRoot>
     </div>
   );
 }
