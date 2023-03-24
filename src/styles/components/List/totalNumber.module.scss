@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
   width: 100%;
   color: $colors-content;
   padding-bottom: 20px;
@@ -11,6 +13,7 @@
 
 .productFilterWrapper {
   display: flex;
+  justify-content: space-between;
 
   & li::before {
     content: '|';
