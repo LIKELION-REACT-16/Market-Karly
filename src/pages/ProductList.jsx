@@ -21,6 +21,7 @@ const ProductList = () => {
     const getProductsList = async () => {
       try {
         const data = await getDocs(productCollection);
+
         const filteredData = data.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
@@ -69,6 +70,8 @@ const ProductList = () => {
                 saleRatio={product.saleRatio}
                 price={product.price}
                 productDesc={product.desc}
+                thumbnail={product.image.thumbnail}
+                imgAlt={product.image.alt}
               />
             ))}
           </div>
