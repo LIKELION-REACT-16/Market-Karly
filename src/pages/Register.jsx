@@ -4,13 +4,18 @@ import star from '@/assets/star.svg'
 import right from '@/assets/right.svg'
 import '@/styles/pages/_register.scss'
 import React, {useState} from 'react'
+import {NormalButton} from '@/components/Button';
 
 function Register(){
   const[ID, setID]=useState("");
+  const[PW, setPW]=useState("");
+  const[PWCheck, setPWCheck]=useState("");
+  const[email, setEmail]=useState("");
   
-
   const[IDValid, setIDValid]=useState(false);
-  
+  const[PWValid, setPWValid]=useState(false);
+  const[PWCheckValid, setPWCheckValid]=useState(false);
+  const[emailValid, setEmailValid]=useState(false);
   
   const handleID=(e)=>{
     setID(e.target.value);
@@ -22,44 +27,95 @@ function Register(){
     }
   }
 
+  const handlePW=(e)=>{
+    setPW(e.target.value);
+    const regex=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/g;
+    if(regex.test(e.target.value)){
+      setPWValid(true);
+    }else{
+      setPWValid(false);
+    }
+  }
+
+  const handlePWCheck=(e)=>{
+    if(PW==PWCheck){
+      setPWCheckValid(true);
+    }else{
+      setPWCheckValid(false);
+    }
+  }
+
+  const handleEmail=(e)=>{
+    setEmail(e.target.value);
+    const regex=/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    if(regex.test(e.target.value)){
+      setEmailValid(true);
+    }else{
+      setEmailValid(false);
+    }
+  }
+
   return (
     <main>
       <h2>회원가입</h2>
       <form>
         <div className="essential"> <img src={star} className="star" alt=""></img>필수입력사항</div>
         <div className="privacy">
-          <div className="element">아이디<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input className="InputPrivacy" placeholder="ID를 입력해주세요" value={ID} onChange={handleID}/>
+          <div className="element">아이디<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input type=" text" className="InputPrivacy" placeholder="ID를 입력해주세요" value={ID} onChange={handleID}/>
           <div className="errorMessage">
             {!IDValid&&ID.length>0&&(
               <div>6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</div>
             )}
           </div>
-          </div><div><button>중복확인</button></div>
+          </div><div><NormalButton color="white" width="143">
+        <span>중복확인</span>
+      </NormalButton></div>
         </div>
         <div className="privacy">
-          <div className="element">비밀번호<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/>
+          <div className="element">비밀번호<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input type="password" className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={PW} onChange={handlePW}/>
           <div className="errorMessage">
-            {!IDValid&&ID.length>0&&(
-              <div>6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</div>
+            {!PWValid&&PW.length>0&&(
+              <div>8자리 이상의 영문과 숫자를 조합</div>
             )}
           </div>
           </div><div></div>
         </div>
         <div className="privacy">
+          <div className="element">비밀번호 확인<span><img src={star} className="star" alt=""></img></span></div><div className="RegisterVal"><input type="password" className="InputPrivacy" placeholder="비밀번호를 한번 더 입력해주세요" value={PWCheck} onChange={handlePWCheck}/>
+          <div className="errorMessage">
+          
+              <div>동일한 비밀번호를 입력</div>
+            
+          </div>
+          </div><div></div>
+        </div>
+        <div className="privacy">
           <div className="element">이름<span><img src={star} className="star" alt=""></img></span></div>
-          <div><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/></div><div></div>
+          <div><input type="text" className="InputPrivacy" placeholder="이름을 입력해주세요" /></div><div></div>
         </div>
         <div className="privacy">
           <div className="element">이메일<span><img src={star} className="star" alt=""></img></span></div>
-          <div className="RegisterVal"><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/>이메일 형식으로 입력해주세요.</div><div><button>중복확인</button></div>
+          <div className="RegisterVal"><input type="email" className="InputPrivacy" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmail}/>
+          <div className="errorMessage">
+            {!emailValid&&email.length>0&&(
+              <div>이메일 형식으로 입력해주세요</div>
+            )}
+          </div>
+          </div><div><NormalButton color="white" width="143">
+        <span>중복확인</span>
+      </NormalButton></div>
         </div>
         <div className="privacy">
           <div className="element">휴대폰<span><img src={star} className="star" alt=""></img></span></div>
-          <div><input className="InputPrivacy" placeholder="비밀번호를 입력해주세요" value={ID} onChange={handleID}/></div><div><button>인증번호 받기</button></div>
+          <div><input type="text" className="InputPrivacy" placeholder="숫자만 입력해주세요" /></div><div><NormalButton color="white" width="143">
+        <span>인증번호 받기</span>
+      </NormalButton></div>
         </div>
         <div className="privacy">
           <div className="element">주소<span><img src={star} className="star" alt=""></img></span></div>
-          <div><button>주소 검색</button><p>배송지에 따라 상품 정보가 달라질 수 있습니다.</p></div><div></div>
+          <div><NormalButton color="white" width="333">
+        <span>주소 검색</span>
+      </NormalButton><p>배송지에 따라 상품 정보가 달라질 수 있습니다.</p></div><div></div>
         </div>
         <div className="privacy">
           <div className="element">성별</div>
@@ -70,7 +126,7 @@ function Register(){
         </div>
         <div className="privacy">
           <div className="element">생년월일</div>
-          
+          <div><input type="text" className="InputPrivacy" placeholder="YYYY / MM / DD"/></div><div></div>
         </div>
         <div className="privacy">
           <div className="element">추가입력 사항</div>
