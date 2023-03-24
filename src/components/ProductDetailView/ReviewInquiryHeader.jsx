@@ -1,7 +1,7 @@
 import classes from '@/components/ProductDetailView/ProductDetailView.module.scss';
 import { useRef } from 'react';
 import { NormalButton } from '../Button';
-import { ModalForm } from '../ModalForm/ModalForm';
+import ModalForm from '../ModalForm/ModalForm';
 // import { ReviewInquiryHeaderFrame } from './ReviewInquiryHeaderFrame';
 
 export function ReviewInquiryHeader({ type }) {

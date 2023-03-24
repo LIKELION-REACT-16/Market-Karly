@@ -1,12 +1,25 @@
 import classes from '@/components/ModalForm/ModalForm.module.scss';
+import { useEffect, useRef } from 'react';
 
 export function ModalFormTextarea({ type }) {
+  const textArefRef = useRef();
+  const placeholderRef = useRef();
+
+  const onClickHandler = () => {
+    placeholderRef.current.classList.toggle(`${classes.hidden}`);
+    // console.log(placeholderRef.current.classList);
+    textArefRef.current.focus();
+  };
+
   return (
     <div className={classes.textArea}>
-      <textarea name="hello" id="hello"></textarea>
-
+      <textarea name="hello" id="hello" ref={textArefRef}></textarea>
       {type === 'review' ? (
-        <ul className={classes.placeholder}>
+        <ul
+          className={`${classes.placeholder}`}
+          onClick={onClickHandler}
+          ref={placeholderRef}
+        >
           <li>
             <span>
               컬리는 믿을 수 있는 후기문화를 함께 만들어가고자 합니다. 식품 등의
@@ -71,7 +84,11 @@ export function ModalFormTextarea({ type }) {
           </li>
         </ul>
       ) : type === 'inquiry' ? (
-        <ul className={classes.placeholder}>
+        <ul
+          className={classes.placeholder}
+          ref={placeholderRef}
+          onClick={onClickHandler}
+        >
           <li>
             <p>상품문의 작성 전 확인해 주세요</p>
             <ul>
