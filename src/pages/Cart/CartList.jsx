@@ -28,7 +28,7 @@ export default function CartList({
   const id = useId();
 
   const [checkItems, setCheckItems] = useState([]);
-  const [moreRefrigerator, setMoreRefrigerator] = useState(true);
+  const [moreItems, setMoreItems] = useState(true);
 
   const handleSingleCheck = (checked, id) => {
     if (checked) {
@@ -49,7 +49,7 @@ export default function CartList({
   };
 
   const handleMoreProduct = () => {
-    setMoreRefrigerator((moreRefrigerator) => !moreRefrigerator);
+    setMoreItems((prev) => !prev);
   };
 
   const refrigerator = cart.filter((cart) => cart.type === 'refrigerator');
@@ -93,7 +93,7 @@ export default function CartList({
               <button
                 type="button"
                 className={classes.arrow}
-                onClick={handleMoreProduct}
+                onClick={(e) => handleMoreProduct(e.target)}
               >
                 <img
                   src={downArrow}
@@ -105,7 +105,7 @@ export default function CartList({
           ) : (
             ''
           )}
-          {moreRefrigerator ? (
+          {moreItems ? (
             ''
           ) : (
             <ul className={classes.detail}>
@@ -173,7 +173,7 @@ export default function CartList({
           ) : (
             ''
           )}
-          {moreRefrigerator ? (
+          {moreItems ? (
             ''
           ) : (
             <ul className={classes.detail}>
@@ -245,7 +245,7 @@ export default function CartList({
           ) : (
             ''
           )}
-          {moreRefrigerator ? (
+          {moreItems ? (
             ''
           ) : (
             <ul className={classes.detail}>
