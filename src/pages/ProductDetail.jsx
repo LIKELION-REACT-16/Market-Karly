@@ -16,8 +16,6 @@ const ProductDetail = () => {
   const refList = [description, detailInformation, review, inquiry];
 
   const onIntersect = (entries) => {
-    console.log(entries.length);
-
     if (entries.length == 0) return;
 
     entries.forEach((entry) => {

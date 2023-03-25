@@ -5,6 +5,7 @@ import { ReactComponent as Like } from '@/assets/img-icon-heart-purple.svg';
 import { ReactComponent as Alert } from '@/assets/img-icon-alert.svg';
 import { ReactComponent as AlertDisabled } from '@/assets/img-icon-alert-disable.svg';
 import { totalPriceSelector } from '@/@store/totalPriceSelector.js';
+import saveProductToCart from '@/components/ProductCard/saveProductToCart.js';
 
 import {
   productID,
@@ -70,8 +71,8 @@ function ProductCardButtonList({ className }) {
   const prodID = useRecoilValue(productID);
   const quantity = useRecoilValue(productQuantity);
 
-  const handler = () => {
-    console.log(prodID, quantity);
+  const cartButtonHandler = () => {
+    saveProductToCart(prodID, quantity);
   };
 
   return (
@@ -86,7 +87,7 @@ function ProductCardButtonList({ className }) {
       >
         {likeButtonState ? <AlertDisabled /> : <Alert />}
       </button>
-      <button className={classes.cartButton} onClick={handler}>
+      <button className={classes.cartButton} onClick={cartButtonHandler}>
         장바구니 담기
       </button>
     </div>
