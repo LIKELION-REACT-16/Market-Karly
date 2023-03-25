@@ -7,7 +7,7 @@ import { ItemCarousel } from '@/components/ItemCarousel/ItemCarousel';
 
 const Home = () => {
   return (
-    <div style={{ position: 'relative' }}>
+    <div>
       <h2>Home</h2>
       <MainModal />
       <ItemCarousel title="이 상품 어때요?" />
