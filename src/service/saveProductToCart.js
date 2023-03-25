@@ -1,5 +1,3 @@
-import Cart from '@/pages/Cart';
-
 export default function saveProductToCart(productId, productQuantity) {
   let tmpStorage;
 
