@@ -1,24 +1,38 @@
 import classes from '@/components/ModalForm/ModalForm.module.scss';
-import { useEffect, useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
-export function ModalFormTextarea({ type }) {
-  const textArefRef = useRef();
-  const placeholderRef = useRef();
+const ModalFormTextarea = (
+  { type, contentValue, onContentValueChangeHandler, ...restProps },
+  ref
+) => {
+  const textAreaRef = useRef();
 
   const onClickHandler = () => {
-    placeholderRef.current.classList.toggle(`${classes.hidden}`);
-    // console.log(placeholderRef.current.classList);
-    textArefRef.current.focus();
+    ref.current.classList.toggle(`${classes.hidden}`);
+    textAreaRef.current.focus();
+  };
+
+  const onBlurHandler = () => {
+    if (textAreaRef.current.value === '') {
+      ref.current.classList.toggle(`${classes.hidden}`);
+    }
   };
 
   return (
     <div className={classes.textArea}>
-      <textarea name="hello" id="hello" ref={textArefRef}></textarea>
+      <textarea
+        name="content"
+        id="content"
+        ref={textAreaRef}
+        onBlur={onBlurHandler}
+        value={contentValue}
+        onChange={onContentValueChangeHandler}
+      />
       {type === 'review' ? (
         <ul
           className={`${classes.placeholder}`}
+          ref={ref}
           onClick={onClickHandler}
-          ref={placeholderRef}
         >
           <li>
             <span>
@@ -84,11 +98,7 @@ export function ModalFormTextarea({ type }) {
           </li>
         </ul>
       ) : type === 'inquiry' ? (
-        <ul
-          className={classes.placeholder}
-          ref={placeholderRef}
-          onClick={onClickHandler}
-        >
+        <ul className={classes.placeholder} ref={ref} onClick={onClickHandler}>
           <li>
             <p>상품문의 작성 전 확인해 주세요</p>
             <ul>
@@ -153,6 +163,11 @@ export function ModalFormTextarea({ type }) {
           </li>
         </ul>
       ) : null}
+      <div className={classes.wordCount}>
+        <span>( {contentValue.length} / 10 )</span>
+      </div>
     </div>
   );
-}
+};
+
+export default forwardRef(ModalFormTextarea);

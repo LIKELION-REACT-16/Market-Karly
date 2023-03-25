@@ -1,5 +1,6 @@
 import classes from './ProductDetailView.module.scss';
 import { ButtonPrevNext } from './ButtonPrevNext/ButtonPrevNext';
+import { ReactComponent as Notice } from '@/assets/img-icon-notice.svg';
 import Badge from '@/components/Badge';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -64,11 +65,11 @@ export function Review({ maskedReviews }) {
   }, [reviews]);
 
   return (
-    <div className={classes.Review}>
+    <div className={classes.review}>
       {/* group1 */}
-      <div className={classes.ReviewTotal}>
-        <span>총 {reviews.length}개</span>
-        <div className={classes.ReviewTotalFrame75}>
+      <div className={classes.reviewTotal}>
+        <span>총 {reviews?.length}개</span>
+        <div className={classes.reviewTotalFrame75}>
           <button
             type="button"
             onClick={(e) => {
@@ -95,7 +96,7 @@ export function Review({ maskedReviews }) {
       </div>
 
       {/* group2 */}
-      <div className={classes.ReviewTable}>
+      <div className={classes.reviewTable}>
         {/* group2-1 */}
         <div>
           <article
@@ -134,33 +135,43 @@ export function Review({ maskedReviews }) {
         </div>
 
         {/* group2-2 */}
-        <ul>
-          {reviews.map((review) => {
-            return (
-              <ReviewItem
-                key={review.id}
-                userName={review.userName}
-                productName={review.productName}
-                reviewContent={review.reviewContent}
-                reviewDate={review.reviewDate}
-                recommend={review.recommend}
-              />
-            );
-          })}
-        </ul>
+
+        {reviews?.length === 0 ? (
+          <div className={classes.reviewTableEmpty}>
+            <Notice />
+            <span>따끈한 첫 후기를 기다리고 있어요.</span>
+          </div>
+        ) : (
+          <ul>
+            {reviews.map((review) => {
+              return (
+                <ReviewItem
+                  key={review.id}
+                  userName={review.userName}
+                  productName={review.productName}
+                  reviewContent={review.reviewContent}
+                  reviewDate={review.reviewDate}
+                  recommend={review.recommend}
+                />
+              );
+            })}
+          </ul>
+        )}
       </div>
 
       {/* group3. review, inquiry 두 군데에서 사용됨 */}
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <ButtonPrevNext
-          ariaLabel="상품 후기 이전 페이지 버튼"
-          className="prev"
-        />
-        <ButtonPrevNext
-          ariaLabel="상품 후기 다음 페이지 버튼"
-          className="next-active"
-        />
-      </div>
+      {reviews?.length === 0 ? null : (
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <ButtonPrevNext
+            ariaLabel="상품 후기 이전 페이지 버튼"
+            className="prev"
+          />
+          <ButtonPrevNext
+            ariaLabel="상품 후기 다음 페이지 버튼"
+            className="next-active"
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -175,18 +186,18 @@ function ReviewItem({
 }) {
   return (
     <li
-      className={classes.ReviewItem}
+      className={classes.reviewItem}
       data-test={id}
       data-recommend={recommend}
     >
-      <div className={classes.ReviewItemFrame76}>
+      <div className={classes.reviewItemFrame76}>
         {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
         <Badge badgeName="베스트"></Badge>
         {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
         <Badge badgeName="퍼플"></Badge>
         <span>{userName}</span>
       </div>
-      <div className={classes.ReviewItemFrame78}>
+      <div className={classes.reviewItemFrame78}>
         <span>{productName}</span>
         <p>{reviewContent}</p>
         <span>{reviewDate}</span>

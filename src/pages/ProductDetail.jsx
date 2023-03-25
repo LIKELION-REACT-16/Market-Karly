@@ -3,6 +3,7 @@ import ProductNav from '@/components/ProductNav/ProductNav';
 import ProductDescription from '@/components/ProductDescription/ProductDescription';
 import ProductDetailDescription from '@/components/ProductDetailDescription/ProductDetailDescription';
 import { useRef, useState, useEffect } from 'react';
+import ProductDetailView from '@/components/ProductDetailView/ProductDetailView';
 
 const ProductDetail = () => {
   const [activeAnchor, setActive] = useState(1);
@@ -63,16 +64,18 @@ const ProductDetail = () => {
         ref={detailInformation}
         id="detailInformation"
       />
-      <section
+      {/* <section
         id="review"
         ref={review}
         style={{ backgroundColor: 'red', height: 1000, width: 1050 }}
-      ></section>
-      <section
+      ></section> */}
+      <ProductDetailView type='review' id="review" ref={review} />
+      {/* <section
         id="inquiry"
         ref={inquiry}
         style={{ backgroundColor: 'blue', height: 1000, width: 1050 }}
-      ></section>
+      ></section> */}
+      <ProductDetailView type={'inquiry'} id="inquiry" ref={inquiry} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { Inquiry } from './Inquiry';
 import { Review } from './Review';
 import { ReviewInquiryHeader } from './ReviewInquiryHeader';
 
-export const ProductDetailView = forwardRef(({ type = 'review', id }, ref) => {
+const ProductDetailView = ({ type = 'review', id }, ref) => {
   const reviewData = {
     reviews: [
       {
@@ -60,6 +60,7 @@ export const ProductDetailView = forwardRef(({ type = 'review', id }, ref) => {
     }
   };
 
+  // 일단 전체 리뷰 데이터를 마스킹 처리하는 방식(추후에 필요한 데이터만 마스킹 처리하는 방식으로 리팩토링 필요)
   const maskedReviews = reviewData.reviews.map((review) => {
     return {
       ...review,
@@ -68,7 +69,7 @@ export const ProductDetailView = forwardRef(({ type = 'review', id }, ref) => {
   });
 
   return (
-    <section id={id} ref={ref} className={classes.ProductDetailView}>
+    <section id={id} ref={ref} className={classes.productDetailView}>
       <ReviewInquiryHeader type={type} />
       {type === 'review' ? (
         <Review maskedReviews={maskedReviews}></Review>
@@ -77,10 +78,10 @@ export const ProductDetailView = forwardRef(({ type = 'review', id }, ref) => {
       ) : null}
     </section>
   );
-});
+};
 
-export default ProductDetailView;
+export default forwardRef(ProductDetailView);
 
 /* --------------------------------- Example -------------------------------- */
-// <ProductDetailView type={'review'}></ProductDetailView>
-// <ProductDetailView type={'inquiry'}></ProductDetailView>
+// <ProductDetailView type='review' id="review" ref={review} />
+// <ProductDetailView type={'inquiry'} id="inquiry" ref={inquiry} />

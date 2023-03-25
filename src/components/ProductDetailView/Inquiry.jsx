@@ -3,7 +3,7 @@ import { ButtonPrevNext } from './ButtonPrevNext/ButtonPrevNext';
 
 export function Inquiry() {
   return (
-    <div className={classes.Inquiry}>
+    <div className={classes.inquiry}>
       {/* group1 */}
       <table>
         <caption>상품문의 목록</caption>
@@ -16,14 +16,14 @@ export function Inquiry() {
           </tr>
         </thead>
         <tbody>
-          <tr className={classes.NoticeHead}>
+          <tr className={classes.noticeHead}>
             <td>팩이 터져서 왔어요</td>
             <td>김*식</td>
             <td>2022.11.11</td>
             <td>답변대기</td>
           </tr>
           <tr>
-            <td colSpan={4} className={classes.TableAnswer}>
+            <td colSpan={4} className={classes.tableAnswer}>
               <p>
                 스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요 환불
                 요청합니다.
@@ -39,7 +39,7 @@ export function Inquiry() {
               </p>
             </td>
           </tr>
-          <tr className={`${classes.NoticeHead} ${classes.Lock}`}>
+          <tr className={`${classes.noticeHead} ${classes.lock}`}>
             <td>비밀글입니다.</td>
             <td>김*범</td>
             <td>2022.09.13</td>

@@ -9,7 +9,7 @@ export function ReviewInquiryHeader({ type }) {
   const inquiryModalRef = useRef();
 
   return (
-    <div className={classes.ReviewInquiryHeader}>
+    <div className={classes.reviewInquiryHeader}>
       <ReviewInquiryHeaderFrame type={type} />
       {/* <NormalButton width="155" height="44">
         <span>{type === 'review' ? '후기 작성하기' : '문의하기'}</span>
@@ -33,7 +33,7 @@ export function ReviewInquiryHeader({ type }) {
 
 function ReviewInquiryHeaderFrame({ type }) {
   return type === 'review' ? (
-    <div className={classes.ReviewInquiryHeaderFrame}>
+    <div className={classes.reviewInquiryHeaderFrame}>
       <h3>상품후기</h3>
       <p>글후기 50원 적립금 혜택이 있어요.</p>
       <ul>
@@ -49,7 +49,7 @@ function ReviewInquiryHeaderFrame({ type }) {
       </ul>
     </div>
   ) : type === 'inquiry' ? (
-    <div className={classes.ReviewInquiryHeaderFrame}>
+    <div className={classes.reviewInquiryHeaderFrame}>
       <h3>상품문의</h3>
       <ul>
         <li>

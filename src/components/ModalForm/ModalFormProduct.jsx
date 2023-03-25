@@ -5,7 +5,7 @@ export function ModalFormProduct({
   productName = '[풀무원] 탱탱쫄면 (4개입)',
 }) {
   return (
-    <div className={classes.ModalFormProduct}>
+    <div className={classes.modalFormProduct}>
       <img src={src} alt="상품 이미지" />
       <p>{productName}</p>
     </div>

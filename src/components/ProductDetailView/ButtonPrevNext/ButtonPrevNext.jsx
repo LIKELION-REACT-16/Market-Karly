@@ -3,7 +3,7 @@ import classes from '@/components/ProductDetailView/ButtonPrevNext/ButtonPrevNex
 export function ButtonPrevNext({ ariaLabel = '이전 페이지 버튼', className }) {
   ButtonPrevNext;
 
-  const combineClassNames = `${classes.ButtonPrevNext} ${classes[className]}`;
+  const combineClassNames = `${classes.buttonPrevNext} ${classes[className]}`;
 
   return (
     <button

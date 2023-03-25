@@ -7,10 +7,10 @@ export function ModalFormTitle({ title, modal, ...restProps }) {
   };
 
   return (
-    <div className={classes.ModalFormTitle}>
-      <h4 className={classes.ModalFormTitleContent}>{title}</h4>
+    <div className={classes.modalFormTitle}>
+      <h4 className={classes.modalFormTitleContent}>{title}</h4>
       <Cancel
-        className={classes.Cancel}
+        className={classes.cancel}
         onClick={CancelHandler}
         {...restProps}
       />
