@@ -5,7 +5,7 @@ import { ReactComponent as Like } from '@/assets/img-icon-heart-purple.svg';
 import { ReactComponent as Alert } from '@/assets/img-icon-alert.svg';
 import { ReactComponent as AlertDisabled } from '@/assets/img-icon-alert-disable.svg';
 import { totalPriceSelector } from '@/@store/totalPriceSelector.js';
-import saveProductToCart from '@/components/ProductCard/saveProductToCart.js';
+import saveProductToCart from '@/service/saveProductToCart.js';
 
 import {
   productID,
