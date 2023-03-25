@@ -1,0 +1,42 @@
+.mySwiper {
+  position: relative;
+  width: 1100px;
+}
+
+.swiperPrevBtn {
+  position: absolute;
+  transform: rotate(180deg);
+  background: url('@/assets/img-carousel-next-btn.svg') 50% 50% / 100%;
+  width: 50px;
+  height: 50px;
+  top: 33%;
+  left: 0%;
+  border: none;
+  z-index: 1000;
+}
+
+.swiperNextBtn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('@/assets/img-carousel-next-btn.svg') 50% 50% / 100%;
+  top: 33%;
+  right: 0%;
+  border: none;
+  z-index: 1000;
+}
+
+.itemlist {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 140%;
+  color: #333333;
+  text-align: center;
+  padding-top: 90px;
+}

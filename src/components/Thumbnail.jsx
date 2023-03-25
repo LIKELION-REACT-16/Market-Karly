@@ -1,12 +1,18 @@
 import React from 'react';
-import zzol from '@/assets/zzol.png';
 import Badge from './Badge';
 import styles from '@/styles/components/List/thumbnail.module.scss';
 
 // img
 import cart from '@/assets/button-cart.svg';
+import zzol from '@/assets/product_zzol.png';
 
-export const Thumbnail = ({ productName, price, productDesc }) => {
+export const Thumbnail = ({
+  productName,
+  price,
+  productDesc,
+  salePrice,
+  saleRatio,
+}) => {
   const badgeInfo = {
     karlyOnly: {
       name: 'Karly Only',
@@ -18,6 +24,9 @@ export const Thumbnail = ({ productName, price, productDesc }) => {
     },
   };
 
+  const koPrice = price.toLocaleString('ko-KR');
+  const discountRate = saleRatio * 100;
+
   return (
     <div className={styles.thumbnailWrapper}>
       <div className={styles.thumbnailVisual}>
@@ -27,9 +36,17 @@ export const Thumbnail = ({ productName, price, productDesc }) => {
         </button>
       </div>
       <p className={styles.starDelivery}>샛별배송</p>
-      <h4>[풀무원] 탱탱쫄면 (4개입)</h4>
-      <span>4,800원</span>
-      <p>튀기지 않아 부담없는 매콤함</p>
+      <h4>{productName}</h4>
+      <span className={discountRate == 0 ? null : styles.saleRatio}>
+        {discountRate == 0 ? null : `${discountRate}%`}
+      </span>
+      <span>
+        {discountRate == 0
+          ? `${koPrice}`
+          : `${salePrice.toLocaleString('ko-KR')}`}
+        원
+      </span>
+      <p>{productDesc}</p>
       <div className={styles.badgeWrapper}>
         <Badge
           badgeName={badgeInfo.karlyOnly.name}

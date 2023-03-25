@@ -11,10 +11,7 @@ export const TotalNFilter = ({ totalNum }) => {
   const [selectTab, setSelectTab] = React.useState(0);
 
   return (
-    <div
-      className={styles.wrapper}
-      style={{ display: 'flex', justifyContent: 'space-between' }}
-    >
+    <div className={styles.wrapper}>
       <span>총{totalNum}건</span>
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
