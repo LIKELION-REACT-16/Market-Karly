@@ -79,6 +79,7 @@
 }
 
 .pointInfo {
+  float: right;
   padding-top: 0.5rem;
   position: relative;
   p {
@@ -115,4 +116,13 @@
       cursor: default;
     }
   }
+}
+
+.cartButton {
+  width: 26.5rem;
+  height: 3.375rem;
+  color: white;
+  background-color: $colors-primary;
+  border-radius: 0.25rem;
+  @include label-medium;
 }
