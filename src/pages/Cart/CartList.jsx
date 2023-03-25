@@ -27,31 +27,29 @@ export default function CartList({
 }) {
   const id = useId();
 
-  // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
+  const [moreRefrigerator, setMoreRefrigerator] = useState(true);
 
-  // 체크박스 단일 선택
   const handleSingleCheck = (checked, id) => {
     if (checked) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
       setCheckItems((prev) => [...prev, id]);
     } else {
-      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
       setCheckItems(checkItems.filter((el) => el !== id));
     }
   };
 
-  // 체크박스 전체 선택
   const handleAllCheck = (checked) => {
     if (checked) {
-      // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
       cart.forEach((item) => idArray.push(item.id));
       setCheckItems(idArray);
     } else {
-      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
       setCheckItems([]);
     }
+  };
+
+  const handleMoreProduct = () => {
+    setMoreRefrigerator((moreRefrigerator) => !moreRefrigerator);
   };
 
   const refrigerator = cart.filter((cart) => cart.type === 'refrigerator');
@@ -92,7 +90,11 @@ export default function CartList({
                 />
                 <span className={classes.text}>냉장 식품</span>
               </div>
-              <button type="button" className={classes.arrow}>
+              <button
+                type="button"
+                className={classes.arrow}
+                onClick={handleMoreProduct}
+              >
                 <img
                   src={downArrow}
                   alt="더보기"
@@ -103,47 +105,51 @@ export default function CartList({
           ) : (
             ''
           )}
-          <ul className={classes.detail}>
-            {refrigerator.length > 0
-              ? refrigerator.map((cart) => (
-                  <li key={`select-${cart.id}`} className={classes.product}>
-                    <div className={classes.checkbox}>
-                      <input
-                        id={`select-${cart.id}`}
-                        type={type}
-                        name={`select-${cart.id}`}
-                        className={classes.input}
-                        onChange={(e) =>
-                          handleSingleCheck(e.target.checked, cart.id)
-                        }
-                        checked={checkItems.includes(cart.id)}
+          {moreRefrigerator ? (
+            ''
+          ) : (
+            <ul className={classes.detail}>
+              {refrigerator.length > 0
+                ? refrigerator.map((cart) => (
+                    <li key={`select-${cart.id}`} className={classes.product}>
+                      <div className={classes.checkbox}>
+                        <input
+                          id={`select-${cart.id}`}
+                          type={type}
+                          name={`select-${cart.id}`}
+                          className={classes.input}
+                          onChange={(e) =>
+                            handleSingleCheck(e.target.checked, cart.id)
+                          }
+                          checked={checkItems.includes(cart.id)}
+                        />
+                        <label
+                          htmlFor={`select-${cart.id}`}
+                          className={classes.label}
+                        ></label>
+                      </div>
+                      <img
+                        src={cart.img}
+                        alt={cart.name}
+                        className={classes.image}
                       />
-                      <label
-                        htmlFor={`select-${cart.id}`}
-                        className={classes.label}
-                      ></label>
-                    </div>
-                    <img
-                      src={cart.img}
-                      alt={cart.name}
-                      className={classes.image}
-                    />
-                    <div className={classes.desc}>
-                      <span className={classes.text}>{cart.name}</span>
-                    </div>
-                    <Counter />
-                    <div className={classes.price}>
-                      <span className={classes.text}>
-                        {cart.price.toLocaleString()}원
-                      </span>
-                    </div>
-                    <button type="button" className={classes.cancel}>
-                      <img src={cancelImg} alt="취소" />
-                    </button>
-                  </li>
-                ))
-              : ''}
-          </ul>
+                      <div className={classes.desc}>
+                        <span className={classes.text}>{cart.name}</span>
+                      </div>
+                      <Counter />
+                      <div className={classes.price}>
+                        <span className={classes.text}>
+                          {cart.price.toLocaleString()}원
+                        </span>
+                      </div>
+                      <button type="button" className={classes.cancel}>
+                        <img src={cancelImg} alt="취소" />
+                      </button>
+                    </li>
+                  ))
+                : ''}
+            </ul>
+          )}
         </li>
         <li className={classes.accordion}>
           {frozen.length > 0 ? (
@@ -152,7 +158,11 @@ export default function CartList({
                 <img src={frozenImg} alt="냉동 식품" className={classes.logo} />
                 <span className={classes.text}>냉동 식품</span>
               </div>
-              <button type="button" className={classes.arrow}>
+              <button
+                type="button"
+                className={classes.arrow}
+                onClick={handleMoreProduct}
+              >
                 <img
                   src={downArrow}
                   alt="더보기"
@@ -163,47 +173,51 @@ export default function CartList({
           ) : (
             ''
           )}
-          <ul className={classes.detail}>
-            {frozen.length > 0
-              ? frozen.map((cart) => (
-                  <li key={`select-${cart.id}`} className={classes.product}>
-                    <div className={classes.checkbox}>
-                      <input
-                        id={`select-${cart.id}`}
-                        type={type}
-                        name={`select-${cart.id}`}
-                        className={classes.input}
-                        onChange={(e) =>
-                          handleSingleCheck(e.target.checked, cart.id)
-                        }
-                        checked={checkItems.includes(cart.id)}
+          {moreRefrigerator ? (
+            ''
+          ) : (
+            <ul className={classes.detail}>
+              {frozen.length > 0
+                ? frozen.map((cart) => (
+                    <li key={`select-${cart.id}`} className={classes.product}>
+                      <div className={classes.checkbox}>
+                        <input
+                          id={`select-${cart.id}`}
+                          type={type}
+                          name={`select-${cart.id}`}
+                          className={classes.input}
+                          onChange={(e) =>
+                            handleSingleCheck(e.target.checked, cart.id)
+                          }
+                          checked={checkItems.includes(cart.id)}
+                        />
+                        <label
+                          htmlFor={`select-${cart.id}`}
+                          className={classes.label}
+                        ></label>
+                      </div>
+                      <img
+                        src={cart.img}
+                        alt={cart.name}
+                        className={classes.image}
                       />
-                      <label
-                        htmlFor={`select-${cart.id}`}
-                        className={classes.label}
-                      ></label>
-                    </div>
-                    <img
-                      src={cart.img}
-                      alt={cart.name}
-                      className={classes.image}
-                    />
-                    <div className={classes.desc}>
-                      <span className={classes.text}>{cart.name}</span>
-                    </div>
-                    <Counter />
-                    <div className={classes.price}>
-                      <span className={classes.text}>
-                        {cart.price.toLocaleString()}원
-                      </span>
-                    </div>
-                    <button type="button" className={classes.cancel}>
-                      <img src={cancelImg} alt="취소" />
-                    </button>
-                  </li>
-                ))
-              : ''}
-          </ul>
+                      <div className={classes.desc}>
+                        <span className={classes.text}>{cart.name}</span>
+                      </div>
+                      <Counter />
+                      <div className={classes.price}>
+                        <span className={classes.text}>
+                          {cart.price.toLocaleString()}원
+                        </span>
+                      </div>
+                      <button type="button" className={classes.cancel}>
+                        <img src={cancelImg} alt="취소" />
+                      </button>
+                    </li>
+                  ))
+                : ''}
+            </ul>
+          )}
         </li>
         <li className={classes.accordion}>
           {roomTemp.length > 0 ? (
@@ -216,7 +230,11 @@ export default function CartList({
                 />
                 <span className={classes.text}>상온 식품</span>
               </div>
-              <button type="button" className={classes.arrow}>
+              <button
+                type="button"
+                className={classes.arrow}
+                onClick={handleMoreProduct}
+              >
                 <img
                   src={downArrow}
                   alt="더보기"
@@ -227,47 +245,51 @@ export default function CartList({
           ) : (
             ''
           )}
-          <ul className={classes.detail}>
-            {roomTemp.length > 0
-              ? roomTemp.map((cart) => (
-                  <li key={`select-${cart.id}`} className={classes.product}>
-                    <div className={classes.checkbox}>
-                      <input
-                        id={`select-${cart.id}`}
-                        type={type}
-                        name={`select-${cart.id}`}
-                        className={classes.input}
-                        onChange={(e) =>
-                          handleSingleCheck(e.target.checked, cart.id)
-                        }
-                        checked={checkItems.includes(cart.id)}
+          {moreRefrigerator ? (
+            ''
+          ) : (
+            <ul className={classes.detail}>
+              {roomTemp.length > 0
+                ? roomTemp.map((cart) => (
+                    <li key={`select-${cart.id}`} className={classes.product}>
+                      <div className={classes.checkbox}>
+                        <input
+                          id={`select-${cart.id}`}
+                          type={type}
+                          name={`select-${cart.id}`}
+                          className={classes.input}
+                          onChange={(e) =>
+                            handleSingleCheck(e.target.checked, cart.id)
+                          }
+                          checked={checkItems.includes(cart.id)}
+                        />
+                        <label
+                          htmlFor={`select-${cart.id}`}
+                          className={classes.label}
+                        ></label>
+                      </div>
+                      <img
+                        src={cart.img}
+                        alt={cart.name}
+                        className={classes.image}
                       />
-                      <label
-                        htmlFor={`select-${cart.id}`}
-                        className={classes.label}
-                      ></label>
-                    </div>
-                    <img
-                      src={cart.img}
-                      alt={cart.name}
-                      className={classes.image}
-                    />
-                    <div className={classes.desc}>
-                      <span className={classes.text}>{cart.name}</span>
-                    </div>
-                    <Counter />
-                    <div className={classes.price}>
-                      <span className={classes.text}>
-                        {cart.price.toLocaleString()}원
-                      </span>
-                    </div>
-                    <button type="button" className={classes.cancel}>
-                      <img src={cancelImg} alt="취소" />
-                    </button>
-                  </li>
-                ))
-              : ''}
-          </ul>
+                      <div className={classes.desc}>
+                        <span className={classes.text}>{cart.name}</span>
+                      </div>
+                      <Counter />
+                      <div className={classes.price}>
+                        <span className={classes.text}>
+                          {cart.price.toLocaleString()}원
+                        </span>
+                      </div>
+                      <button type="button" className={classes.cancel}>
+                        <img src={cancelImg} alt="취소" />
+                      </button>
+                    </li>
+                  ))
+                : ''}
+            </ul>
+          )}
         </li>
       </ul>
       {/* Radio */}
