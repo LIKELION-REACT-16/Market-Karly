@@ -15,6 +15,8 @@ const Home = () => {
         children="더 풍성해진 10월의 퍼플위크 적립률 UP+3종 쿠폰팩
       KURLY PURPLE WEEK"
       />
+
+      <ItemCarousel title="놓치면 후회할 가격" />
     </>
   );
 };
