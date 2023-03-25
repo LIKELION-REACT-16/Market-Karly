@@ -9,14 +9,12 @@
     "build": "vite build"
   },
   "dependencies": {
-    "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "firebase": "^9.18.0",
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.3",
-    "reactstrap": "^9.1.6",
     "recoil": "^0.7.7",
     "swiper": "^9.1.1",
     "vite-plugin-babel-macros": "^1.0.6"
