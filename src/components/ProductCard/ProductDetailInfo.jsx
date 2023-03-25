@@ -1,18 +1,31 @@
 import classes from '@/components/ProductCard/productDetailInfo.module.scss';
 import Counter from '@/components/Counter/Counter';
 import { useState } from 'react';
-import { NormalButton as Button } from '@/components/Button';
 import { ReactComponent as Like } from '@/assets/img-icon-heart-purple.svg';
 import { ReactComponent as Alert } from '@/assets/img-icon-alert.svg';
 import { ReactComponent as AlertDisabled } from '@/assets/img-icon-alert-disable.svg';
+import { totalPriceSelector } from '@/@store/totalPriceSelector.js';
+import saveProductToCart from '@/service/saveProductToCart.js';
+
+import {
+  productID,
+  productTitleState,
+  productPrice,
+  productQuantity,
+} from '@/@store/detailCardState';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
 export default function ProductDetailInfo() {
+  const productTitle = useRecoilValue(productTitleState);
+  const price = useRecoilValue(productPrice);
+  const [quantity, setQuantity] = useRecoilState(productQuantity);
+
   return (
     <ul className={classes.infoList}>
       <DetailInfo title="배송">
         <span>샛별배송</span>
         <p>23시 전 주문 시 내일 아침 7시 전 도착</p>
-        <p>(대구 부산 울산 샛별배송 운영시;간 별도 확인)</p>
+        <p>(대구 부산 울산 샛별배송 운영시간 별도 확인)</p>
       </DetailInfo>
       <DetailInfo title="판매자">
         <span>칼리</span>
@@ -40,9 +53,11 @@ export default function ProductDetailInfo() {
       </DetailInfo>
       <DetailInfo title="상품선택">
         <div className={classes.productCounter}>
-          <p>[풀무원] 탱탱쫄면 (4개입)</p>
-          <Counter className={classes.count} />
-          <span className={classes.productPrice}>4,980원</span>
+          <p>{productTitle}</p>
+          <Counter className={classes.count} setParentState={setQuantity} />
+          <span className={classes.productPrice}>
+            {price.toLocaleString('ko-KR')}원
+          </span>
         </div>
       </DetailInfo>
       <PriceAndPointWrapper />
@@ -53,6 +68,12 @@ export default function ProductDetailInfo() {
 
 function ProductCardButtonList({ className }) {
   const [likeButtonState, setLikeButtonState] = useState(true);
+  const prodID = useRecoilValue(productID);
+  const quantity = useRecoilValue(productQuantity);
+
+  const cartButtonHandler = () => {
+    saveProductToCart(prodID, quantity);
+  };
 
   return (
     <div className={className}>
@@ -66,9 +87,9 @@ function ProductCardButtonList({ className }) {
       >
         {likeButtonState ? <AlertDisabled /> : <Alert />}
       </button>
-      <Button width="424" height="54">
+      <button className={classes.cartButton} onClick={cartButtonHandler}>
         장바구니 담기
-      </Button>
+      </button>
     </div>
   );
 }
@@ -83,10 +104,12 @@ function DetailInfo({ title, children }) {
 }
 
 function PriceAndPointWrapper() {
+  const totalPrice = useRecoilValue(totalPriceSelector);
+
   return (
     <div className={classes.priceAndPointWrapper}>
       <p className={classes.totalPrice}>
-        총 상품 금액:<span>4,980</span>원
+        총 상품 금액:<span>{totalPrice.toLocaleString('ko-KR')}</span>원
       </p>
 
       <div className={classes.pointInfo}>

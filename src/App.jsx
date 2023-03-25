@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import './App.css';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
@@ -48,9 +49,11 @@ router = createBrowserRouter(
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<div>로딩 중...</div>}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <RecoilRoot>
+        <Suspense fallback={<div>로딩 중...</div>}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </RecoilRoot>
     </div>
   );
 }

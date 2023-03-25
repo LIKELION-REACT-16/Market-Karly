@@ -16,6 +16,8 @@ const ProductDetail = () => {
   const refList = [description, detailInformation, review, inquiry];
 
   const onIntersect = (entries) => {
+    if (entries.length == 0) return;
+
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         switch (entry.target) {
@@ -48,9 +50,7 @@ const ProductDetail = () => {
     });
 
     return () => {
-      refList.map((item) => {
-        observer.observe(item.current);
-      });
+      observer.disconnect();
     };
   }, []);
 
