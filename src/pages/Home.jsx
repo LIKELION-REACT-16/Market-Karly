@@ -10,7 +10,6 @@ import { Slider } from '@/components/Slider/Slider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 const Home = () => {
   return (
     <>
@@ -24,10 +23,7 @@ const Home = () => {
       />
 
       <ItemCarousel title="놓치면 후회할 가격" />
-    </div>
-
     </>
-
   );
 };
 

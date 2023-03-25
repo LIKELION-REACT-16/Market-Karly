@@ -1,5 +1,5 @@
 import React from 'react';
-import zzol from '@/assets/zzol.png';
+import zzol from '@/assets/product_zzol.png';
 import styles from '@/components/ItemCarousel/Item.module.scss';
 
 // img
