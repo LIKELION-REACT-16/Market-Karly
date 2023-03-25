@@ -4,7 +4,6 @@ import styles from '@/styles/components/List/thumbnail.module.scss';
 
 // img
 import cart from '@/assets/button-cart.svg';
-import zzol from '@/assets/product_zzol.png';
 
 export const Thumbnail = ({
   productName,
@@ -13,7 +12,7 @@ export const Thumbnail = ({
   salePrice,
   saleRatio,
   thumbnail,
-  imgAlt
+  imgAlt,
 }) => {
   const badgeInfo = {
     karlyOnly: {
