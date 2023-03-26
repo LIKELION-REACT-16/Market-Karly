@@ -1,10 +1,13 @@
 import classes from './ProductDetailView.module.scss';
-import { ButtonPrevNext } from './ButtonPrevNext/ButtonPrevNext';
 import { ReactComponent as Notice } from '@/assets/img-icon-notice.svg';
 import Badge from '@/components/Badge';
 import React, { useEffect, useRef, useState } from 'react';
+import { ReactComponent as Prev } from '@/assets/img-icon-prev.svg';
+import { ReactComponent as PrevActive } from '@/assets/img-icon-prev-active.svg';
+import { ReactComponent as Next } from '@/assets/img-icon-next.svg';
+import { ReactComponent as NextActive } from '@/assets/img-icon-next-active.svg';
 
-export function Review({ maskedReviews }) {
+export function Review({ reviews }) {
   const reviewNoticeData = {
     accordionContents: [
       {
@@ -58,11 +61,31 @@ export function Review({ maskedReviews }) {
     ],
   };
 
-  const [reviews, setReviews] = useState(maskedReviews);
+  const maskingName = (strName) => {
+    if (strName.length > 2) {
+      var originName = strName.split('');
+      originName.forEach(function (name, i) {
+        if (i === 0 || i === originName.length - 1) return;
+        originName[i] = '*';
+      });
+      var joinName = originName.join();
+      return joinName.replace(/,/g, '');
+    } else {
+      var pattern = /.$/; // 정규식
+      return strName.replace(pattern, '*');
+    }
+  };
 
-  useEffect(() => {
-    return () => {};
-  }, [reviews]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const sortByActiveIndex = (index) => {
+    const reviewsCopy = [...reviews];
+    if (index === 0) {
+      return reviewsCopy.sort((a, b) => b.recommend - a.recommend);
+    } else if (index === 1) {
+      return reviewsCopy.sort((a, b) => b.reviewDate - a.reviewDate);
+    }
+  };
 
   return (
     <div className={classes.review}>
@@ -70,34 +93,26 @@ export function Review({ maskedReviews }) {
       <div className={classes.reviewTotal}>
         <span>총 {reviews?.length}개</span>
         <div className={classes.reviewTotalFrame75}>
-          <button
-            type="button"
-            onClick={(e) => {
-              const reviewsCopy = [...reviews];
-              setReviews(reviewsCopy.sort((a, b) => b.recommend - a.recommend));
-            }}
+          <span
+            className={activeIndex === 0 ? classes.active : ''}
+            onClick={() => setActiveIndex(0)}
           >
             추천순
-          </button>
+          </span>
 
           <span aria-hidden="true"></span>
-          <button
-            type="button"
-            onClick={(e) => {
-              const reviewsCopy = [...reviews];
-              setReviews(
-                reviewsCopy.sort((a, b) => b.reviewDate - a.reviewDate)
-              );
-            }}
+          <span
+            className={activeIndex === 1 ? classes.active : ''}
+            onClick={() => setActiveIndex(1)}
           >
             최근 등록순
-          </button>
+          </span>
         </div>
       </div>
 
       {/* group2 */}
       <div className={classes.reviewTable}>
-        {/* group2-1 */}
+        {/* group2-1 공지사항 */}
         <div>
           <article
             key="id1"
@@ -112,7 +127,7 @@ export function Review({ maskedReviews }) {
                 // aria-controls={controlId}
                 // onClick={onActive}
               >
-                상품 후기 적립금 정책 안내 (children. 변수 handle의 값)
+                상품 후기 적립금 정책 안내
               </button>
             </div>
 
@@ -134,8 +149,7 @@ export function Review({ maskedReviews }) {
           </article>
         </div>
 
-        {/* group2-2 */}
-
+        {/* group2-2 본문 */}
         {reviews?.length === 0 ? (
           <div className={classes.reviewTableEmpty}>
             <Notice />
@@ -143,14 +157,17 @@ export function Review({ maskedReviews }) {
           </div>
         ) : (
           <ul>
-            {reviews.map((review) => {
+            {sortByActiveIndex(activeIndex).map((review) => {
               return (
                 <ReviewItem
                   key={review.id}
-                  userName={review.userName}
+                  userName={maskingName(review.userName)}
                   productName={review.productName}
+                  reviewTitle={review.reviewTitle}
                   reviewContent={review.reviewContent}
-                  reviewDate={review.reviewDate}
+                  reviewDate={new Date(
+                    parseInt(review.reviewDate, 10)
+                  ).toLocaleDateString('ko-KR')}
                   recommend={review.recommend}
                 />
               );
@@ -159,17 +176,13 @@ export function Review({ maskedReviews }) {
         )}
       </div>
 
-      {/* group3. review, inquiry 두 군데에서 사용됨 */}
-      {reviews?.length === 0 ? null : (
+      {/* group3 */}
+      {reviews?.length <= 5 ? null : (
         <div style={{ display: 'flex', gap: '16px' }}>
-          <ButtonPrevNext
-            ariaLabel="상품 후기 이전 페이지 버튼"
-            className="prev"
-          />
-          <ButtonPrevNext
-            ariaLabel="상품 후기 다음 페이지 버튼"
-            className="next-active"
-          />
+          <Prev />
+          {/* <PrevActive /> */}
+          <NextActive />
+          {/* <Next /> */}
         </div>
       )}
     </div>
@@ -180,26 +193,24 @@ function ReviewItem({
   id,
   userName,
   productName,
+  reviewTitle,
   reviewContent,
   reviewDate,
   recommend,
 }) {
   return (
-    <li
-      className={classes.reviewItem}
-      data-test={id}
-      data-recommend={recommend}
-    >
+    <li className={classes.reviewItem} data-id={id} data-recommend={recommend}>
       <div className={classes.reviewItemFrame76}>
-        {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
         <Badge badgeName="베스트"></Badge>
-        {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
         <Badge badgeName="퍼플"></Badge>
         <span>{userName}</span>
       </div>
       <div className={classes.reviewItemFrame78}>
         <span>{productName}</span>
-        <p>{reviewContent}</p>
+        <p>{reviewTitle}</p>
+        <p>
+          {reviewContent} (추천 {recommend})
+        </p>
         <span>{reviewDate}</span>
       </div>
     </li>

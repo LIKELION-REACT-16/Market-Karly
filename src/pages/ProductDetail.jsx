@@ -4,7 +4,6 @@ import ProductDescription from '@/components/ProductDescription/ProductDescripti
 import ProductDetailDescription from '@/components/ProductDetailDescription/ProductDetailDescription';
 import ProductDetailView from '@/components/ProductDetailView/ProductDetailView';
 import { useRef, useState, useEffect } from 'react';
-import ProductDetailView from '@/components/ProductDetailView/ProductDetailView';
 
 const ProductDetail = () => {
   const [activeAnchor, setActive] = useState(1);

@@ -6,10 +6,15 @@ import ModalFormDetail from './ModalFormDetail';
 import { ModalFormButtons } from './ModalFormButtons';
 
 const ModalForm = (
-  { productName = '[풀무원] 탱탱쫄면 (4개입)', type = 'review', ...restProps },
+  {
+    productName = '[풀무원] 탱탱쫄면 (4개입)',
+    type = 'review',
+    state,
+    setState,
+    ...restProps
+  },
   ref
 ) => {
-  // console.log(`ModalForm render`);
   const title =
     type === 'review'
       ? '후기 작성'
@@ -21,7 +26,7 @@ const ModalForm = (
   const [contentValue, setContentValue] = useState('');
   const [isSecret, setIsSecret] = useState(false);
 
-  const isValid = useState(true);
+  const isValid = titleValue.length > 0 && contentValue.length > 0;
 
   const placeholderRef = useRef();
 
@@ -39,6 +44,42 @@ const ModalForm = (
 
   const onSecretChangeHandler = (e) => {
     setIsSecret(e.target.checked);
+  };
+
+  const onSubmitHandler = (e) => {
+    if (type === 'review') {
+      setState([
+        ...state,
+        {
+          id: state.length + 1,
+          userName: '홍길동',
+          // 모달창의 상품명 데이터를 받아와서 넣어주기
+          productName: '[풀무원] 탱탱쫄면 (4개입)',
+          reviewTitle: titleValue,
+          reviewContent: contentValue,
+          reviewDate: Date.now(),
+          // 1~5 사이의 랜덤한 숫자
+          recommend: Math.floor(Math.random() * 5) + 1,
+        },
+      ]);
+    } else if (type === 'inquiry') {
+      setState([
+        ...state,
+        {
+          id: state.length + 1,
+          userName: '홍길동',
+          // 모달창의 상품명 데이터를 받아와서 넣어주기
+          productName: '[풀무원] 탱탱쫄면 (4개입)',
+          inquiryTitle: titleValue,
+          inquiryContent: contentValue,
+          isSecret: isSecret,
+          inquiryDate: Date.now(),
+          answer: null,
+          answerDate: null,
+          isFinished: false,
+        },
+      ]);
+    }
   };
 
   return (
@@ -70,7 +111,7 @@ const ModalForm = (
         onSecretChangeHandler={onSecretChangeHandler}
         ref={placeholderRef}
       />
-      <ModalFormButtons isValid={isValid} />
+      <ModalFormButtons isValid={isValid} onSubmitHandler={onSubmitHandler} />
     </dialog>
   );
 };

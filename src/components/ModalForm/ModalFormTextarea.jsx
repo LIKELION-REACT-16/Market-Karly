@@ -27,7 +27,11 @@ const ModalFormTextarea = (
         onBlur={onBlurHandler}
         value={contentValue}
         onChange={onContentValueChangeHandler}
+        onFocus={() => {
+          ref.current.classList.add(`${classes.hidden}`);
+        }}
       />
+      {/* placeholder message */}
       {type === 'review' ? (
         <ul
           className={`${classes.placeholder}`}

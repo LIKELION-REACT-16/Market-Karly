@@ -32,7 +32,7 @@ export function NormalButton(props) {
   }`;
 
   return (
-    <button type="button" className={combineClassName}>
+    <button type="button" className={combineClassName} {...restProps}>
       {children}
     </button>
   );
@@ -44,11 +44,7 @@ export function PopupButton({ children, color, isValid = true, ...restProps }) {
   } ${isValid ? '' : classes.disabled}`;
 
   return (
-    <button
-      className={combineClassName}
-      disabled={isValid ? false : true}
-      {...restProps}
-    >
+    <button className={combineClassName} disabled={!isValid} {...restProps}>
       {children}
     </button>
   );

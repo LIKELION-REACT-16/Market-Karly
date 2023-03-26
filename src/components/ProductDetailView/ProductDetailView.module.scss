@@ -9,6 +9,7 @@
 
   width: 1050px;
   // height: 888px; // 문의하기 때는 값이 달라짐(1054px)
+  // margin-bottom: 72px;
 
   &>.reviewInquiryHeader {
     // border: 1px solid skyblue;
@@ -51,7 +52,7 @@
   
     // width: 1050px;
     width: 100%;
-    height: 888px;
+    min-height: 888px;
     // height: 969px;
   
     &>.reviewTotal {
@@ -78,6 +79,13 @@
       
         width: 132px;
         // height: 24px;
+        
+        @include label-medium;
+        color: $colors-gray-300;
+        
+        &>.active{
+          color: $colors-content;
+        }
         & :nth-child(1) {
           display: flex;
           flex-direction: row;
@@ -87,10 +95,12 @@
         
           width: 42px;
           // height: 24px;
+          cursor: pointer;
         }
         & :nth-child(2) {
           width: 1px;
-          height: 10px; // 추천순과 최근 등록순 사이의 '|'
+          // 추천순과 최근 등록순 사이의 '|'
+          height: 10px;
           background: $colors-gray-300;
         }
         & :nth-child(3) {
@@ -102,6 +112,7 @@
         
           width: 73px;
           // height: 24px;
+          cursor: pointer;
         }
 
       }
@@ -272,14 +283,14 @@
           // height: 18px;
         }
   
-        & :nth-child(2) {
+        & :nth-child(2), :nth-child(3) {
           @include paragraph-small;
           color: $colors-black;
           // width: 151px;
           // height: 38px;
         }
   
-        & :nth-child(3) {
+        & :nth-child(4) {
           @include label-small;
           color: $colors-gray-400;
           // width: 58px;
@@ -339,6 +350,9 @@
     & tbody {
       & tr.noticeHead {
         border-bottom: 1px solid $colors-gray-100;
+        & td:first-child {
+          padding: 4px 20px;
+        }
         & td:not(:first-of-type) {
           text-align: center;
         }
@@ -347,6 +361,10 @@
           color: $colors-content;
           // text-align: center;
           padding: 16px 0px;
+
+          &.finished {
+            color: $colors-primary;
+          }
         }
         &.lock>td:nth-child(1)::after {
           content: url('@/assets/img-icon-lock.svg');
@@ -355,11 +373,23 @@
           margin-left: 20px;
         }
       }
+      & tr.hover {
+        cursor: pointer;
+      }
+
+      & .answer {
+        margin: 20px;
+      }
+      & .hidden {
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+      }
       &>tr>td.tableAnswer {
         //   display: flex;
         //   flex-direction: column;
         //   align-items: flex-start;
-          padding: 20px;
+        // padding: 20px;
         //   gap: 40px;
         
         background: $colors-gray-50;
@@ -384,12 +414,20 @@
           align-items: flex-start;
           padding: 0px;
           gap: 12px;
-         
         }
         & p:nth-child(2)::before {
           content: url('@/assets/img-icon-answer.svg');
           width: 24px;
           height: 24px;
+        }
+        & p:nth-child(3) {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 0px;
+          gap: 12px;
+          margin-left: 36px;
+          color: $colors-gray-400;
         }
       }
     }

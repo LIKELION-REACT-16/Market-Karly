@@ -4,29 +4,41 @@ import { NormalButton } from '../Button';
 import ModalForm from '../ModalForm/ModalForm';
 // import { ReviewInquiryHeaderFrame } from './ReviewInquiryHeaderFrame';
 
-export function ReviewInquiryHeader({ type }) {
-  const reviewModalRef = useRef();
-  const inquiryModalRef = useRef();
+export function ReviewInquiryHeader({ type, state, setState }) {
+  const ModalRef = useRef();
 
   return (
     <div className={classes.reviewInquiryHeader}>
       <ReviewInquiryHeaderFrame type={type} />
-      {/* <NormalButton width="155" height="44">
-        <span>{type === 'review' ? '후기 작성하기' : '문의하기'}</span>
-      </NormalButton> */}
-      <button
+      <NormalButton
+        width="155"
+        height="44"
         onClick={() => {
-          if (type === 'review') {
-            reviewModalRef.current.showModal();
-          } else if (type === 'inquiry') {
-            inquiryModalRef.current.showModal();
-          }
+          ModalRef.current.showModal();
+        }}
+      >
+        <span>{type === 'review' ? '후기 작성하기' : '문의하기'}</span>
+      </NormalButton>
+      {/* <button
+        onClick={() => {
+          // if (type === 'review') {
+          // reviewModalRef.current.showModal();
+          // } else if (type === 'inquiry') {
+          // inquiryModalRef.current.showModal();
+          // }
+          ModalRef.current.showModal();
         }}
       >
         {type === 'review' ? '후기 작성하기' : '문의하기'}
-      </button>
-      <ModalForm ref={reviewModalRef} type="review"></ModalForm>
-      <ModalForm ref={inquiryModalRef} type="inquiry"></ModalForm>
+      </button> */}
+      <ModalForm
+        ref={ModalRef}
+        type={type}
+        // reviews={reviews}
+        // setReviews={setReviews}
+        state={state}
+        setState={setState}
+      ></ModalForm>
     </div>
   );
 }
