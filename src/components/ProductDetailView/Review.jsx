@@ -8,12 +8,11 @@ import { ReactComponent as Next } from '@/assets/img-icon-next.svg';
 import { ReactComponent as NextActive } from '@/assets/img-icon-next-active.svg';
 
 export function Review({ reviews }) {
-  const reviewNoticeData = {
-    accordionContents: [
-      {
-        id: 'review-notice-01',
-        handle: '금주의 베스트 후기 안내',
-        panel: `
+  const accordionContents = [
+    {
+      id: 'notice1',
+      handle: '금주의 베스트 후기 안내',
+      panel: `
           <p>■ 베스트 후기 당첨자 안내</p>
           <p></p>
           <p>고객님 안녕하세요, 컬리입니다.</p>
@@ -25,16 +24,13 @@ export function Review({ reviews }) {
           <p>실제로 상품의 후기가 구매 결정에 있어 큰 도움이 된 베스트 후기를 아래로 공유드립니다.</p>
           <p></p>
           <p>정성껏 후기를 작성해주신 모든 고객님께 감사드립니다.</p>
-          <p></p>
-          <p>...</p>
-          <p></p>
           <p>컬리 드림.</p>
         `,
-      },
-      {
-        id: 'review-notice-02',
-        handle: '상품 후기 적립금 정책 안내',
-        panel: `
+    },
+    {
+      id: 'notice2',
+      handle: '상품 후기 적립금 정책 안내',
+      panel: `
           <p>[ 금주의 Best 후기 및 상품 후기 적립금 정책 변경 안내 ] </p>
           <p>고객님 안녕하세요. 컬리 입니다. 적립금 지급 정책을 안내드리니 컬리 이용에 참고 부탁드립니다. </p>
           <p>■ 적립금 지급 정책 ■</p>
@@ -57,9 +53,8 @@ export function Review({ reviews }) {
           <p>5. 구매한 상품이 아닌 캡쳐 사진, 포장 박스 사진 등 상품과 관련 없는 이미지, 동영상을 사용한 경우 </p>
           <p>또한, 비정상적인 방법을 통해 후기를 작성하고 적립금을 취득한 경우 작성자에 법적 책임의 소지가 있음을 알려드립니다. </p>
         `,
-      },
-    ],
-  };
+    },
+  ];
 
   const maskingName = (strName) => {
     if (strName.length > 2) {
@@ -76,7 +71,18 @@ export function Review({ reviews }) {
     }
   };
 
+  // 공지사항 아코디언 활성화 id
+  const [selectedId, setSelectedId] = useState(null);
+  // 추천순 최신순 정렬
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const toggleAccordion = (index) => {
+    if (selectedId === index) {
+      setSelectedId(null);
+    } else {
+      setSelectedId(index);
+    }
+  };
 
   const sortByActiveIndex = (index) => {
     const reviewsCopy = [...reviews];
@@ -114,39 +120,37 @@ export function Review({ reviews }) {
       <div className={classes.reviewTable}>
         {/* group2-1 공지사항 */}
         <div>
-          <article
-            key="id1"
-            aria-labelledby="id1"
-            data-component="AccordionItem"
-          >
-            <div data-component="AccordionHandle">
-              <button
-                type="button"
-                // id={`${controlId}-handle`}
-                // aria-expanded={isActive}
-                // aria-controls={controlId}
-                // onClick={onActive}
-              >
-                상품 후기 적립금 정책 안내
-              </button>
-            </div>
+          {accordionContents.map((notice) => (
+            <article
+              key={notice.id}
+              aria-labelledby={`accordion-header-${notice.id}`}
+              data-component="AccordionItem"
+            >
+              <div data-component="AccordionHandle">
+                <button
+                  type="button"
+                  id={`${notice.id}-handle`}
+                  aria-expanded={selectedId === notice.id ? true : false}
+                  aria-controls={notice.id}
+                  onClick={() => toggleAccordion(notice.id)}
+                >
+                  {notice.handle}
+                </button>
+              </div>
 
-            <div
-              role="region"
-              // aria-labelledby={`${controlId}-handle`}
-              data-component="AccordionPanel"
-              // className={isActive ? 'active' : ''}
-              // dangerouslySetInnerHTML={contents}
-              dangerouslySetInnerHTML={{
-                __html: `<p>[ 금주의 Best 후기 및 상품 후기 적립금 정책 변경 안내 ] </p>
-          <p>고객님 안녕하세요. 컬리 입니다. 적립금 지급 정책을 안내드리니 컬리 이용에 참고 부탁드립니다. </p>
-          <p>■ 적립금 지급 정책 ■</p>
-          <p> 1. 일반 후기 -글 후기 50원/건 </p>
-          <p>-사진 후기 100원/건 </p>
-          <p>*퍼플/더퍼플 러버스 고객님께는 더블 후기 적립금이 지급됩니다. </p>`,
-              }}
-            ></div>
-          </article>
+              <div
+                role="region"
+                aria-labelledby={`${notice.id}-handle`}
+                data-component="AccordionPanel"
+                className={
+                  selectedId === notice.id
+                    ? classes.activeNotice
+                    : classes.hiddenNotice
+                }
+                dangerouslySetInnerHTML={{ __html: notice.panel }}
+              />
+            </article>
+          ))}
         </div>
 
         {/* group2-2 본문 */}
