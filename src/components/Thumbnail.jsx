@@ -4,7 +4,6 @@ import styles from '@/styles/components/List/thumbnail.module.scss';
 
 // img
 import cart from '@/assets/button-cart.svg';
-import zzol from '@/assets/product_zzol.png';
 
 export const Thumbnail = ({
   productName,
@@ -12,6 +11,8 @@ export const Thumbnail = ({
   productDesc,
   salePrice,
   saleRatio,
+  thumbnail,
+  imgAlt,
 }) => {
   const badgeInfo = {
     karlyOnly: {
@@ -30,7 +31,7 @@ export const Thumbnail = ({
   return (
     <div className={styles.thumbnailWrapper}>
       <div className={styles.thumbnailVisual}>
-        <img className={styles.thumbnailImg} alt="상품명" src={zzol} />
+        <img className={styles.thumbnailImg} alt={imgAlt} src={thumbnail} />
         <button className={styles.cartButton} type="button">
           <img src={cart} />
         </button>
@@ -45,6 +46,9 @@ export const Thumbnail = ({
           ? `${koPrice}`
           : `${salePrice.toLocaleString('ko-KR')}`}
         원
+      </span>
+      <span className={discountRate !== 0 ? styles.originalPrice : null}>
+        {discountRate !== 0 ? `${koPrice}원` : null}
       </span>
       <p>{productDesc}</p>
       <div className={styles.badgeWrapper}>
