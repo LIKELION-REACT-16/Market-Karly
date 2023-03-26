@@ -126,20 +126,32 @@
   list-style: none;
   align-items: center;
 
-  button {
+  a {
+    display: flex;
     padding: 0;
     width: 9.375rem;
     height: 2.5rem;
-
+    justify-content: center;
+    align-items: center;
+    color: $colors-content;
     span {
-      padding-bottom: 0.125rem;
+      display: inline-block;
+      height: 24px;
+      @include label-medium;
     }
 
     &:hover {
       & span {
+        color: $colors-primary;
         border-bottom: 1px solid $colors-primary;
       }
     }
+  }
+}
+
+.active {
+  & span {
+    color: $colors-primary;
   }
 }
 
