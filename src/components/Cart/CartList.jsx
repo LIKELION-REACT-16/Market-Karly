@@ -11,7 +11,6 @@ import frozenImg from '@/assets/img-frozen-food.svg';
 import roomTempImg from '@/assets/img-roomTemp-food.svg';
 import cancelImg from '@/assets/img-cancel.svg';
 
-import dummy from './data.json';
 import Counter from '@/components/Counter/Counter';
 
 export default function CartList({
@@ -20,43 +19,6 @@ export default function CartList({
   ...restProps
 }) {
   const id = useId();
-
-  /* -------------------------------------------------------------------------- */
-  /*                                  checkbox                                  */
-  /* -------------------------------------------------------------------------- */
-  const [checkItems, setCheckItems] = useState([]);
-  const [moreItems, setMoreItems] = useState(true);
-
-  const handleSingleCheck = (checked, id) => {
-    if (checked) {
-      setCheckItems((prev) => [...prev, id]);
-    } else {
-      setCheckItems(checkItems.filter((el) => el !== id));
-    }
-  };
-
-  const handleAllCheck = (checked) => {
-    if (checked) {
-      const idArray = [];
-      cart.forEach((item) => idArray.push(item.id));
-      setCheckItems(idArray);
-    } else {
-      setCheckItems([]);
-    }
-  };
-
-  const handleMoreProduct = () => {
-    setMoreItems((prev) => !prev);
-  };
-
-  /* -------------------------------------------------------------------------- */
-  /*                                   counter                                  */
-  /* -------------------------------------------------------------------------- */
-  const [count, setCount] = useState([]);
-
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
 
   /* -------------------------------------------------------------------------- */
   /*                                     fb                                     */
@@ -112,6 +74,43 @@ export default function CartList({
   );
   const frozen = cartProduct.filter((product) => product.type === 'frozen');
   const roomTemp = cartProduct.filter((product) => product.type === 'roomTemp');
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  checkbox                                  */
+  /* -------------------------------------------------------------------------- */
+  const [checkItems, setCheckItems] = useState([]);
+  const [moreItems, setMoreItems] = useState(true);
+
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      setCheckItems((prev) => [...prev, id]);
+    } else {
+      setCheckItems(checkItems.filter((el) => el !== id));
+    }
+  };
+
+  const handleAllCheck = (checked) => {
+    if (checked) {
+      const idArray = [];
+      cartProduct.forEach((item) => idArray.push(item.id));
+      setCheckItems(idArray);
+    } else {
+      setCheckItems([]);
+    }
+  };
+
+  const handleMoreProduct = () => {
+    setMoreItems((prev) => !prev);
+  };
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   counter                                  */
+  /* -------------------------------------------------------------------------- */
+  const [count, setCount] = useState([]);
+
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
 
   return (
     <div className={classes.cartList}>
