@@ -1,4 +1,4 @@
-import { selector, useRecoilValue } from 'recoil';
+import { selector } from 'recoil';
 import { productQuantity, productPrice } from '@/@store/detailCardState.js';
 
 export const totalPriceSelector = selector({

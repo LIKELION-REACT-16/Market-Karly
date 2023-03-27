@@ -7,6 +7,11 @@ import { ReactComponent as New } from '@/assets/img-new.svg';
 import { ReactComponent as Search } from '@/assets/img-icon-search.svg';
 import classes from '@/components/Header/searchBar.module.scss';
 
+//recoil state start
+import { cartProductNum } from '@/@store/cartProductNum';
+import { useRecoilValue } from 'recoil';
+//recoil state end
+
 export default function SearchBar() {
   return (
     <div className={classes.searchBar}>
@@ -39,20 +44,32 @@ export function SearchForm({ ...rest }) {
 }
 
 export function UtilityButtonList({ ...rest }) {
+  let productAmout = useRecoilValue(cartProductNum);
+
   return (
-    <span {...rest}>
-      <button type="button">
-        <Location />
-      </button>
-      <button type="button">
-        <Heart />
-      </button>
-      <button type="button">
-        <Link to={'/Cart'}>
-          {' '}
-          <Cart />
-        </Link>
-      </button>
-    </span>
+    <>
+      <span {...rest}>
+        <button type="button">
+          <Location />
+        </button>
+        <button type="button">
+          <Heart />
+        </button>
+        <button type="button">
+          <div
+            style={
+              productAmout === 0 ? { display: 'none' } : { display: 'block' }
+            }
+            className={classes.cartNum}
+          >
+            {productAmout}
+          </div>
+          <Link to={'/Cart'}>
+            {' '}
+            <Cart />
+          </Link>
+        </button>
+      </span>
+    </>
   );
 }

@@ -82,6 +82,7 @@
   width: fit-content;
   height: fit-content;
   button {
+    position: relative;
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -93,4 +94,19 @@
       margin-left: 1.25rem;
     }
   }
+}
+
+.cartNum {
+  position: absolute;
+  background-color: $colors-primary;
+  border: 0.125rem solid white;
+  box-sizing: content-box;
+  color: white;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 1rem;
+  font-size: 12px;
+  font-weight: 500;
 }
