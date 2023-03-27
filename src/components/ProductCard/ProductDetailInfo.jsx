@@ -1,12 +1,12 @@
 import classes from '@/components/ProductCard/productDetailInfo.module.scss';
 import Counter from '@/components/Counter/Counter';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ReactComponent as Like } from '@/assets/img-icon-heart-purple.svg';
 import { ReactComponent as Alert } from '@/assets/img-icon-alert.svg';
 import { ReactComponent as AlertDisabled } from '@/assets/img-icon-alert-disable.svg';
 import { totalPriceSelector } from '@/@store/totalPriceSelector.js';
 import saveProductToCart from '@/service/saveProductToCart.js';
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // recoil state start
 import {
@@ -24,7 +24,7 @@ import { bubbleDisplayState, isInTheCartState } from '@/@store/bubbleState';
 export default function ProductDetailInfo() {
   const productTitle = useRecoilValue(productTitleState);
   const price = useRecoilValue(productPrice);
-  const [quantity, setQuantity] = useRecoilState(productQuantity);
+  const setQuantity = useSetRecoilState(productQuantity);
 
   return (
     <ul className={classes.infoList}>
@@ -85,7 +85,6 @@ function ProductCardButtonList({ className }) {
     const data = JSON.parse(sessionStorage.getItem('cart'));
     data?.map((item) => {
       if (item.productId === prodID) {
-        console.log(item.productId);
         setInTheCart(true);
       }
     });

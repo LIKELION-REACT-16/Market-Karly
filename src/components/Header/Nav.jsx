@@ -21,11 +21,7 @@ export default function Nav(props) {
   const isInTheCart = useRecoilValue(isInTheCartState);
   const params = useParams();
   const [isVis, setVis] = useState(false);
-
-  let contents;
-  if (params.id !== undefined) {
-    contents = useRecoilValue(recoilProductInfoSelector(params.id));
-  }
+  const contents = useRecoilValue(recoilProductInfoSelector(params.id));
 
   useLayoutEffect(() => {
     setVis(isVisibleBubble);
@@ -33,7 +29,7 @@ export default function Nav(props) {
 
   useEffect(() => {
     let timer;
-    if (isVisibleBubble) {
+    if (isVis) {
       timer = setTimeout(() => {
         resetVisibleBubble();
       }, 3000);
@@ -41,7 +37,7 @@ export default function Nav(props) {
     return () => {
       clearTimeout(timer);
     };
-  }, [isVisibleBubble]);
+  }, [isVis]);
 
   const wideStyle = {
     backgroundImage: `url(${wideBalloon})`,
@@ -84,7 +80,7 @@ export default function Nav(props) {
         <div
           className={classNames(
             classes.balloon,
-            isVisibleBubble ? classes.isVisible : null
+            isVis ? classes.isVisible : null
           )}
           style={
             (props.scroll_state ? { top: 54 } : null,
