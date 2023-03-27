@@ -4,6 +4,7 @@ import CategoryMenu from './CategoryMenu';
 import classes from '@/components/Header/nav.module.scss';
 
 import { SearchForm, UtilityButtonList } from './SearchBar';
+import { NavLink } from 'react-router-dom';
 
 export default function Nav(props) {
   return (
@@ -40,24 +41,28 @@ export function NavList({ ...rest }) {
   return (
     <li {...rest}>
       <ul>
-        <button type="button">
+        <NavLink>
           <span>신상품</span>
-        </button>
+        </NavLink>
       </ul>
+
       <ul>
-        <button type="button">
+        <NavLink
+          to="/list"
+          className={({ isActive }) => (isActive ? classes.active : '')}
+        >
           <span>베스트</span>
-        </button>
+        </NavLink>
       </ul>
       <ul>
-        <button type="button">
+        <NavLink>
           <span>알뜰쇼핑</span>
-        </button>
+        </NavLink>
       </ul>
       <ul>
-        <button type="button">
+        <NavLink>
           <span>특가/혜택</span>
-        </button>
+        </NavLink>
       </ul>
     </li>
   );

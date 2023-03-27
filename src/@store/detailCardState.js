@@ -24,3 +24,9 @@ export const productPrice = atom({
   key: 'price',
   default: 0,
 });
+
+export const productImgObject = atom({
+  key: 'ImgObject',
+  default: {},
+});
+

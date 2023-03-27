@@ -26,6 +26,10 @@ let router = createBrowserRouter([
       { path: 'Cart', element: <Cart /> },
       { path: 'Register', element: <Register /> },
       { path: 'List', element: <ProductList /> },
+      {
+        path: 'product/:id',
+        element: <ProductDetail />,
+      },
     ],
   },
 ]);
@@ -42,6 +46,7 @@ router = createBrowserRouter(
       <Route path="Cart" element={<Cart />} />
       <Route path="Register" element={<Register />} />
       <Route path="List" element={<ProductList />} />
+      <Route path="product/:id" element={<ProductDetail />} />
     </Route>
   )
 );
