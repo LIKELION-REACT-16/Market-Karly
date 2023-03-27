@@ -13,9 +13,6 @@ import cancelImg from '@/assets/img-cancel.svg';
 
 import dummy from './data.json';
 import Counter from '@/components/Counter/Counter';
-import { productID } from '@/@store/detailCardState';
-
-const { cart } = dummy;
 
 export default function CartList({
   checked = false,
@@ -24,6 +21,9 @@ export default function CartList({
 }) {
   const id = useId();
 
+  /* -------------------------------------------------------------------------- */
+  /*                                  checkbox                                  */
+  /* -------------------------------------------------------------------------- */
   const [checkItems, setCheckItems] = useState([]);
   const [moreItems, setMoreItems] = useState(true);
 
@@ -49,6 +49,18 @@ export default function CartList({
     setMoreItems((prev) => !prev);
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                   counter                                  */
+  /* -------------------------------------------------------------------------- */
+  const [count, setCount] = useState([]);
+
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                     fb                                     */
+  /* -------------------------------------------------------------------------- */
   const [productList, setProductsList] = useState([]);
   const productCollection = collection(dbService, 'products');
 
@@ -70,6 +82,9 @@ export default function CartList({
     getProductList();
   }, []);
 
+  /* -------------------------------------------------------------------------- */
+  /*                                   session                                  */
+  /* -------------------------------------------------------------------------- */
   const [cartList, setCartList] = useState([]);
 
   useEffect(() => {
@@ -89,6 +104,9 @@ export default function CartList({
     cartId.includes(product.id)
   );
 
+  /* -------------------------------------------------------------------------- */
+  /*                                   filter                                   */
+  /* -------------------------------------------------------------------------- */
   const refrigerator = cartProduct.filter(
     (product) => product.type === 'refrigerator'
   );
@@ -106,7 +124,7 @@ export default function CartList({
             name="select-all"
             className={classes.input}
             onChange={(e) => handleAllCheck(e.target.checked)}
-            checked={checkItems.length === cart.length}
+            checked={checkItems.length === cartProduct.length}
           />
           <label htmlFor="selectAllTop" className={classes.label}></label>
         </div>
@@ -175,7 +193,7 @@ export default function CartList({
                       <div className={classes.desc}>
                         <span className={classes.text}>{cart.productName}</span>
                       </div>
-                      <Counter />
+                      <Counter setParentState={setCount} />
                       <div className={classes.price}>
                         <span className={classes.text}>
                           {cart.salePrice === 0
@@ -349,7 +367,7 @@ export default function CartList({
             name="select-all"
             className={classes.input}
             onChange={(e) => handleAllCheck(e.target.checked)}
-            checked={checkItems.length === cart.length}
+            checked={checkItems.length === cartProduct.length}
           />
           <label htmlFor="selectAllTop" className={classes.label}></label>
         </div>
