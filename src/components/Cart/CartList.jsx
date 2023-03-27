@@ -48,10 +48,6 @@ export default function CartList({
     setMoreItems((prev) => !prev);
   };
 
-  const refrigerator = cart.filter((cart) => cart.type === 'refrigerator');
-  const frozen = cart.filter((cart) => cart.type === 'frozen');
-  const roomTemp = cart.filter((cart) => cart.type === 'roomTemp');
-
   const [totalNum, setTotalNum] = useState(0);
   const [productList, setProductsList] = useState([]);
 
@@ -77,6 +73,14 @@ export default function CartList({
 
     getProductList();
   }, []);
+
+  const refrigerator = productList.filter(
+    (product) => product.type === 'refrigerator'
+  );
+  const frozen = productList.filter((product) => product.type === 'frozen');
+  const roomTemp = productList.filter((product) => product.type === 'roomTemp');
+
+  console.log(refrigerator, frozen, roomTemp);
 
   return (
     <div className={classes.cartList}>
@@ -151,17 +155,20 @@ export default function CartList({
                         ></label>
                       </div>
                       <img
-                        src={cart.img}
-                        alt={cart.name}
+                        src={cart.image.thumbnail}
+                        alt={cart.image.alt}
                         className={classes.image}
                       />
                       <div className={classes.desc}>
-                        <span className={classes.text}>{cart.name}</span>
+                        <span className={classes.text}>{cart.productName}</span>
                       </div>
                       <Counter />
                       <div className={classes.price}>
                         <span className={classes.text}>
-                          {cart.price.toLocaleString()}원
+                          {cart.salePrice === 0
+                            ? cart.price.toLocaleString()
+                            : cart.salePrice.toLocaleString()}
+                          원
                         </span>
                       </div>
                       <button type="button" className={classes.cancel}>
@@ -219,17 +226,20 @@ export default function CartList({
                         ></label>
                       </div>
                       <img
-                        src={cart.img}
-                        alt={cart.name}
+                        src={cart.image.thumbnail}
+                        alt={cart.image.alt}
                         className={classes.image}
                       />
                       <div className={classes.desc}>
-                        <span className={classes.text}>{cart.name}</span>
+                        <span className={classes.text}>{cart.productName}</span>
                       </div>
                       <Counter />
                       <div className={classes.price}>
                         <span className={classes.text}>
-                          {cart.price.toLocaleString()}원
+                          {cart.salePrice === 0
+                            ? cart.price.toLocaleString()
+                            : cart.salePrice.toLocaleString()}
+                          원
                         </span>
                       </div>
                       <button type="button" className={classes.cancel}>
@@ -291,17 +301,20 @@ export default function CartList({
                         ></label>
                       </div>
                       <img
-                        src={cart.img}
-                        alt={cart.name}
+                        src={cart.image.thumbnail}
+                        alt={cart.image.alt}
                         className={classes.image}
                       />
                       <div className={classes.desc}>
-                        <span className={classes.text}>{cart.name}</span>
+                        <span className={classes.text}>{cart.productName}</span>
                       </div>
                       <Counter />
                       <div className={classes.price}>
                         <span className={classes.text}>
-                          {cart.price.toLocaleString()}원
+                          {cart.salePrice === 0
+                            ? cart.price.toLocaleString()
+                            : cart.salePrice.toLocaleString()}
+                          원
                         </span>
                       </div>
                       <button type="button" className={classes.cancel}>
