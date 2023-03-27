@@ -36,7 +36,6 @@ const ProductList = () => {
 
     getProductsList();
   }, []);
-  
 
   return (
     <div className={styles.listWrapper}>
@@ -66,6 +65,7 @@ const ProductList = () => {
             {productsList.map((product) => (
               <Thumbnail
                 key={product.id}
+                productId={product.id}
                 productName={product.productName}
                 salePrice={product.salePrice}
                 saleRatio={product.saleRatio}

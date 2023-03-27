@@ -1,21 +1,24 @@
 import React from 'react';
 import Badge from './Badge';
 import styles from '@/styles/components/List/thumbnail.module.scss';
-
 import saveProductToCart from '@/service/saveProductToCart.js';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // img
 import cart from '@/assets/button-cart.svg';
 
-// recoil state start
-import {
-  productID,
-  productTitleState,
-  productPrice,
-  productQuantity,
-} from '@/@store/detailCardState';
+// Recoil
+// 상품정보 가져오기
+import { recoilProductInfoSelector } from '@/@store/detailPageProductInfo';
+import { productTitleState, productPrice } from '@/@store/detailCardState';
+import { cartProductNum } from '@/@store/cartProductNum';
+
+// 장바구니 버블 상태
+import { bubbleDisplayState, isInTheCartState } from '@/@store/bubbleState';
+import { Link } from 'react-router-dom';
 
 export const Thumbnail = ({
+  productId,
   productName,
   price,
   productDesc,
@@ -24,6 +27,10 @@ export const Thumbnail = ({
   thumbnail,
   imgAlt,
 }) => {
+  // 장바구니 관련
+  const setVisibleBubble = useSetRecoilState(bubbleDisplayState);
+  const setCartAmount = useSetRecoilState(cartProductNum);
+  const setInTheCart = useSetRecoilState(isInTheCartState); 
   const badgeInfo = {
     karlyOnly: {
       name: 'Karly Only',
@@ -38,23 +45,22 @@ export const Thumbnail = ({
   const koPrice = price.toLocaleString('ko-KR');
   const discountRate = Math.round(saleRatio * 100);
 
+  // 장바구니 추가
   const cartButtonHandler = () => {
     const data = JSON.parse(sessionStorage.getItem('cart'));
     data?.map((item) => {
-      if (item.productId === prodID) {
-        console.log(item.productId);
+      if (item.key === productId) {
+        console.log(productId);
         setInTheCart(true);
       }
     });
-    saveProductToCart(prodID, quantity);
-    if (quantity !== 0 && sessionStorage.getItem('cart') && !isVisibleBubble) {
-      setCartAmount(JSON.parse(sessionStorage.getItem('cart')).length);
-      setVisibleBubble(true);
-    }
+    saveProductToCart(productId);
+    setCartAmount(JSON.parse(sessionStorage.getItem('cart')).length);
+    setVisibleBubble(true);
   };
 
   return (
-    <div className={styles.thumbnailWrapper}>
+    <Link to="/product/`${productId}`" className={styles.thumbnailWrapper}>
       <div className={styles.thumbnailVisual}>
         <img className={styles.thumbnailImg} alt={imgAlt} src={thumbnail} />
         <button
@@ -96,6 +102,6 @@ export const Thumbnail = ({
           nameColor={badgeInfo.limited.color}
         />
       </div>
-    </div>
+    </Link>
   );
 };
