@@ -29,3 +29,4 @@ export const productImgObject = atom({
   key: 'ImgObject',
   default: {},
 });
+

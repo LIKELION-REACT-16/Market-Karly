@@ -21,8 +21,6 @@ import img3 from "@/assets/img-banner03.svg"
 import img4 from "@/assets/img-banner04.svg"
 
 
-
-
 /* ----------------------------- Slider 컴포넌트 시작 ----------------------------- */
 
 export function Slider() {
@@ -53,6 +51,7 @@ export function Slider() {
         className={classes.mySwiper}
         // className={classes}
       >
+
         <button
         ref={prevButton}
         className={classes.swiperPrevBtn}   
@@ -72,4 +71,3 @@ export function Slider() {
     </>
   );
 }
-
