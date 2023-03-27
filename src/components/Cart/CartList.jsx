@@ -13,6 +13,7 @@ import cancelImg from '@/assets/img-cancel.svg';
 
 import dummy from './data.json';
 import Counter from '@/components/Counter/Counter';
+import { productID } from '@/@store/detailCardState';
 
 const { cart } = dummy;
 
@@ -82,11 +83,17 @@ export default function CartList({
     }
   }, []);
 
-  const refrigerator = productList.filter(
+  const cartId = cartList.map((cart) => cart.productId);
+
+  const cartProduct = productList.filter((product) =>
+    cartId.includes(product.id)
+  );
+
+  const refrigerator = cartProduct.filter(
     (product) => product.type === 'refrigerator'
   );
-  const frozen = productList.filter((product) => product.type === 'frozen');
-  const roomTemp = productList.filter((product) => product.type === 'roomTemp');
+  const frozen = cartProduct.filter((product) => product.type === 'frozen');
+  const roomTemp = cartProduct.filter((product) => product.type === 'roomTemp');
 
   return (
     <div className={classes.cartList}>
@@ -104,7 +111,7 @@ export default function CartList({
           <label htmlFor="selectAllTop" className={classes.label}></label>
         </div>
         <span className={classes.all}>
-          전체선택 ({checkItems.length}/{cart.length})
+          전체선택 ({checkItems.length}/{cartProduct.length})
         </span>
         <div className={classes.bar}></div>
         <span className={classes.delete}>선택삭제</span>
@@ -347,7 +354,7 @@ export default function CartList({
           <label htmlFor="selectAllTop" className={classes.label}></label>
         </div>
         <span className={classes.all}>
-          전체선택 ({checkItems.length}/{cart.length})
+          전체선택 ({checkItems.length}/{cartProduct.length})
         </span>
         <div className={classes.bar}></div>
         <span className={classes.delete}>선택삭제</span>
