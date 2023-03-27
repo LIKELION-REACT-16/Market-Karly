@@ -1,12 +1,43 @@
 import classes from '@/components/ModalForm/ModalForm.module.scss';
+import { forwardRef, useRef } from 'react';
 
-export function ModalFormTextarea({ type }) {
+const ModalFormTextarea = (
+  { type, contentValue, onContentValueChangeHandler, ...restProps },
+  ref
+) => {
+  const textAreaRef = useRef();
+
+  const onClickHandler = () => {
+    ref.current.classList.toggle(`${classes.hidden}`);
+    textAreaRef.current.focus();
+  };
+
+  const onBlurHandler = () => {
+    if (textAreaRef.current.value === '') {
+      ref.current.classList.toggle(`${classes.hidden}`);
+    }
+  };
+
   return (
     <div className={classes.textArea}>
-      <textarea name="hello" id="hello"></textarea>
-
+      <textarea
+        name="content"
+        id="content"
+        ref={textAreaRef}
+        onBlur={onBlurHandler}
+        value={contentValue}
+        onChange={onContentValueChangeHandler}
+        onFocus={() => {
+          ref.current.classList.add(`${classes.hidden}`);
+        }}
+      />
+      {/* placeholder message */}
       {type === 'review' ? (
-        <ul className={classes.placeholder}>
+        <ul
+          className={`${classes.placeholder}`}
+          ref={ref}
+          onClick={onClickHandler}
+        >
           <li>
             <span>
               컬리는 믿을 수 있는 후기문화를 함께 만들어가고자 합니다. 식품 등의
@@ -71,7 +102,7 @@ export function ModalFormTextarea({ type }) {
           </li>
         </ul>
       ) : type === 'inquiry' ? (
-        <ul className={classes.placeholder}>
+        <ul className={classes.placeholder} ref={ref} onClick={onClickHandler}>
           <li>
             <p>상품문의 작성 전 확인해 주세요</p>
             <ul>
@@ -136,6 +167,11 @@ export function ModalFormTextarea({ type }) {
           </li>
         </ul>
       ) : null}
+      <div className={classes.wordCount}>
+        <span>( {contentValue.length} / 10 )</span>
+      </div>
     </div>
   );
-}
+};
+
+export default forwardRef(ModalFormTextarea);

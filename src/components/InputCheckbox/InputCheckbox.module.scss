@@ -7,9 +7,9 @@
   &_inline {
     display: inline-flex;
   }
-  &_vertical {
-    flex-direction: column;
-  }
+  // &_vertical {
+  //   flex-direction: column;
+  // }
 }
 label.paragraph-small {
   @include paragraph-small;

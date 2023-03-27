@@ -1,15 +1,18 @@
 import classes from './ProductDetailView.module.scss';
-import { ButtonPrevNext } from './ButtonPrevNext/ButtonPrevNext';
+import { ReactComponent as Notice } from '@/assets/img-icon-notice.svg';
 import Badge from '@/components/Badge';
 import React, { useEffect, useRef, useState } from 'react';
+import { ReactComponent as Prev } from '@/assets/img-icon-prev.svg';
+import { ReactComponent as PrevActive } from '@/assets/img-icon-prev-active.svg';
+import { ReactComponent as Next } from '@/assets/img-icon-next.svg';
+import { ReactComponent as NextActive } from '@/assets/img-icon-next-active.svg';
 
-export function Review({ maskedReviews }) {
-  const reviewNoticeData = {
-    accordionContents: [
-      {
-        id: 'review-notice-01',
-        handle: '금주의 베스트 후기 안내',
-        panel: `
+export function Review({ reviews }) {
+  const accordionContents = [
+    {
+      id: 'notice1',
+      handle: '금주의 베스트 후기 안내',
+      panel: `
           <p>■ 베스트 후기 당첨자 안내</p>
           <p></p>
           <p>고객님 안녕하세요, 컬리입니다.</p>
@@ -21,16 +24,13 @@ export function Review({ maskedReviews }) {
           <p>실제로 상품의 후기가 구매 결정에 있어 큰 도움이 된 베스트 후기를 아래로 공유드립니다.</p>
           <p></p>
           <p>정성껏 후기를 작성해주신 모든 고객님께 감사드립니다.</p>
-          <p></p>
-          <p>...</p>
-          <p></p>
           <p>컬리 드림.</p>
         `,
-      },
-      {
-        id: 'review-notice-02',
-        handle: '상품 후기 적립금 정책 안내',
-        panel: `
+    },
+    {
+      id: 'notice2',
+      handle: '상품 후기 적립금 정책 안내',
+      panel: `
           <p>[ 금주의 Best 후기 및 상품 후기 적립금 정책 변경 안내 ] </p>
           <p>고객님 안녕하세요. 컬리 입니다. 적립금 지급 정책을 안내드리니 컬리 이용에 참고 부탁드립니다. </p>
           <p>■ 적립금 지급 정책 ■</p>
@@ -53,114 +53,142 @@ export function Review({ maskedReviews }) {
           <p>5. 구매한 상품이 아닌 캡쳐 사진, 포장 박스 사진 등 상품과 관련 없는 이미지, 동영상을 사용한 경우 </p>
           <p>또한, 비정상적인 방법을 통해 후기를 작성하고 적립금을 취득한 경우 작성자에 법적 책임의 소지가 있음을 알려드립니다. </p>
         `,
-      },
-    ],
+    },
+  ];
+
+  const maskingName = (strName) => {
+    if (strName.length > 2) {
+      var originName = strName.split('');
+      originName.forEach(function (name, i) {
+        if (i === 0 || i === originName.length - 1) return;
+        originName[i] = '*';
+      });
+      var joinName = originName.join();
+      return joinName.replace(/,/g, '');
+    } else {
+      var pattern = /.$/; // 정규식
+      return strName.replace(pattern, '*');
+    }
   };
 
-  const [reviews, setReviews] = useState(maskedReviews);
+  // 공지사항 아코디언 활성화 id
+  const [selectedId, setSelectedId] = useState(null);
+  // 추천순 최신순 정렬
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    return () => {};
-  }, [reviews]);
+  const toggleAccordion = (index) => {
+    if (selectedId === index) {
+      setSelectedId(null);
+    } else {
+      setSelectedId(index);
+    }
+  };
+
+  const sortByActiveIndex = (index) => {
+    const reviewsCopy = [...reviews];
+    if (index === 0) {
+      return reviewsCopy.sort((a, b) => b.recommend - a.recommend);
+    } else if (index === 1) {
+      return reviewsCopy.sort((a, b) => b.reviewDate - a.reviewDate);
+    }
+  };
 
   return (
-    <div className={classes.Review}>
+    <div className={classes.review}>
       {/* group1 */}
-      <div className={classes.ReviewTotal}>
-        <span>총 {reviews.length}개</span>
-        <div className={classes.ReviewTotalFrame75}>
-          <button
-            type="button"
-            onClick={(e) => {
-              const reviewsCopy = [...reviews];
-              setReviews(reviewsCopy.sort((a, b) => b.recommend - a.recommend));
-            }}
+      <div className={classes.reviewTotal}>
+        <span>총 {reviews?.length}개</span>
+        <div className={classes.reviewTotalFrame75}>
+          <span
+            className={activeIndex === 0 ? classes.active : ''}
+            onClick={() => setActiveIndex(0)}
           >
             추천순
-          </button>
+          </span>
 
           <span aria-hidden="true"></span>
-          <button
-            type="button"
-            onClick={(e) => {
-              const reviewsCopy = [...reviews];
-              setReviews(
-                reviewsCopy.sort((a, b) => b.reviewDate - a.reviewDate)
-              );
-            }}
+          <span
+            className={activeIndex === 1 ? classes.active : ''}
+            onClick={() => setActiveIndex(1)}
           >
             최근 등록순
-          </button>
+          </span>
         </div>
       </div>
 
       {/* group2 */}
-      <div className={classes.ReviewTable}>
-        {/* group2-1 */}
+      <div className={classes.reviewTable}>
+        {/* group2-1 공지사항 */}
         <div>
-          <article
-            key="id1"
-            aria-labelledby="id1"
-            data-component="AccordionItem"
-          >
-            <div data-component="AccordionHandle">
-              <button
-                type="button"
-                // id={`${controlId}-handle`}
-                // aria-expanded={isActive}
-                // aria-controls={controlId}
-                // onClick={onActive}
-              >
-                상품 후기 적립금 정책 안내 (children. 변수 handle의 값)
-              </button>
-            </div>
+          {accordionContents.map((notice) => (
+            <article
+              key={notice.id}
+              aria-labelledby={`accordion-header-${notice.id}`}
+              data-component="AccordionItem"
+            >
+              <div data-component="AccordionHandle">
+                <button
+                  type="button"
+                  id={`${notice.id}-handle`}
+                  aria-expanded={selectedId === notice.id ? true : false}
+                  aria-controls={notice.id}
+                  onClick={() => toggleAccordion(notice.id)}
+                >
+                  {notice.handle}
+                </button>
+              </div>
 
-            <div
-              role="region"
-              // aria-labelledby={`${controlId}-handle`}
-              data-component="AccordionPanel"
-              // className={isActive ? 'active' : ''}
-              // dangerouslySetInnerHTML={contents}
-              dangerouslySetInnerHTML={{
-                __html: `<p>[ 금주의 Best 후기 및 상품 후기 적립금 정책 변경 안내 ] </p>
-          <p>고객님 안녕하세요. 컬리 입니다. 적립금 지급 정책을 안내드리니 컬리 이용에 참고 부탁드립니다. </p>
-          <p>■ 적립금 지급 정책 ■</p>
-          <p> 1. 일반 후기 -글 후기 50원/건 </p>
-          <p>-사진 후기 100원/건 </p>
-          <p>*퍼플/더퍼플 러버스 고객님께는 더블 후기 적립금이 지급됩니다. </p>`,
-              }}
-            ></div>
-          </article>
+              <div
+                role="region"
+                aria-labelledby={`${notice.id}-handle`}
+                data-component="AccordionPanel"
+                className={
+                  selectedId === notice.id
+                    ? classes.activeNotice
+                    : classes.hiddenNotice
+                }
+                dangerouslySetInnerHTML={{ __html: notice.panel }}
+              />
+            </article>
+          ))}
         </div>
 
-        {/* group2-2 */}
-        <ul>
-          {reviews.map((review) => {
-            return (
-              <ReviewItem
-                key={review.id}
-                userName={review.userName}
-                productName={review.productName}
-                reviewContent={review.reviewContent}
-                reviewDate={review.reviewDate}
-                recommend={review.recommend}
-              />
-            );
-          })}
-        </ul>
+        {/* group2-2 본문 */}
+        {reviews?.length === 0 ? (
+          <div className={classes.reviewTableEmpty}>
+            <Notice />
+            <span>따끈한 첫 후기를 기다리고 있어요.</span>
+          </div>
+        ) : (
+          <ul>
+            {sortByActiveIndex(activeIndex).map((review) => {
+              return (
+                <ReviewItem
+                  key={review.id}
+                  userName={maskingName(review.userName)}
+                  productName={review.productName}
+                  reviewTitle={review.reviewTitle}
+                  reviewContent={review.reviewContent}
+                  reviewDate={new Date(
+                    parseInt(review.reviewDate, 10)
+                  ).toLocaleDateString('ko-KR')}
+                  recommend={review.recommend}
+                />
+              );
+            })}
+          </ul>
+        )}
       </div>
 
-      {/* group3. review, inquiry 두 군데에서 사용됨 */}
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <ButtonPrevNext
-          ariaLabel="상품 후기 이전 페이지 버튼"
-          className="prev"
-        />
-        <ButtonPrevNext
-          ariaLabel="상품 후기 다음 페이지 버튼"
-          className="next-active"
-        />
-      </div>
+      {/* group3 */}
+      {reviews?.length <= 5 ? null : (
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <Prev />
+          {/* <PrevActive /> */}
+          <NextActive />
+          {/* <Next /> */}
+        </div>
+      )}
     </div>
   );
 }
@@ -169,26 +197,24 @@ function ReviewItem({
   id,
   userName,
   productName,
+  reviewTitle,
   reviewContent,
   reviewDate,
   recommend,
 }) {
   return (
-    <li
-      className={classes.ReviewItem}
-      data-test={id}
-      data-recommend={recommend}
-    >
-      <div className={classes.ReviewItemFrame76}>
-        {/* <Badge badgeName="베스트" nameColor="white"></Badge> */}
+    <li className={classes.reviewItem} data-id={id} data-recommend={recommend}>
+      <div className={classes.reviewItemFrame76}>
         <Badge badgeName="베스트"></Badge>
-        {/* <Badge badgeName="퍼플" nameColor="#5f0080"></Badge> */}
         <Badge badgeName="퍼플"></Badge>
         <span>{userName}</span>
       </div>
-      <div className={classes.ReviewItemFrame78}>
+      <div className={classes.reviewItemFrame78}>
         <span>{productName}</span>
-        <p>{reviewContent}</p>
+        <p>{reviewTitle}</p>
+        <p>
+          {reviewContent} (추천 {recommend})
+        </p>
         <span>{reviewDate}</span>
       </div>
     </li>

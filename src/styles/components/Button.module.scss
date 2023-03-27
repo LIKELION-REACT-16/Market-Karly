@@ -67,6 +67,18 @@ button {
   }
 }
 
+.primary {
+  background-color: $colors-primary;
+
+  span {
+    color: $colors-white;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
 .grayborder {
   border: 1px solid $colors-gray-400;
 
