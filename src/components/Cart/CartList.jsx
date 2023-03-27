@@ -48,7 +48,6 @@ export default function CartList({
     setMoreItems((prev) => !prev);
   };
 
-  const [totalNum, setTotalNum] = useState(0);
   const [productList, setProductsList] = useState([]);
 
   const productCollection = collection(dbService, 'products');
