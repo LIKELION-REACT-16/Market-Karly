@@ -2,8 +2,18 @@ import React from 'react';
 import Badge from './Badge';
 import styles from '@/styles/components/List/thumbnail.module.scss';
 
+import saveProductToCart from '@/service/saveProductToCart.js';
+
 // img
 import cart from '@/assets/button-cart.svg';
+
+// recoil state start
+import {
+  productID,
+  productTitleState,
+  productPrice,
+  productQuantity,
+} from '@/@store/detailCardState';
 
 export const Thumbnail = ({
   productName,
@@ -26,18 +36,41 @@ export const Thumbnail = ({
   };
 
   const koPrice = price.toLocaleString('ko-KR');
-  const discountRate = saleRatio * 100;
+  const discountRate = Math.round(saleRatio * 100);
+
+  const cartButtonHandler = () => {
+    const data = JSON.parse(sessionStorage.getItem('cart'));
+    data?.map((item) => {
+      if (item.productId === prodID) {
+        console.log(item.productId);
+        setInTheCart(true);
+      }
+    });
+    saveProductToCart(prodID, quantity);
+    if (quantity !== 0 && sessionStorage.getItem('cart') && !isVisibleBubble) {
+      setCartAmount(JSON.parse(sessionStorage.getItem('cart')).length);
+      setVisibleBubble(true);
+    }
+  };
 
   return (
     <div className={styles.thumbnailWrapper}>
       <div className={styles.thumbnailVisual}>
         <img className={styles.thumbnailImg} alt={imgAlt} src={thumbnail} />
-        <button className={styles.cartButton} type="button">
+        <button
+          onClick={cartButtonHandler}
+          className={styles.cartButton}
+          type="button"
+        >
           <img src={cart} />
         </button>
       </div>
       <p className={styles.starDelivery}>샛별배송</p>
-      <h4>{productName}</h4>
+      <h4
+        style={{ overflow: 'hidden', width: '250px', textOverflow: 'revert' }}
+      >
+        {productName}
+      </h4>
       <span className={discountRate == 0 ? null : styles.saleRatio}>
         {discountRate == 0 ? null : `${discountRate}%`}
       </span>
@@ -50,7 +83,9 @@ export const Thumbnail = ({
       <span className={discountRate !== 0 ? styles.originalPrice : null}>
         {discountRate !== 0 ? `${koPrice}원` : null}
       </span>
-      <p>{productDesc}</p>
+      <p style={{ overflow: 'hidden', width: '250px', textOverflow: 'revert' }}>
+        {productDesc}
+      </p>
       <div className={styles.badgeWrapper}>
         <Badge
           badgeName={badgeInfo.karlyOnly.name}

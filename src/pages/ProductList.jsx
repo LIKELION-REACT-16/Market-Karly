@@ -36,6 +36,7 @@ const ProductList = () => {
 
     getProductsList();
   }, []);
+  
 
   return (
     <div className={styles.listWrapper}>
