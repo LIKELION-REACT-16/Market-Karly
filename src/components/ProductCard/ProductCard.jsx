@@ -4,6 +4,9 @@ import ProductDetailInfo from '@/components/ProductCard/ProductDetailInfo';
 import a11y from '@/styles/components/A11yHidden.module.scss';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useLayoutEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+// recoil state start
 import {
   productID,
   productTitleState,
@@ -13,7 +16,7 @@ import {
 } from '@/@store/detailCardState';
 
 import { recoilProductInfoSelector } from '@/@store/detailPageProductInfo';
-import { useParams } from 'react-router-dom';
+// recoil state end
 
 export default function ProductCard() {
   const params = useParams();
@@ -31,7 +34,6 @@ export default function ProductCard() {
   const [thumbnailImg, setThumbnailImg] = useRecoilState(productImgObject);
 
   useLayoutEffect(() => {
-    console.log(contents);
     setProductID(params.id);
     setTitle(contents.productName);
     setDescription(contents.desc);
