@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const Home = lazy(() => import('./pages/Home'));

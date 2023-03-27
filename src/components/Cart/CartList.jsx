@@ -1,7 +1,9 @@
 import classes from '@/styles/pages/Cart/CartList.module.scss';
 
-import { useId, useState } from 'react';
-import classNames from 'classnames';
+import { useEffect, useId, useState } from 'react';
+
+import { dbService } from '@/routes/fbase';
+import { getDocs, collection } from 'firebase/firestore';
 
 import downArrow from '@/assets/img-down-arrow.svg';
 import refrigeratorImg from '@/assets/img-refrigerated-food.svg';
@@ -17,12 +19,6 @@ const { cart } = dummy;
 export default function CartList({
   checked = false,
   type = 'checkbox',
-  invisibleInput = true,
-  invisibleLabel = false,
-  inline = false,
-  vertical = false,
-  style,
-  labelClasses = [],
   ...restProps
 }) {
   const id = useId();
@@ -55,6 +51,32 @@ export default function CartList({
   const refrigerator = cart.filter((cart) => cart.type === 'refrigerator');
   const frozen = cart.filter((cart) => cart.type === 'frozen');
   const roomTemp = cart.filter((cart) => cart.type === 'roomTemp');
+
+  const [totalNum, setTotalNum] = useState(0);
+  const [productList, setProductsList] = useState([]);
+
+  const productCollection = collection(dbService, 'products');
+
+  useEffect(() => {
+    const getProductList = async () => {
+      try {
+        const data = await getDocs(productCollection);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setProductsList(filteredData);
+        setTotalNum(productList.length);
+
+        console.log(productList);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getProductList();
+  }, []);
 
   return (
     <div className={classes.cartList}>
