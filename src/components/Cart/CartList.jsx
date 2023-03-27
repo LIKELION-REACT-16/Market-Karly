@@ -49,7 +49,6 @@ export default function CartList({
   };
 
   const [productList, setProductsList] = useState([]);
-
   const productCollection = collection(dbService, 'products');
 
   useEffect(() => {
@@ -62,9 +61,6 @@ export default function CartList({
         }));
 
         setProductsList(filteredData);
-        setTotalNum(productList.length);
-
-        console.log(productList);
       } catch (err) {
         console.log(err);
       }
@@ -73,13 +69,24 @@ export default function CartList({
     getProductList();
   }, []);
 
+  const [cartList, setCartList] = useState([]);
+
+  useEffect(() => {
+    let getCart = sessionStorage.getItem('cart');
+
+    if (getCart == null) {
+      getCart = [];
+    } else {
+      getCart = JSON.parse(getCart);
+      setCartList(getCart);
+    }
+  }, []);
+
   const refrigerator = productList.filter(
     (product) => product.type === 'refrigerator'
   );
   const frozen = productList.filter((product) => product.type === 'frozen');
   const roomTemp = productList.filter((product) => product.type === 'roomTemp');
-
-  console.log(refrigerator, frozen, roomTemp);
 
   return (
     <div className={classes.cartList}>
