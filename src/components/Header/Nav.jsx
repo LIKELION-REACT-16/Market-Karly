@@ -64,7 +64,7 @@ export default function Nav(props) {
       <div className={classes.navigation}>
         <button type="button" className={classes.categoryButton}>
           <span>{<Hamburger />}카테고리</span>
-          {<CategoryMenu />}
+          {<CategoryMenu style={{ zIndex: '20000' }} />}
         </button>
 
         <NavList className={classes.navList} />
