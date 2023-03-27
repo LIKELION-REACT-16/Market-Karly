@@ -14,8 +14,6 @@ import cancelImg from '@/assets/img-cancel.svg';
 import dummy from './data.json';
 import Counter from '@/components/Counter/Counter';
 
-const { cart } = dummy;
-
 export default function CartList({
   checked = false,
   type = 'checkbox',
@@ -23,6 +21,9 @@ export default function CartList({
 }) {
   const id = useId();
 
+  /* -------------------------------------------------------------------------- */
+  /*                                  checkbox                                  */
+  /* -------------------------------------------------------------------------- */
   const [checkItems, setCheckItems] = useState([]);
   const [moreItems, setMoreItems] = useState(true);
 
@@ -48,8 +49,19 @@ export default function CartList({
     setMoreItems((prev) => !prev);
   };
 
-  const [productList, setProductsList] = useState([]);
+  /* -------------------------------------------------------------------------- */
+  /*                                   counter                                  */
+  /* -------------------------------------------------------------------------- */
+  const [count, setCount] = useState([]);
 
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                     fb                                     */
+  /* -------------------------------------------------------------------------- */
+  const [productList, setProductsList] = useState([]);
   const productCollection = collection(dbService, 'products');
 
   useEffect(() => {
@@ -62,9 +74,6 @@ export default function CartList({
         }));
 
         setProductsList(filteredData);
-        setTotalNum(productList.length);
-
-        console.log(productList);
       } catch (err) {
         console.log(err);
       }
@@ -73,13 +82,36 @@ export default function CartList({
     getProductList();
   }, []);
 
-  const refrigerator = productList.filter(
+  /* -------------------------------------------------------------------------- */
+  /*                                   session                                  */
+  /* -------------------------------------------------------------------------- */
+  const [cartList, setCartList] = useState([]);
+
+  useEffect(() => {
+    let getCart = sessionStorage.getItem('cart');
+
+    if (getCart == null) {
+      getCart = [];
+    } else {
+      getCart = JSON.parse(getCart);
+      setCartList(getCart);
+    }
+  }, []);
+
+  const cartId = cartList.map((cart) => cart.productId);
+
+  const cartProduct = productList.filter((product) =>
+    cartId.includes(product.id)
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   filter                                   */
+  /* -------------------------------------------------------------------------- */
+  const refrigerator = cartProduct.filter(
     (product) => product.type === 'refrigerator'
   );
-  const frozen = productList.filter((product) => product.type === 'frozen');
-  const roomTemp = productList.filter((product) => product.type === 'roomTemp');
-
-  console.log(refrigerator, frozen, roomTemp);
+  const frozen = cartProduct.filter((product) => product.type === 'frozen');
+  const roomTemp = cartProduct.filter((product) => product.type === 'roomTemp');
 
   return (
     <div className={classes.cartList}>
@@ -92,12 +124,12 @@ export default function CartList({
             name="select-all"
             className={classes.input}
             onChange={(e) => handleAllCheck(e.target.checked)}
-            checked={checkItems.length === cart.length}
+            checked={checkItems.length === cartProduct.length}
           />
           <label htmlFor="selectAllTop" className={classes.label}></label>
         </div>
         <span className={classes.all}>
-          전체선택 ({checkItems.length}/{cart.length})
+          전체선택 ({checkItems.length}/{cartProduct.length})
         </span>
         <div className={classes.bar}></div>
         <span className={classes.delete}>선택삭제</span>
@@ -161,7 +193,7 @@ export default function CartList({
                       <div className={classes.desc}>
                         <span className={classes.text}>{cart.productName}</span>
                       </div>
-                      <Counter />
+                      <Counter setParentState={setCount} />
                       <div className={classes.price}>
                         <span className={classes.text}>
                           {cart.salePrice === 0
@@ -335,12 +367,12 @@ export default function CartList({
             name="select-all"
             className={classes.input}
             onChange={(e) => handleAllCheck(e.target.checked)}
-            checked={checkItems.length === cart.length}
+            checked={checkItems.length === cartProduct.length}
           />
           <label htmlFor="selectAllTop" className={classes.label}></label>
         </div>
         <span className={classes.all}>
-          전체선택 ({checkItems.length}/{cart.length})
+          전체선택 ({checkItems.length}/{cartProduct.length})
         </span>
         <div className={classes.bar}></div>
         <span className={classes.delete}>선택삭제</span>
