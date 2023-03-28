@@ -38,6 +38,7 @@
 - Database : [Firebase](https://firebase.google.com/?hl=ko)
 
 ## ✨ 구현 내용 및 배포 사이트
-📕 구현 내용은 [Wiki](https://github.com/LIKELION-REACT-16/Market-Karly/wiki) 에서 확인하실 수 있습니다.
+- 📕 구현 내용은 [Implementation](https://github.com/LIKELION-REACT-16/Market-Karly/wiki/Implementation) 에서 확인하실 수 있습니다.
+- 📘 위키 : [Market Karly Wiki](https://github.com/LIKELION-REACT-16/Market-Karly/wiki)
 
-📌 배포 사이트 : [Market Karly](https://likelion-react-16.github.io/Market-Karly/#/)
+<b>📌 배포 사이트 : [Market Karly](https://likelion-react-16.github.io/Market-Karly/#/)</b>
