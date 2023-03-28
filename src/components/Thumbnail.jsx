@@ -30,7 +30,7 @@ export const Thumbnail = ({
   // 장바구니 관련
   const setVisibleBubble = useSetRecoilState(bubbleDisplayState);
   const setCartAmount = useSetRecoilState(cartProductNum);
-  const setInTheCart = useSetRecoilState(isInTheCartState); 
+  const setInTheCart = useSetRecoilState(isInTheCartState);
   const badgeInfo = {
     karlyOnly: {
       name: 'Karly Only',
@@ -50,7 +50,6 @@ export const Thumbnail = ({
     const data = JSON.parse(sessionStorage.getItem('cart'));
     data?.map((item) => {
       if (item.key === productId) {
-        console.log(productId);
         setInTheCart(true);
       }
     });
@@ -60,7 +59,7 @@ export const Thumbnail = ({
   };
 
   return (
-    <Link to="/product/`${productId}`" className={styles.thumbnailWrapper}>
+    <Link to={`/product/${productId}`} className={styles.thumbnailWrapper}>
       <div className={styles.thumbnailVisual}>
         <img className={styles.thumbnailImg} alt={imgAlt} src={thumbnail} />
         <button
