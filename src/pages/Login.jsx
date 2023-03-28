@@ -3,11 +3,15 @@ import Test from '@/components/Test';
 import InputText from '@/components/InputText/InputText';
 import '@/styles/pages/_login.scss';
 import { NormalButton } from '@/components/Button';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const signInBtn = (e) => {
-    alert('로그인이 완료되었습니다.');
-    location.href = '/';
+    const url = location.href;
+    const lowerCase = url.toLowerCase();
+    const lastIndexOf = lowerCase.lastIndexOf('login');
+    alert("로그인이 되었습니다.");
+    location.href = url.substring(0, lastIndexOf);
   };
 
   return (
@@ -26,11 +30,11 @@ function Login() {
             <span>로그인</span>
           </NormalButton>
         </div>
-        <a href="./Register">
+        <Link to={'/Register'}>
           <NormalButton color="white" width="340" height="54">
             <span>회원가입</span>
           </NormalButton>
-        </a>
+        </Link>
       </form>
     </main>
   );
