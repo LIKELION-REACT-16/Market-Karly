@@ -19,6 +19,7 @@ export default function Nav(props) {
   const resetVisibleBubble = useResetRecoilState(bubbleDisplayState);
   const isVisibleBubble = useRecoilValue(bubbleDisplayState);
   const isInTheCart = useRecoilValue(isInTheCartState);
+  const resetInTheCart = useResetRecoilState(isInTheCartState);
   const params = useParams();
   const [isVis, setVis] = useState(false);
   const contents = useRecoilValue(recoilProductInfoSelector(params.id));
@@ -29,9 +30,11 @@ export default function Nav(props) {
 
   useEffect(() => {
     let timer;
+
     if (isVis) {
       timer = setTimeout(() => {
         resetVisibleBubble();
+        resetInTheCart();
       }, 3000);
     }
     return () => {
