@@ -5,6 +5,10 @@ main{
   justify-content: center;
   font-family: Pretendard;
 }
+h2{
+  font-size:21px;
+  font-weight: 600;
+}
 
 form{
   font-size:16px;
@@ -35,6 +39,7 @@ p{
   flex-flow:row nowrap;
   align-items:center;
   margin:20px 0;
+  gap: 10px;
 }
 
 .agreement{
@@ -76,3 +81,42 @@ p{
   color: #5F0080;
   font-size: 12px;
 }
+
+.RegisterVal{
+  display:flex;
+  flex-flow:column nowrap;
+  font-size:12px;
+  color:red;
+  gap:10px;
+  padding-top:10px;
+}
+
+.InputPrivacy{
+  box-sizing: border-box;
+
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 20px;
+  gap: 31px;
+
+  width: 333px;
+  height: 44px;
+
+
+
+  border: 1px solid #A6A6A6;
+  border-radius: 4px;
+}
+
+input[type='radio']{
+  -webkit-appearance : radio;
+  background : url(/src/assets/Radio-uncheck.svg);
+  margin-left: 40px;;
+}
+
+input[type='checkbox']{
+  -webkit-appearance: checkbox;
+}
+
