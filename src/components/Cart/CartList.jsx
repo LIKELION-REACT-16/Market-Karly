@@ -106,11 +106,19 @@ export default function CartList({
   /* -------------------------------------------------------------------------- */
   /*                                   counter                                  */
   /* -------------------------------------------------------------------------- */
-  const [count, setCount] = useState([]);
+  const [refriCount, setRefriCount] = useState([]);
+  const [frozenCount, setFrozenCount] = useState([]);
+  const [roomCount, setRoomCount] = useState([]);
 
   useEffect(() => {
-    console.log(count);
-  }, [count]);
+    setRefriCount(refriCount);
+  }, [refriCount]);
+  useEffect(() => {
+    setFrozenCount(frozenCount);
+  }, [frozenCount]);
+  useEffect(() => {
+    setRoomCount(roomCount);
+  }, [roomCount]);
 
   return (
     <div className={classes.cartList}>
@@ -192,12 +200,13 @@ export default function CartList({
                       <div className={classes.desc}>
                         <span className={classes.text}>{cart.productName}</span>
                       </div>
-                      <Counter setParentState={setCount} />
+                      <Counter setParentState={setRefriCount} />
                       <div className={classes.price}>
                         <span className={classes.text}>
-                          {cart.salePrice === 0
-                            ? cart.price.toLocaleString()
-                            : cart.salePrice.toLocaleString()}
+                          {(cart.salePrice === 0
+                            ? refriCount * cart.price
+                            : refriCount * cart.salePrice
+                          ).toLocaleString()}
                           원
                         </span>
                       </div>
@@ -263,12 +272,13 @@ export default function CartList({
                       <div className={classes.desc}>
                         <span className={classes.text}>{cart.productName}</span>
                       </div>
-                      <Counter />
+                      <Counter setParentState={setFrozenCount} />
                       <div className={classes.price}>
                         <span className={classes.text}>
-                          {cart.salePrice === 0
-                            ? cart.price.toLocaleString()
-                            : cart.salePrice.toLocaleString()}
+                          {(cart.salePrice === 0
+                            ? frozenCount * cart.price
+                            : frozenCount * cart.salePrice
+                          ).toLocaleString()}
                           원
                         </span>
                       </div>
@@ -338,12 +348,13 @@ export default function CartList({
                       <div className={classes.desc}>
                         <span className={classes.text}>{cart.productName}</span>
                       </div>
-                      <Counter />
+                      <Counter setParentState={setRoomCount} />
                       <div className={classes.price}>
                         <span className={classes.text}>
-                          {cart.salePrice === 0
-                            ? cart.price.toLocaleString()
-                            : cart.salePrice.toLocaleString()}
+                          {(cart.salePrice === 0
+                            ? roomCount * cart.price
+                            : roomCount * cart.salePrice
+                          ).toLocaleString()}
                           원
                         </span>
                       </div>
