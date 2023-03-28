@@ -21,17 +21,11 @@ function Register() {
 
   const signUpBtn = (e) => {
     // 사용자의 입력값을 받아서 세션에 저장한다.
-    console.log('signUpBtn 실행! ID값 : ');
-    console.log(ID);
     sessionStorage.setItem('ID', ID);
-    console.log('signUpBtn 실행! PW값 : ');
-    console.log(PW);
     sessionStorage.setItem('PW', PW);
   };
 
   const onlyNumber = (e) => {
-    console.log(`onInput 실행.. value : ${e.target.value}`);
-    console.log(e.type);
     const regexp = /\D/g;
     event.target.value = event.target.value.replace(regexp, '');
     e.target.value = e.target.value.replace(regexp, '');
@@ -39,8 +33,6 @@ function Register() {
   };
 
   const onlyNumber2 = (e) => {
-    console.log(`onInput 실행.. value : ${e.target.value}`);
-    console.log(e.type);
     const regexp = /\D/g;
     event.target.value = event.target.value.replace(regexp, '');
     e.target.value = e.target.value.replace(regexp, '');
@@ -68,7 +60,6 @@ function Register() {
   };
 
   const handlePWCheck = (e) => {
-    console.log(e.target.value);
     setPWCheck((prev) => e.target.value);
     if (PW == PWCheck) {
       setPWCheckValid(true);
