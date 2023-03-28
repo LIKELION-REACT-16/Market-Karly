@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
 import {
+  HashRouter,
   RouterProvider,
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
@@ -16,7 +17,7 @@ const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Register = lazy(() => import('./pages/Register'));
 
-let router = createBrowserRouter([
+let router = createHashRouter([
   {
     path: '/',
     element: <Layout />,
@@ -34,7 +35,7 @@ let router = createBrowserRouter([
   },
 ]);
 
-router = createBrowserRouter(
+router = createHashRouter(
   createRoutesFromElements(
     <Route
       path="/"
