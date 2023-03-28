@@ -7,7 +7,6 @@ export function NormalButton(props) {
     width,
     height,
     borderType = false,
-    onClickHandler,
     ...restProps
   } = props;
   const combineClassName = `${classes.normal} ${color ? classes.white : ''} ${
@@ -33,7 +32,7 @@ export function NormalButton(props) {
   }`;
 
   return (
-    <button type="button" className={combineClassName} onClick={onClickHandler}>
+    <button type="button" className={combineClassName} {...restProps}>
       {children}
     </button>
   );
