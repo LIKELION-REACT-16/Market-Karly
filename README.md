@@ -29,11 +29,12 @@
 - OS : macOS Ventura 13.2 ([홍성욱](https://github.com/ukssss) 기준)
 
 [Front-End]
-- Web : JavaScript, Sass(SCSS), HTML
-- Library : React(Vite)
+- Web : [JavaScript](https://developer.mozilla.org/ko/docs/Web/JavaScript), [Sass(SCSS)](https://sass-lang.com/), [HTML](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
+- Library : [React](https://ko.reactjs.org/)
+- Build : [Vite](https://vitejs-kr.github.io/)
 
 [Back-End]
-- Database : Firebase
+- Database : [Firebase](https://firebase.google.com/?hl=ko)
 
 ### ✨ 배포 사이트
 📌 [Market Karly](https://likelion-react-16.github.io/Market-Karly/#/)
