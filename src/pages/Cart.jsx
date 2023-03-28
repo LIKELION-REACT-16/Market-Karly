@@ -1,9 +1,7 @@
 import classes from '@/styles/pages/Cart/Cart.module.scss';
 
-import RouteLink from '@/components/RouteLink';
-import Test from '@/components/test';
-import CartList from './Cart/CartList';
-import Credit from './Cart/Credit';
+import CartList from '../components/Cart/CartList';
+import Credit from '../components/Cart/Credit';
 
 const Cart = () => {
   return (

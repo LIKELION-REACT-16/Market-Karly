@@ -1,0 +1,39 @@
+{
+  "cart": [
+    {
+      "id": 1,
+      "img": "src/assets/img-zzol.svg",
+      "name": "[풀무원] 탱탱쫄면 (4개입)",
+      "type": "refrigerator",
+      "price": 4980
+    },
+    {
+      "id": 2,
+      "img": "src/assets/img-zzol.svg",
+      "name": "스리라차소스",
+      "type": "roomTemp",
+      "price": 4980
+    },
+    {
+      "id": 3,
+      "img": "src/assets/img-zzol.svg",
+      "name": "[풀무원] 탱탱쫄면 (4개입)",
+      "type": "refrigerator",
+      "price": 4980
+    },
+    {
+      "id": 4,
+      "img": "src/assets/img-zzol.svg",
+      "name": "[풀무원] 탱탱쫄면 (4개입)",
+      "type": "refrigerator",
+      "price": 4980
+    },
+    {
+      "id": 5,
+      "img": "src/assets/img-zzol.svg",
+      "name": "치킨너겟",
+      "type": "frozen",
+      "price": 4980
+    }
+  ]
+}

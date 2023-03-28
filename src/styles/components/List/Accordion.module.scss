@@ -1,0 +1,28 @@
+.checkWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0 16px;
+
+  & > span {
+    color: $colors-gray-100;
+  }
+}
+
+.filterTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-default;
+  font-weight: $font-weight-bold;
+  color: $colors-content;
+  padding: 20px 0;
+  border-bottom: 1px solid $colors-gray-100;
+
+  & > button {
+    color: $colors-gray-100;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-small;
+    background-color: #fff;
+  }
+}

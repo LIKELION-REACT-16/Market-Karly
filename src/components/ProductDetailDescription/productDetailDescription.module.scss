@@ -1,0 +1,90 @@
+.detailDescriptionSection {
+  background-color: white;
+  width: 65.625rem;
+}
+
+.whyCarly {
+  padding-top: 4.5rem;
+  padding-bottom: 5.25rem;
+  h4 {
+    margin-bottom: 2.25rem;
+    text-align: center;
+    color: $colors-content;
+    @include heading-xl;
+  }
+}
+
+.cardWrapper {
+  padding-top: 3.5rem;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .title {
+    margin-top: 1rem;
+    color: $colors-primary;
+    @include label-large;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+    word-break: keep-all;
+    color: $colors-content;
+    text-align: center;
+    @include paragraph-medium;
+  }
+}
+
+.cardsSection1 {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  .cardWrapper {
+    width: 315px;
+    height: 272px;
+  }
+
+  .cardWrapper:nth-child(1) {
+    .content {
+      width: 250px;
+    }
+  }
+  .cardWrapper:nth-child(2) {
+    .content {
+      width: 264px;
+    }
+  }
+  .cardWrapper:nth-child(3) {
+    .content {
+      width: 293px;
+    }
+  }
+}
+.cardsSection2 {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  .cardWrapper {
+    width: 315px;
+    height: 298px;
+  }
+
+  .cardWrapper:nth-child(1) {
+    .content {
+      width: 260px;
+    }
+  }
+
+  .cardWrapper:nth-child(2) {
+    .content {
+      width: 256px;
+    }
+  }
+}
