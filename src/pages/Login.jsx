@@ -10,6 +10,7 @@ function Login() {
     const url = location.href;
     const lowerCase = url.toLowerCase();
     const lastIndexOf = lowerCase.lastIndexOf('login');
+    alert("로그인이 되었습니다.");
     location.href = url.substring(0, lastIndexOf);
   };
 
