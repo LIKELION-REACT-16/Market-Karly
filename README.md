@@ -1,5 +1,7 @@
 # LIKELION-REACT-16
 
+![image](https://user-images.githubusercontent.com/86929961/228138141-b06ba7ea-48e3-481e-8d9d-a332a107c71b.png)
+
 
 ## 🔨 Skills
 <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=ffffff"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=ffffff"/>  
