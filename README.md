@@ -24,19 +24,19 @@
 - [최동현](https://github.com/donghyeon413) : Main Page, 발표용 PPT 제작 담당
 - [홍성욱](https://github.com/ukssss) : Git, GitHub 유지보수 담당, Cart Page, Button, Footer Component
 
-### ⚙️ 개발 환경
-<img src="https://img.shields.io/badge/React-282C34?style=flat&logo=React&logoColor=61DAFB"/> <img src="https://img.shields.io/badge/SassModules-CC6699?style=flat&logo=Sass&logoColor=white"/> <img src="https://img.shields.io/badge/ReactRouter-CA4245?style=flat&logo=ReactRouter&logoColor=white"/>
+### ⚙️ 사용기술 및 개발 환경
+- Tools: Visual Studio Code, Firebase, GitHub, Discord
+- OS : macOS Ventura 13.2 ([홍성욱](https://github.com/ukssss) 기준)
 
-<img src="https://img.shields.io/badge/Vite-646CFF?style=flat&logo=Vite&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-039be5?style=flat&logo=Firebase&logoColor=FFCA28"/> <img src="https://img.shields.io/badge/-ContextApi-informational"/>
+[Front-End]
+- Web : JavaScript, Sass(SCSS), HTML
+- Library : React(Vite)
 
-<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=ffffff"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=ffffff"/>  
+[Back-End]
+- Database : Firebase
+
+### ✨ 배포 사이트
+📌 [Market Karly](https://likelion-react-16.github.io/Market-Karly/#/)
 
 
-
-
-
-
-
-
-### ✨ 주요 기능
 
