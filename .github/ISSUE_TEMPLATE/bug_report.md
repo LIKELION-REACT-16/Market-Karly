@@ -4,9 +4,9 @@ about: 버그가 발생한 상황과 수정 내역을 기록
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
+<!-- 🔥 다음 양식으로 제목을 작성해주세요 : Part | OO 오류 -->
 <!-- "여기에 작성하세요" 는 지우고 작성하세요 🙏🏻 -->
 
 ## 버그 설명
@@ -17,7 +17,7 @@ assignees: ''
 <!-- 다음과 같이 단계별로 작성해주세요 :
 e.g.
 1. 해당 페이지에서 작업 중
-2. 이것을 클릭했는데 
+2. 이것을 클릭했는데
 3. 그리고 여기서 스크롤을 내렸더니
 4. "..." 한 오류를 발견했다.
  -->
@@ -36,7 +36,6 @@ e.g.
 
 ## 디바이스 환경
 <!-- 작업을 진행하는 디바이스 환경을 다음과 같이 작성해주세요 :
-
 Desktop
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
@@ -47,13 +46,12 @@ Smartphone
  - OS: [e.g. iOS8.1]
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
-
  -->
- Type
- - Device: 여기에 작성하세요 (Smartphone 일 경우)
- - OS: 여기에 작성하세요
- - Browser: 여기에 작성하세요
- - Version: 여기에 작성하세요
+Type
+- Device: 여기에 작성하세요 (Smartphone 일 경우)
+- OS: 여기에 작성하세요
+- Browser: 여기에 작성하세요
+- Version: 여기에 작성하세요
 
 ## 추가 내용
 <!-- 문제를 해결하기 위한 추가적인 정보를 알려주세요 -->
