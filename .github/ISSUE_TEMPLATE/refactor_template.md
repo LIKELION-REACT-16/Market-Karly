@@ -1,3 +1,4 @@
+
 ---
 name: 🔨 Refactor Template
 about: 리팩토링 작업 사항을 기록

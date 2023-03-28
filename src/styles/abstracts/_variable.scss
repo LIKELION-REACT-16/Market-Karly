@@ -28,7 +28,7 @@ $colors-gray-600: #565656;
 $colors-gray-700: #404040;
 $colors-gray-800: #2b2b2b;
 $colors-gray-900: #151515;
-$colors-primary: #5F0080;
+$colors-primary: #5f0080;
 $colors-secondary: #bd76ff;
 $colors-content: #333;
 $colors-accent-yellow: #fa622f;
@@ -118,30 +118,30 @@ $border-radius-xl: 16px;
 
 @mixin label-medium {
   font-family: Pretendard;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-medium;
 }
 
 @mixin label-large {
   font-family: Pretendard;
   font-weight: 700;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-large;
 }
 
 @mixin label-xl {
   font-family: Pretendard;
   font-weight: 800;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-xl;
 }
 
 @mixin label-xxl {
   font-family: Pretendard;
   font-weight: 900;
   line-height: 150%;
-  font-size: $font-size-small;
+  font-size: $font-size-xxl;
 }
 
 @mixin paragraph-small {

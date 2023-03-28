@@ -1,12 +1,17 @@
-import RouteLink from '@/components/RouteLink';
-import Test from '@/components/test';
+import classes from '@/styles/pages/Cart/Cart.module.scss';
+
+import CartList from '../components/Cart/CartList';
+import Credit from '../components/Cart/Credit';
 
 const Cart = () => {
   return (
-    <div>
-      <h2>Cart</h2>
-      <RouteLink />
-    </div>
+    <>
+      <h2>장바구니</h2>
+      <div className={classes.cart}>
+        <CartList />
+        <Credit />
+      </div>
+    </>
   );
 };
 

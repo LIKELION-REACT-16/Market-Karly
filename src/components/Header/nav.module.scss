@@ -1,0 +1,274 @@
+.navigation {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 65.625rem;
+  position: relative;
+
+  button:nth-child(-n + 1) {
+    border: none;
+    @include label-medium;
+  }
+  align-items: center;
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    color: $colors-content;
+  }
+}
+
+.nomalNavigation {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: static;
+  width: 100%;
+  top: 105px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fixedNavigation {
+  z-index: 1000;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  top: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 65.625rem;
+  .balloon {
+    top: 54px;
+  }
+
+  .utilityButtonList {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+
+      &:nth-child(n + 2) {
+        margin-left: 1.25rem;
+      }
+    }
+  }
+}
+.categoryButton {
+  width: fit-content;
+  height: 2.5rem;
+
+  span {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    margin-right: 0.75rem;
+  }
+
+  ul {
+    background-color: white;
+    position: absolute;
+    top: 62px;
+    left: 0;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    width: fit-content;
+    border: 1px solid $colors-gray-100;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        width: 15.5rem;
+        height: 2rem;
+
+        div {
+          background-image: url('../../assets/img-sprite-menu-icon.svg');
+          background-repeat: no-repeat;
+          background-size: 1.5rem 33rem;
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-left: 0.75rem;
+          margin-right: 0.5rem;
+        }
+
+        &:hover {
+          background-color: $colors-gray-100;
+        }
+
+        @include label-medium;
+      }
+    }
+  }
+
+  &:hover {
+    span {
+      color: $colors-primary;
+    }
+
+    ul {
+      display: block;
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  width: fit-content;
+  height: 4.5rem;
+  list-style: none;
+  align-items: center;
+
+  a {
+    display: flex;
+    padding: 0;
+    width: 9.375rem;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    color: $colors-content;
+    span {
+      display: inline-block;
+      height: 24px;
+      @include label-medium;
+    }
+
+    &:hover {
+      & span {
+        color: $colors-primary;
+        border-bottom: 1px solid $colors-primary;
+      }
+    }
+  }
+}
+
+.active {
+  & span {
+    color: $colors-primary;
+  }
+}
+
+.dawnShippingInfo {
+  width: 6.25rem;
+  height: 1.75rem;
+  border: 1px solid $colors-gray-300;
+  border-radius: 0.875rem;
+  padding: 0;
+  span {
+    &:first-child {
+      color: $colors-primary;
+    }
+    &:last-child {
+      margin-left: 0.125rem;
+      color: $colors-gray-500;
+    }
+    @include paragraph-small;
+  }
+}
+
+.searchForm {
+  position: relative;
+  width: 12.125rem;
+  height: 2.25rem;
+  border: 1px solid $colors-primary;
+  border-radius: 0.25rem;
+
+  input {
+    border: none;
+    height: 2.125rem;
+    width: 7rem;
+    margin-left: 1.25rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include paragraph-small;
+  }
+  button {
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.balloon {
+  padding: 2rem 1.25rem 1.25rem 1.25rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: none;
+  position: absolute;
+  top: -10px;
+  right: -22px;
+
+  z-index: 20000;
+  animation: fadein 1s;
+
+  .productImg {
+    width: 2.875rem;
+    height: 3.75rem;
+    background-color: red;
+    float: left;
+    margin-right: 24px;
+  }
+  .messageWrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 100%;
+    .productName {
+      color: $colors-gray-300;
+      margin-bottom: 0.5rem;
+      @include label-small;
+    }
+    .message {
+      color: $colors-content;
+      @include paragraph-small;
+    }
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.utilityButtonList {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  button {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+
+    &:nth-child(n + 2) {
+      margin-left: 1.25rem;
+    }
+  }
+}
+.isVisible {
+  display: block;
+}

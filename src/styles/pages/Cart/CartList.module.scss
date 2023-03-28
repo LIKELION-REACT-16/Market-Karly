@@ -1,0 +1,227 @@
+.cartList {
+  // background-color: $colors-accent-yellow;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 742px;
+}
+
+// Radio
+.radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 0px;
+  gap: 8px;
+
+  width: 742px;
+  height: 56px;
+
+  border-bottom: 1px solid $colors-black;
+
+  & .all {
+    height: 24px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: $colors-content;
+  }
+
+  & .bar {
+    width: 1px;
+    height: 10px;
+
+    background: $colors-content;
+  }
+
+  & .delete {
+    height: 24px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: $colors-content;
+  }
+}
+
+// Accordion
+.accordions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 742px;
+
+  & .accordion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    border-bottom: 1px solid $colors-black;
+
+    & .inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0px;
+      gap: 132px;
+
+      width: 742px;
+      height: 62px;
+
+      & .icon {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 12px;
+
+        width: 102px;
+        height: 30px;
+
+        & .logo {
+          width: 30px;
+          height: 30px;
+        }
+
+        & .text {
+          width: 60px;
+          height: 24px;
+
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 150%;
+
+          color: $colors-black;
+        }
+      }
+
+      & .arrow {
+        border: none;
+        background: none;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+        gap: 4px;
+
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    & .detail {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0px;
+
+      width: 742px;
+
+      & .product {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 20px 0px;
+        gap: 8px;
+
+        width: 742px;
+        height: 118px;
+
+        & .image {
+          width: 60px;
+          height: 78px;
+        }
+
+        & .desc {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 0px;
+
+          width: 345px;
+          height: 24px;
+
+          & .text {
+            height: 24px;
+
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 150%;
+
+            color: $colors-black;
+          }
+        }
+
+        & .price {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 0px;
+
+          width: 127px;
+          height: 24px;
+
+          & .text {
+            height: 24px;
+
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 150%;
+
+            color: $colors-content;
+          }
+        }
+
+        & .cancel {
+          background: none;
+
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+// Checkbox
+.checkbox {
+  width: 24px;
+  height: 24px;
+
+  .input[type='checkbox'] {
+    display: none;
+  }
+
+  .label::before {
+    content: '';
+    background: url(@/assets/img-check.svg) -8px -8px no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .input[type='checkbox']:checked + .label::before {
+    content: '';
+    background: url(@/assets/img-check.svg) -8px -40px no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+}
