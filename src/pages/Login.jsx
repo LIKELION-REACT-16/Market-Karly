@@ -7,7 +7,7 @@ import {NormalButton} from '@/components/Button';
 function Login(){
   const signInBtn=(e)=>{
     alert("로그인이 완료되었습니다.");
-    location.href="./Home";
+    location.href="/";
   }
 
   return (
@@ -20,7 +20,7 @@ function Login(){
       <div className="LoginBtn"><NormalButton width="340" height="54" onClickHandler={signInBtn}>
         <span>로그인</span>
       </NormalButton></div>
-      <a href="./Register.jsx"><NormalButton color="white" width="340" height="54">
+      <a href="./Register"><NormalButton color="white" width="340" height="54">
         <span>회원가입</span>
       </NormalButton></a>
       </form>
