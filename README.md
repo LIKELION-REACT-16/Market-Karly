@@ -24,7 +24,7 @@
 - [최동현](https://github.com/donghyeon413) : Main Page, 발표용 PPT 제작 담당
 - [홍성욱](https://github.com/ukssss) : Git, GitHub 유지보수 담당, Cart Page, Button, Footer Component
 
-### ⚙️ 사용기술 및 개발 환경
+### ⚙️ 사용 기술 및 개발 환경
 - Tools: Visual Studio Code, Firebase, GitHub, Discord
 - OS : macOS Ventura 13.2 ([홍성욱](https://github.com/ukssss) 기준)
 
@@ -36,8 +36,7 @@
 [Back-End]
 - Database : [Firebase](https://firebase.google.com/?hl=ko)
 
-### ✨ 배포 사이트
-📌 [Market Karly](https://likelion-react-16.github.io/Market-Karly/#/)
+### ✨ 구현 내용 및 배포 사이트
+📕 구현 내용은 [Wiki](https://github.com/LIKELION-REACT-16/Market-Karly/wiki) 에서 확인하실 수 있습니다.
 
-
-
+📌 배포 사이트 : [Market Karly](https://likelion-react-16.github.io/Market-Karly/#/)
