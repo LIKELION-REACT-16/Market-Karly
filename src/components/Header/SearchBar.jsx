@@ -19,9 +19,9 @@ export default function SearchBar() {
         <Link to={'/'}>
           <KarlyLogo />
         </Link>
-        <Link to={'/'}>마켓 컬리</Link>
+        <Link to={'/'}>마켓 칼리</Link>
         <Link to={'/'}>
-          뷰티 컬리
+          뷰티 칼리
           <New className={classes.newTag} />
         </Link>
       </h1>
